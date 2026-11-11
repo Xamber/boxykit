@@ -36,6 +36,6 @@ The Release workflow is off until the repo variable `NPM_PUBLISH` is `true`. To 
 
 ## Docs on Vercel
 
-`vercel.json` builds the whole repo (`npm run build`) and serves the static export in `apps/docs/out`.
-On vercel.com: Add New → Project → import `Xamber/boxykit`, keep the root directory as the repo root, deploy.
+The Vercel project's Root Directory is `apps/docs`. Its `vercel.json` installs and builds from the repo root
+(`npm ci`, `npm run build`: the package first, then the docs) and serves the static export in `apps/docs/out`.
 Every push to `main` deploys; pull requests get previews.
