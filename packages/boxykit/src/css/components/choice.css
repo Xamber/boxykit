@@ -1,0 +1,160 @@
+/*
+ * Checkbox, Radio, Switch: the native inputs drawn as an InteractiveList's markers. Choice: one of them with its
+ * text, a capital row that lights up under the pointer. ChoiceList: a titled column of them, numbered on request.
+ */
+@layer boxy.components {
+  .boxy-choice {
+    display: flex;
+    align-items: center;
+    gap: var(--boxy-space-3);
+    padding: var(--boxy-space) var(--boxy-space-2);
+    font-size: var(--boxy-font-size-small);
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background var(--boxy-duration);
+  }
+
+  .boxy-choice:hover {
+    background: var(--boxy-accent-soft);
+  }
+
+  /* The row takes the focus ring; the marker is too small to carry one. */
+  .boxy-choice:has(:focus-visible) {
+    box-shadow: inset var(--boxy-ring);
+  }
+
+  .boxy-choice:has(:disabled) {
+    background: transparent;
+    cursor: default;
+    opacity: var(--boxy-opacity-disabled);
+  }
+
+  /* ---- The markers: an outline in the text color, filled with it when on ---- */
+  .boxy-checkbox,
+  .boxy-radio {
+    flex-shrink: 0;
+    width: calc(var(--boxy-space) * 2.5);
+    height: calc(var(--boxy-space) * 2.5);
+    border-radius: var(--boxy-radius-button);
+    background: transparent;
+    box-shadow: inset 0 0 0 1px currentcolor;
+    cursor: inherit;
+    appearance: none;
+  }
+
+  .boxy-radio {
+    border-radius: var(--boxy-radius-full);
+  }
+
+  .boxy-checkbox:focus-visible,
+  .boxy-radio:focus-visible,
+  .boxy-switch:focus-visible {
+    outline: none;
+  }
+
+  .boxy-checkbox:checked,
+  .boxy-radio:checked {
+    background: currentcolor;
+  }
+
+  /* Some but not all: half full. */
+  .boxy-checkbox:indeterminate {
+    background: linear-gradient(transparent 50%, currentcolor 50%);
+  }
+
+  .boxy-checkbox[aria-invalid="true"] {
+    color: var(--boxy-danger);
+  }
+
+  /*
+   * Switch: YES ■ | □ NO. Two markers and a short line between them, all drawn on the one input;
+   * the side it is on is filled with the accent.
+   */
+  .boxy-switch {
+    --boxy-switch-square: calc(var(--boxy-space) * 2.5);
+    --boxy-switch-inner: calc(var(--boxy-switch-square) - 2px);
+    --boxy-switch-yes: var(--boxy-bg);
+    --boxy-switch-no: var(--boxy-accent);
+
+    flex-shrink: 0;
+    width: calc(var(--boxy-switch-square) * 2 + var(--boxy-space-4) + 1px);
+    height: var(--boxy-switch-square);
+    border-radius: var(--boxy-radius-button);
+    /* Top to bottom: yes inside, yes outline, the line, no inside, no outline. */
+    background-image:
+      linear-gradient(var(--boxy-switch-yes), var(--boxy-switch-yes)),
+      linear-gradient(currentcolor, currentcolor),
+      linear-gradient(var(--boxy-muted), var(--boxy-muted)),
+      linear-gradient(var(--boxy-switch-no), var(--boxy-switch-no)),
+      linear-gradient(currentcolor, currentcolor);
+    background-position:
+      1px 1px,
+      0 0,
+      center,
+      right 1px top 1px,
+      right 0 top 0;
+    background-size:
+      var(--boxy-switch-inner) var(--boxy-switch-inner),
+      var(--boxy-switch-square) var(--boxy-switch-square),
+      1px 100%,
+      var(--boxy-switch-inner) var(--boxy-switch-inner),
+      var(--boxy-switch-square) var(--boxy-switch-square);
+    background-repeat: no-repeat;
+    cursor: inherit;
+    appearance: none;
+  }
+
+  .boxy-switch:checked {
+    --boxy-switch-yes: var(--boxy-accent);
+    --boxy-switch-no: var(--boxy-bg);
+  }
+
+  .boxy-switch[aria-invalid="true"] {
+    color: var(--boxy-danger);
+  }
+
+  /* YES and NO: the side it is on in the text color, the other muted. YES pushes the pair to the row's end. */
+  .boxy-switch-option {
+    color: var(--boxy-muted);
+    transition: color var(--boxy-duration);
+  }
+
+  .boxy-switch-option:has(+ .boxy-switch) {
+    margin-left: auto;
+  }
+
+  .boxy-switch-option:has(+ .boxy-switch:checked),
+  .boxy-switch:not(:checked) + .boxy-switch-option {
+    color: inherit;
+  }
+
+  /* ---- ChoiceList: a fieldset, the legend a caption over the column ---- */
+  .boxy-choice-list {
+    display: flex;
+    flex-direction: column;
+    counter-reset: boxy-choice;
+  }
+
+  .boxy-choice-list-legend {
+    margin-bottom: var(--boxy-space-2);
+    color: var(--boxy-muted);
+    font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-tight);
+    letter-spacing: var(--boxy-letter-spacing-wider);
+    text-transform: uppercase;
+  }
+
+  .boxy-choice-list .boxy-choice {
+    counter-increment: boxy-choice;
+  }
+
+  .boxy-choice-list-numbered .boxy-choice::before {
+    content: counter(boxy-choice, decimal-leading-zero);
+    color: var(--boxy-muted);
+    font-family: var(--boxy-font-mono);
+    font-size: var(--boxy-font-size-tiny);
+    font-weight: var(--boxy-font-weight);
+  }
+}

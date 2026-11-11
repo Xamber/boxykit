@@ -1,0 +1,97 @@
+/*
+ * NumberInput: − the number + in one outlined strip. Drag the number sideways to run it from min to max.
+ * Filled: set --boxy-number-input-fill (0%–100%) on the strip to shade the field that far.
+ * The buttons and the drag need the React component (or a script of your own); the look is all here.
+ */
+@layer boxy.components {
+  .boxy-number-input {
+    display: flex;
+    width: 100%;
+    border: var(--boxy-border);
+    border-radius: var(--boxy-radius-button);
+    background: var(--boxy-bg);
+    transition:
+      border-color var(--boxy-duration),
+      box-shadow var(--boxy-duration);
+  }
+
+  .boxy-number-input:focus-within {
+    border-color: var(--boxy-accent);
+    box-shadow: var(--boxy-ring);
+  }
+
+  .boxy-number-input:has(.boxy-number-input-field:disabled) {
+    opacity: var(--boxy-opacity-disabled);
+  }
+
+  .boxy-number-input:has(.boxy-number-input-field[aria-invalid="true"]) {
+    border-color: var(--boxy-danger);
+  }
+
+  .boxy-number-input-field {
+    flex: 1;
+    min-width: 0;
+    padding: var(--boxy-space-3) var(--boxy-space-2);
+    font-size: var(--boxy-font-size);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    cursor: ew-resize;
+    appearance: textfield;
+    /* Sideways is the drag; up and down still scroll the page. */
+    touch-action: pan-y;
+  }
+
+  .boxy-number-input-field:focus {
+    outline: none;
+    cursor: text;
+  }
+
+  .boxy-number-input-field::-webkit-inner-spin-button,
+  .boxy-number-input-field::-webkit-outer-spin-button {
+    appearance: none;
+  }
+
+  /* Filled: the field shaded from the left up to where the value sits between min and max. */
+  .boxy-number-input-filled .boxy-number-input-field {
+    background-image: linear-gradient(
+      to right,
+      var(--boxy-accent-soft) var(--boxy-number-input-fill, 0%),
+      transparent var(--boxy-number-input-fill, 0%)
+    );
+  }
+
+  .boxy-number-input-step {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: var(--boxy-touch-target);
+    font-size: var(--boxy-font-size);
+    line-height: 1;
+    cursor: pointer;
+    transition: background var(--boxy-duration);
+  }
+
+  /* A line between each button and the number. */
+  .boxy-number-input-step:first-child {
+    border-right: var(--boxy-border);
+  }
+
+  .boxy-number-input-step:last-child {
+    border-left: var(--boxy-border);
+  }
+
+  .boxy-number-input-step:hover:not(:disabled) {
+    background: var(--boxy-accent-soft);
+  }
+
+  .boxy-number-input-step:active:not(:disabled) {
+    background: var(--boxy-accent);
+    color: var(--boxy-on-accent);
+  }
+
+  .boxy-number-input-step:disabled {
+    cursor: default;
+    color: var(--boxy-muted);
+  }
+}

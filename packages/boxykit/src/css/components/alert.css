@@ -1,11 +1,13 @@
 /*
- * Alert: a message in an outlined rectangle like a StatTile's, a dot in its tone (info, success, warning,
- * danger) top right and an optional title in the tone on top; the message goes in one span, so a link
- * in it stays inline. Empty: a dashed box instead of an empty list.
+ * Alert: a message in a Toast's inverted rectangle, a dot in its tone (info, success, warning, danger) top right
+ * and an optional title in the tone on top; the message goes in one span, so a link in it stays inline.
+ * Light: the page's colors instead, outlined. Empty: a dashed box instead of an empty list.
  */
 @layer boxy.components {
   .boxy-alert {
-    --boxy-alert-tone: var(--boxy-line);
+    --boxy-alert-tone: var(--boxy-info);
+    /* The tones are made for the page; on the inverted band, pulled toward its text color so they still read. */
+    --boxy-alert-ink: color-mix(in srgb, var(--boxy-alert-tone) 65%, var(--boxy-band-fg));
 
     display: flex;
     flex-direction: column;
@@ -15,11 +17,11 @@
     /* Room on the right for the dot. */
     padding: var(--boxy-space-4) var(--boxy-space-8) var(--boxy-space-4) var(--boxy-space-4);
     border-radius: var(--boxy-radius);
-    background: var(--boxy-bg);
-    color: var(--boxy-fg);
+    background: var(--boxy-band-bg);
+    color: var(--boxy-band-fg);
     font-size: var(--boxy-font-size-small);
     line-height: var(--boxy-line-height-tight);
-    box-shadow: var(--boxy-outline);
+    box-shadow: inset 0 0 0 1px var(--boxy-band-line);
   }
 
   /* A dot in the tone, top right. */
@@ -31,7 +33,7 @@
     width: var(--boxy-space-2);
     aspect-ratio: 1;
     border-radius: var(--boxy-radius-full);
-    background: var(--boxy-alert-tone);
+    background: var(--boxy-alert-ink);
   }
 
   .boxy-alert-info {
@@ -50,11 +52,20 @@
     --boxy-alert-tone: var(--boxy-danger);
   }
 
+  .boxy-alert-light {
+    --boxy-alert-ink: var(--boxy-alert-tone);
+
+    background: var(--boxy-bg);
+    color: var(--boxy-fg);
+    box-shadow: var(--boxy-outline);
+  }
+
   .boxy-alert-title {
-    color: var(--boxy-alert-tone);
-    font-weight: var(--boxy-font-weight-medium);
+    color: var(--boxy-alert-ink);
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-tiny);
+    font-weight: var(--boxy-font-weight-medium);
+    letter-spacing: var(--boxy-letter-spacing-wider);
     text-transform: uppercase;
   }
 

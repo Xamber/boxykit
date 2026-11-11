@@ -1,0 +1,37 @@
+/* Textarea: a text field of several lines, the Input's look; it grows taller by hand, not wider. */
+@layer boxy.components {
+  .boxy-textarea {
+    display: block;
+    width: 100%;
+    min-height: calc(var(--boxy-touch-target) * 2);
+    padding: var(--boxy-space-3) var(--boxy-space-4);
+    border: var(--boxy-border);
+    border-radius: var(--boxy-radius-button);
+    background: var(--boxy-bg);
+    font-size: var(--boxy-font-size);
+    line-height: var(--boxy-line-height);
+    resize: vertical;
+    transition:
+      border-color var(--boxy-duration),
+      box-shadow var(--boxy-duration);
+  }
+
+  .boxy-textarea::placeholder {
+    color: var(--boxy-muted);
+  }
+
+  .boxy-textarea:focus {
+    outline: none;
+    border-color: var(--boxy-accent);
+    box-shadow: var(--boxy-ring);
+  }
+
+  .boxy-textarea:disabled {
+    cursor: default;
+    opacity: var(--boxy-opacity-disabled);
+  }
+
+  .boxy-textarea[aria-invalid="true"] {
+    border-color: var(--boxy-danger);
+  }
+}

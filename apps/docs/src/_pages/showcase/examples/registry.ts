@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import { AlertEmpty } from "./alert/empty";
+import { AlertLight } from "./alert/light";
 import { AlertTones } from "./alert/tones";
 import { BoardHalves } from "./board/halves";
 import { BoardMainSide } from "./board/main-side";
@@ -12,6 +13,9 @@ import { ButtonLinksSmall } from "./button/links-small";
 import { ButtonLooks } from "./button/looks";
 import { ButtonPending } from "./button/pending";
 import { ButtonSmall } from "./button/small";
+import { ChoiceCheckbox } from "./choice/checkbox";
+import { ChoiceRadio } from "./choice/radio";
+import { ChoiceSwitch } from "./choice/switch";
 import { InputBasic } from "./input/basic";
 import { InputInvalid } from "./input/invalid";
 import { InputMuted } from "./input/muted";
@@ -26,10 +30,13 @@ import { ListInteractivePlain } from "./list/interactive-plain";
 import { ListNumbered } from "./list/numbered";
 import { ModalBasic } from "./modal/basic";
 import { NavStrip } from "./nav/strip";
+import { NumberInputBasic } from "./number-input/basic";
+import { NumberInputDecimal } from "./number-input/decimal";
 import { ProgressRingLarge } from "./progress/large";
 import { ProgressRingExample } from "./progress/ring";
 import { ProgressSpinner } from "./progress/spinner";
 import { SectionBasic } from "./section/basic";
+import { SelectBasic } from "./select/basic";
 import { StatTileClickable } from "./stat-tile/clickable";
 import { StatTileCorner } from "./stat-tile/corner";
 import { StatTileLabelOnly } from "./stat-tile/label-only";
@@ -46,6 +53,7 @@ import { TagListExample } from "./tag/list";
 import { TextCaption } from "./text/caption";
 import { TextHeadline } from "./text/headline";
 import { TextHero } from "./text/hero";
+import { TextareaBasic } from "./textarea/basic";
 import { ToastActions } from "./toast/actions";
 import { ToastBasic } from "./toast/basic";
 import { ToastCount } from "./toast/count";
@@ -303,6 +311,76 @@ export const COMPONENTS: ComponentDoc[] = [
     ],
   },
   {
+    slug: "textarea",
+    title: "Textarea",
+    css: ["textarea"],
+    examples: [
+      {
+        file: "textarea/basic.tsx",
+        title: "Basic",
+        about: "The Input's look over several lines; it grows taller by hand. invalid works as on Input.",
+        Component: TextareaBasic,
+      },
+    ],
+  },
+  {
+    slug: "select",
+    title: "Select",
+    css: ["select"],
+    examples: [
+      {
+        file: "select/basic.tsx",
+        title: "Basic",
+        about: "The native select in the Input's look. Where the browser allows (Chrome), the open list is styled too.",
+        Component: SelectBasic,
+      },
+    ],
+  },
+  {
+    slug: "choice",
+    title: "Checkbox, Radio and Switch",
+    css: ["choice"],
+    examples: [
+      {
+        file: "choice/checkbox.tsx",
+        title: "Checkbox",
+        about: "Rows like an InteractiveList, in a ChoiceList: the square fills when on; indeterminate half-fills it.",
+        Component: ChoiceCheckbox,
+      },
+      {
+        file: "choice/radio.tsx",
+        title: "Radio · Numbered",
+        about: "One name for one question; the circle fills. numbered puts 01, 02… in front.",
+        Component: ChoiceRadio,
+      },
+      {
+        file: "choice/switch.tsx",
+        title: "Switch",
+        about: "On or off at once, no Save: YES ■ | □ NO at the end of the row, the side it is on in the accent.",
+        Component: ChoiceSwitch,
+      },
+    ],
+  },
+  {
+    slug: "number-input",
+    title: "NumberInput",
+    css: ["number-input"],
+    examples: [
+      {
+        file: "number-input/basic.tsx",
+        title: "Basic",
+        about: "− and + step it; drag the number sideways to run it from min to max. Click it to type; arrow keys step.",
+        Component: NumberInputBasic,
+      },
+      {
+        file: "number-input/decimal.tsx",
+        title: "Steps · Filled",
+        about: "step can be a fraction: it snaps to the steps from min. filled shades how far it is from min to max as you drag.",
+        Component: NumberInputDecimal,
+      },
+    ],
+  },
+  {
     slug: "toggle-group",
     title: "ToggleGroup",
     css: ["toggle-group"],
@@ -404,8 +482,14 @@ export const COMPONENTS: ComponentDoc[] = [
       {
         file: "alert/tones.tsx",
         title: "Tones",
-        about: "A dot in the tone top right, an optional title in the tone on top. Danger and warning are announced right away (role=\"alert\"), the others politely.",
+        about: "Dark like a Toast: a dot in the tone top right, an optional title in the tone on top. Danger and warning are announced right away (role=\"alert\"), the others politely.",
         Component: AlertTones,
+      },
+      {
+        file: "alert/light.tsx",
+        title: "Light",
+        about: "look=\"light\": the page's colors, outlined.",
+        Component: AlertLight,
       },
       { file: "alert/empty.tsx", title: "Empty", about: "A dashed box, grey and centered, instead of an empty list or table.", Component: AlertEmpty },
     ],
