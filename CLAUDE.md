@@ -1,6 +1,6 @@
 # boxykit
 
-A UI kit: plain CSS is the source of truth, `boxykit/react` only maps props to the same classes and attributes. Minimal on purpose: few components, no runtime dependencies, strict lint. The plan is in `docs/feature/migration.md`.
+A UI kit: plain CSS is the source of truth, `boxykit/react` only maps props to the same classes and attributes. Minimal on purpose: few components, no runtime dependencies, strict lint. Releasing: `docs/publishing.md`; the docs site: `docs/deployments.md`.
 
 ## Layout
 
