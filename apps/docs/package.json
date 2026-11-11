@@ -7,8 +7,9 @@
   },
   "scripts": {
     "examples": "tsx scripts/render-examples.tsx",
-    "dev": "npm run examples && next dev",
-    "build": "npm run examples && next build"
+    "css": "tsx scripts/copy-css.ts",
+    "dev": "npm run examples && npm run css && next dev",
+    "build": "npm run examples && npm run css && next build"
   },
   "dependencies": {
     "boxykit": "*",

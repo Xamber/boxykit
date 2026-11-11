@@ -1,4 +1,6 @@
-import { Headline } from "boxykit/react";
+import { Headline, buttonClass } from "boxykit/react";
+import { CSS_FILE_NAME, CSS_FILE_SIZE, CSS_FILE_URL } from "../config/css-file";
+import { CopyCssButton } from "./copy-css-button";
 import { ModeOnly } from "./mode-only";
 
 /**
@@ -26,6 +28,15 @@ import { Button } from "boxykit/react";
   boxy-button-accent">Save</button>`}</pre>
         </ModeOnly>
         <p className="docs-about">No React? Pick CSS at the side.</p>
+        <p className="docs-about">No npm either? Download the whole kit as one file and link it, or copy it into your own:</p>
+        <div className="docs-actions">
+          <a className={buttonClass({ look: "outline", size: "small" })} href={CSS_FILE_URL} download={CSS_FILE_NAME}>
+            Download CSS · {CSS_FILE_SIZE}
+          </a>
+          <CopyCssButton url={CSS_FILE_URL} />
+        </div>
+        <pre className="docs-code">{`<link rel="stylesheet"
+  href="${CSS_FILE_NAME}">`}</pre>
       </div>
       <div className="docs-preview">
         <Headline ghost="· personal UI lib">Boxykit</Headline>

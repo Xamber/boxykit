@@ -8,3 +8,4 @@ next-env.d.ts
 .DS_Store
 *.tsbuildinfo
 .idea/
+apps/docs/public/boxykit.css
