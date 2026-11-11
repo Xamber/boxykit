@@ -7,17 +7,17 @@ A UI kit: plain CSS is the source of truth, `boxykit/react` only maps props to t
 - `packages/boxykit/src/css/` — `tokens.css` (the theme), `reset.css`, `components/<name>.css`, `index.css` (imports all).
 - `packages/boxykit/src/react/` — one `<name>.tsx` per component, `index.ts` exports them.
 - `packages/boxykit/test/` — Vitest tests of the components with behavior, and of the built package.
-- `apps/docs/` — Next.js docs, one page with every component, laid out in Feature-Sliced Design: `app/` is Next.js routing only (the layout, and `page.tsx` re-exporting the page); the page is the slice `src/_pages/showcase/` (`ui/`, `model/` the React/CSS mode and the theme, `config/`, `lib/`, `examples/`), imported only through its `index.ts`. No `shared/` or other layers until two pages need the same code. Each example is a row: titled "Component · Variant", the element on the left, and on the right its about and Show code (the code opens there; in CSS mode with the files to import); no group headers; anchors, the Light/Dark and React/CSS switches down the right side. React shows the example's source, CSS the HTML it renders (from `scripts/render-examples.tsx`, into the slice's git-ignored `generated/`) and the files to import. `scripts/copy-css.ts` copies the package's `boxy.css` to `public/boxykit.css` (git-ignored) for the Download CSS button. `src/_pages/showcase/examples/<component>/<name>.tsx` is one example; register it in `examples/registry.ts` with a title and an about line.
+- `apps/docs/` — Next.js docs, one page with every component, laid out in Feature-Sliced Design: `app/` is Next.js routing only (the layout, and `page.tsx` re-exporting the page); the page is the slice `src/_pages/showcase/` (`ui/`, `model/` the React/CSS mode and the theme, `config/`, `lib/`, `examples/`), imported only through its `index.ts`. No `shared/` or other layers until two pages need the same code. Each example is a row: titled "Component · Variant", the element on the left, and on the right its about and Show code (the code opens there; in CSS mode with the files to import); no group headers; anchors, the Light/Dark and React/CSS switches down the right side. React shows the example's source, CSS the HTML it renders (from `scripts/render-examples.tsx`, into the slice's git-ignored `generated/`) and the files to import. `scripts/copy-css.ts` copies the package's `boxy.css` to `public/boxykit.css` (git-ignored) for the Download CSS button. `src/_pages/showcase/examples/<component>/<name>.tsx` is one example; register it in `examples/registry.ts` with a title and an about line, under its component, in one of the page's few sections (Typography, Layout, Navigation, Tiles, Buttons, Forms, Progress, Messages): the anchors list sections, not components.
 - `apps/docs/test/examples.test.tsx` — CSS ⇔ React parity and axe over every example.
 
 ## Adding a component
 
 1. `src/css/components/<name>.css` inside `@layer boxy.components { … }`; add it to `index.css`.
 2. `src/react/<name>.tsx`; export from `index.ts`.
-3. Examples in `apps/docs/src/_pages/showcase/examples/<name>/` that between them use every class, and a registry entry (with its `css` files).
-4. A test if it has behavior; `npm run changeset`.
+3. Examples in `apps/docs/src/_pages/showcase/examples/<name>/` that between them use every class, and a registry entry (with its `css` files) in the section it belongs to.
+4. A test if it has behavior; a line in `packages/boxykit/CHANGELOG.md` under the next version.
 
-`VERSION` mirrors the package's version (the docs show it); `npm run version-packages` bumps both.
+`VERSION` is the version: the package's build copies it into its `package.json`, the docs show it, and a push to `main` that bumps it is a release (after CI passes).
 
 ## CSS
 
@@ -42,4 +42,4 @@ A UI kit: plain CSS is the source of truth, `boxykit/react` only maps props to t
 
 ## Checks
 
-`npm run build && npm run lint && npm run typecheck && npm test && npm run check:package`, which is what CI runs.
+`npm run build && npm run lint && npm run typecheck && npm test`, which is what CI runs.

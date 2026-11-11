@@ -1,4 +1,4 @@
-/* Tag: a small rectangle like a StatTile's, outlined, in the accent or dark; TagList wraps a row of them. */
+/* Tag: a small rectangle like a Tile's, outlined, in the accent or dark; TagList wraps a row of them. */
 @layer boxy.components {
   .boxy-tag-list {
     display: inline-flex;

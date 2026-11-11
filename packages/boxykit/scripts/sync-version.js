@@ -1,8 +1,14 @@
-// Writes the package's version to the repo's VERSION file, after `changeset version` bumps it.
+// VERSION is the one place to set the version: the build copies it into package.json, the docs site reads it,
+// and the Release workflow publishes it when npm doesn't have it yet.
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const root = path.resolve(import.meta.dirname, "../../..");
-const { version } = JSON.parse(readFileSync(path.join(root, "packages/boxykit/package.json"), "utf8"));
+const manifest = path.join(root, "packages/boxykit/package.json");
+const version = readFileSync(path.join(root, "VERSION"), "utf8").trim();
+const pkg = JSON.parse(readFileSync(manifest, "utf8"));
 
-writeFileSync(path.join(root, "VERSION"), `${version}\n`);
+if (pkg.version !== version) {
+  pkg.version = version;
+  writeFileSync(manifest, `${JSON.stringify(pkg, null, 2)}\n`);
+}

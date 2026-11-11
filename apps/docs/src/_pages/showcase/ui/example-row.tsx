@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { CodePanel } from "./code-panel";
 
-/** A component's rows, under one anchor; the rows name it themselves ("Button · Looks"). */
+/** A section's rows, under one anchor; each row names its component itself ("Button · Looks"). */
 export function Group({ slug, title, children }: { slug: string; title: string; children: ReactNode }) {
   return (
     <section id={slug} className="docs-group" aria-label={title}>

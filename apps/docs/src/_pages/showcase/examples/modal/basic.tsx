@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, LabelSquare, LabelSquares, Modal } from "boxykit/react";
+import { Button, LabelTile, LabelTiles, Modal } from "boxykit/react";
 import { useState } from "react";
 
 export function ModalBasic() {
@@ -32,13 +32,13 @@ export function ModalBasic() {
           </>
         }
       >
-        <LabelSquares>
-          <LabelSquare label="Status">In review</LabelSquare>
-          <LabelSquare label="Owner">Mia</LabelSquare>
-          <LabelSquare label="Title" wide>
+        <LabelTiles>
+          <LabelTile label="Status">In review</LabelTile>
+          <LabelTile label="Owner">Mia</LabelTile>
+          <LabelTile label="Title" wide>
             Fix the login form on Safari
-          </LabelSquare>
-        </LabelSquares>
+          </LabelTile>
+        </LabelTiles>
       </Modal>
     </>
   );

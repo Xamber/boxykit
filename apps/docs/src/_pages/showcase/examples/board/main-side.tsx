@@ -1,4 +1,4 @@
-import { Board, BoardCell, Button, Caption, Headline, StatTile, StatTiles } from "boxykit/react";
+import { Board, BoardCell, Button, Caption, Headline, Tile, Tiles } from "boxykit/react";
 
 // The left column twice as wide: the content on the left, its status and actions on the right.
 export function BoardMainSide() {
@@ -9,10 +9,10 @@ export function BoardMainSide() {
         <Headline level={2}>Release 2.4</Headline>
       </BoardCell>
       <BoardCell end>
-        <StatTiles>
-          <StatTile look="accent" label="Done" value={18} outOf={24} index={1} of={2} />
-          <StatTile look="dark" label="Open" value={6} index={2} of={2} />
-        </StatTiles>
+        <Tiles>
+          <Tile look="accent" label="Done" value={18} outOf={24} index={1} of={2} />
+          <Tile look="dark" label="Open" value={6} index={2} of={2} />
+        </Tiles>
       </BoardCell>
       <BoardCell>
         <Caption>Next</Caption>

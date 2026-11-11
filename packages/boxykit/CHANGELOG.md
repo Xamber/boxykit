@@ -1,5 +1,11 @@
 # boxykit
 
+## 0.2.0
+
+- Form controls: Textarea, Select (its open list styled where the browser allows), Checkbox, Radio and Switch (rows in the InteractiveList look; the switch a YES ■ | □ NO pair) and ChoiceList to hold them, optionally numbered, and NumberInput (with `min` and `max`, or `from` and `to`, a slider under it: a line with a small accent square to drag; `step` everywhere).
+- Alert is dark like a Toast by default, its dot and title in its tone; `look="light"` gives the light one.
+- Renamed: StatTile is Tile (StatTiles → Tiles, StatTileLook → TileLook, StatRing → TileRing, `boxy-stat-tile*` → `boxy-tile*`, `boxykit/css/stat-tile` → `boxykit/css/tile`), and LabelSquare is LabelTile (LabelSquares → LabelTiles, `boxy-label-square*` → `boxy-label-tile*`, `boxykit/css/label-square` → `boxykit/css/label-tile`, `--boxy-square-size` → `--boxy-label-tile-size`).
+
 ## 0.1.1
 
 ### Patch Changes

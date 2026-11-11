@@ -1,6 +1,6 @@
 import { TileIndex } from "boxykit/react";
 
-export function StatTileIndex() {
+export function TileIndexExample() {
   return (
     <div className="docs-row">
       <TileIndex index={1} of={4} />

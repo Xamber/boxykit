@@ -1,5 +1,8 @@
 name: CI
 
+# Build, lint, type check and test every pull request and every push to main.
+# A green run on main starts the Release workflow.
+
 on:
   pull_request:
   push:
@@ -27,4 +30,3 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
-      - run: npm run check:package

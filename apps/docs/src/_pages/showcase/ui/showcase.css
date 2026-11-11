@@ -168,8 +168,8 @@
   font-size: var(--boxy-font-size-display);
 }
 
-.docs-preview .boxy-board .boxy-label-squares {
-  --boxy-square-size: 6rem;
+.docs-preview .boxy-board .boxy-label-tiles {
+  --boxy-label-tile-size: 6rem;
 }
 
 /* The toasts sit in the corner of a page; in a row they stay in place. Show toast puts them in the corner. */
@@ -179,8 +179,13 @@
 }
 
 /* What fills a page's width fills the row. */
-.docs-preview > :is(.boxy-board, .boxy-nav, .boxy-table, .boxy-input, .boxy-empty) {
+.docs-preview > :is(.boxy-board, .boxy-nav, .boxy-table, .boxy-empty) {
   justify-self: stretch;
+}
+
+/* The small controls: wide enough to use, not the whole row. */
+.docs-preview > :is(.boxy-input, .boxy-number-input, .boxy-toggle-group) {
+  width: 40%;
 }
 
 .docs-preview > :is(.boxy-headline, .boxy-hero, .boxy-section) {
@@ -188,7 +193,7 @@
 }
 
 .docs-preview .docs-row,
-.docs-preview .boxy-label-squares,
+.docs-preview .boxy-label-tiles,
 .docs-preview .docs-swatches {
   justify-content: flex-end;
 }
@@ -203,8 +208,8 @@
 }
 
 /* Tiles of a fixed size in one row, so they can sit at the right end. */
-.docs-preview > .boxy-stat-tiles,
-.docs-preview > [role="group"] .boxy-stat-tiles {
+.docs-preview > .boxy-tiles,
+.docs-preview > [role="group"] .boxy-tiles {
   grid-template-columns: none;
   grid-auto-columns: 9rem;
   grid-auto-flow: column;

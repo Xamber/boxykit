@@ -2,7 +2,7 @@
 // the anchors and the controls down the right side. The code is React or the HTML it renders, as picked.
 import "./showcase.css";
 import { REPO_URL, VERSION } from "../config/site";
-import { COMPONENTS } from "../examples";
+import { SECTIONS } from "../examples";
 import examplesHtml from "../generated/examples.json";
 import { cssImports, exampleSource } from "../lib/example-code";
 import { ModeProvider } from "../model/mode";
@@ -18,7 +18,7 @@ const HTML: Record<string, string> = examplesHtml;
 const ANCHORS = [
   { slug: "start", title: "Getting started" },
   { slug: "tokens", title: "Tokens" },
-  ...COMPONENTS.map(({ slug, title }) => ({ slug, title })),
+  ...SECTIONS.map(({ slug, title }) => ({ slug, title })),
 ];
 
 export function ShowcasePage() {
@@ -35,28 +35,30 @@ export function ShowcasePage() {
         <main className="docs-main">
           <Intro />
           <TokensGroup />
-          {COMPONENTS.map((doc) => (
-            <Group key={doc.slug} slug={doc.slug} title={doc.title}>
-              {doc.examples.map(({ file, title, about, Component, toast }) => (
-                <ExampleRow
-                  key={file}
-                  group={doc.title}
-                  title={title}
-                  about={about}
-                  react={exampleSource(file)}
-                  html={HTML[file] ?? ""}
-                  imports={cssImports(doc.css)}
-                  extra={
-                    toast && (
-                      <ShowToast wait={toast === "wait"}>
-                        <Component />
-                      </ShowToast>
-                    )
-                  }
-                >
-                  <Component />
-                </ExampleRow>
-              ))}
+          {SECTIONS.map((section) => (
+            <Group key={section.slug} slug={section.slug} title={section.title}>
+              {section.components.map((doc) =>
+                doc.examples.map(({ file, title, about, Component, toast }) => (
+                  <ExampleRow
+                    key={file}
+                    group={doc.title}
+                    title={title}
+                    about={about}
+                    react={exampleSource(file)}
+                    html={HTML[file] ?? ""}
+                    imports={cssImports(doc.css)}
+                    extra={
+                      toast && (
+                        <ShowToast wait={toast === "wait"}>
+                          <Component />
+                        </ShowToast>
+                      )
+                    }
+                  >
+                    <Component />
+                  </ExampleRow>
+                )),
+              )}
             </Group>
           ))}
         </main>

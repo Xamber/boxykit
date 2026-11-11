@@ -9,7 +9,7 @@ const FILTERS = [
   { value: "archived", label: "Archived", count: 0, disabled: true },
 ];
 
-export function StatTileSelectable() {
+export function TileSelectable() {
   const [filter, setFilter] = useState("all");
 
   return <SelectableTiles label="Tasks" options={FILTERS} value={filter} onChange={setFilter} />;

@@ -1,5 +1,6 @@
 import { Headline, buttonClass } from "boxykit/react";
 import { CSS_FILE_NAME, CSS_FILE_SIZE, CSS_FILE_URL } from "../config/css-file";
+import { NPM_URL, REPO_URL } from "../config/site";
 import { CopyCssButton } from "./copy-css-button";
 import { ModeOnly } from "./mode-only";
 
@@ -40,7 +41,15 @@ import { Button } from "boxykit/react";
       </div>
       <div className="docs-preview">
         <Headline ghost="· personal UI lib">Boxykit</Headline>
-        <p className="docs-lead">A small UI kit I use for my personal projects, so I don’t have to invent it every time.</p>
+        <p className="docs-lead">Desktop-first UI kit I use for my personal projects, so I don’t have to invent it every time.</p>
+        <div className="docs-actions">
+          <a className={buttonClass({ look: "dark", size: "small" })} href={REPO_URL}>
+            GitHub
+          </a>
+          <a className={buttonClass({ look: "dark", size: "small" })} href={NPM_URL}>
+            npm
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -14,15 +14,9 @@
     "dev": "npm run build -w boxykit && npm run dev -w docs",
     "lint": "eslint . && stylelint \"packages/boxykit/src/css/**/*.css\" \"apps/docs/src/**/*.css\"",
     "typecheck": "tsc -p . && tsc -p packages/boxykit && tsc -p apps/docs",
-    "test": "vitest run",
-    "check:package": "cd packages/boxykit && publint --strict && attw --pack --profile esm-only",
-    "changeset": "changeset",
-    "version-packages": "changeset version && node packages/boxykit/scripts/sync-version.js",
-    "release": "npm run build -w boxykit && changeset publish"
+    "test": "vitest run"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.5",
-    "@changesets/cli": "^2.31.1",
     "@eslint/js": "^9.39.5",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.9",
@@ -37,7 +31,6 @@
     "globals": "^17.14.0",
     "jsdom": "^29.1.1",
     "lightningcss": "^1.33.0",
-    "publint": "^0.3.25",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "stylelint": "^17.16.0",

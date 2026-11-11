@@ -1,6 +1,6 @@
 {
   "name": "boxykit",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A small, flat UI kit: plain CSS with an optional React layer that writes the same classes.",
   "license": "MIT",
   "type": "module",
@@ -49,7 +49,7 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "rm -rf dist && node scripts/build-css.js && tsc -p tsconfig.build.json"
+    "build": "node scripts/sync-version.js && rm -rf dist && node scripts/build-css.js && tsc -p tsconfig.build.json"
   },
   "peerDependencies": {
     "react": ">=19"

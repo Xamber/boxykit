@@ -9,9 +9,7 @@ export function NavStrip() {
       </NavLink>
       <NavLink href="#nav">Tasks</NavLink>
       <NavLink href="#nav">Reports</NavLink>
-      <NavLink href="#nav" title="Team settings and billing">
-        Team settings and billing
-      </NavLink>
+      <NavLink href="#nav">Settings</NavLink>
     </Nav>
   );
 }

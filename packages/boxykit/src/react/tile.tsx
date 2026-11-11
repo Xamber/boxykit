@@ -3,13 +3,13 @@ import { classNames } from "./class-names.js";
 import { ProgressRing } from "./progress.js";
 
 /** A share of something, 0–1, and what it means, e.g. "34% of all tasks". */
-export type StatRing = { value: number; title: string };
+export type TileRing = { value: number; title: string };
 
 /** Accent for the first or the main number, dark for the others; none is outlined. */
-export type StatTileLook = "accent" | "dark";
+export type TileLook = "accent" | "dark";
 
 /** The ring of `part` out of `whole`, titled e.g. "34% of all tasks" for `of` "all tasks". */
-export function shareRing(part: number, whole: number, of: string): StatRing {
+export function shareRing(part: number, whole: number, of: string): TileRing {
   let value = 0;
 
   if (whole) value = part / whole;
@@ -17,9 +17,9 @@ export function shareRing(part: number, whole: number, of: string): StatRing {
   return { value, title: `${String(Math.round(value * 100))}% of ${of}` };
 }
 
-/** A grid of square StatTiles, as many in a row as fit --boxy-tile-size. */
-export function StatTiles({ className, ...props }: ComponentProps<"ol">): ReactElement {
-  return <ol className={classNames("boxy-stat-tiles", className)} {...props} />;
+/** A grid of square Tiles, as many in a row as fit --boxy-tile-size. */
+export function Tiles({ className, ...props }: ComponentProps<"ol">): ReactElement {
+  return <ol className={classNames("boxy-tiles", className)} {...props} />;
 }
 
 /**
@@ -27,7 +27,7 @@ export function StatTiles({ className, ...props }: ComponentProps<"ol">): ReactE
  * the value big (`500/845` with `outOf`) and its label at the bottom.
  * With `onClick` the whole tile is a button and its label ends in →; `pressed` marks the chosen one.
  */
-export function StatTile({
+export function Tile({
   className,
   look,
   wide = false,
@@ -43,7 +43,7 @@ export function StatTile({
   disabled = false,
 }: {
   className?: string;
-  look?: StatTileLook;
+  look?: TileLook;
   /** Two squares wide, as tall as one: the tile that leads a row. */
   wide?: boolean;
   /** What the value is. */
@@ -57,33 +57,33 @@ export function StatTile({
   of?: number;
   /** Shown in the corner instead of the place, e.g. a date. */
   corner?: string;
-  ring?: StatRing;
+  ring?: TileRing;
   onClick?: () => void;
   pressed?: boolean;
   disabled?: boolean;
 }): ReactElement {
   const tileClass = classNames(
-    "boxy-stat-tile",
-    look && `boxy-stat-tile-${look}`,
-    wide && "boxy-stat-tile-wide",
+    "boxy-tile",
+    look && `boxy-tile-${look}`,
+    wide && "boxy-tile-wide",
     className,
   );
   const content = (
     <>
-      <span className="boxy-stat-tile-top">
+      <span className="boxy-tile-top">
         {corner !== undefined && <span className="boxy-tile-index">{corner}</span>}
         {index !== undefined && <TileIndex index={index} of={of} />}
         {ring && <ProgressRing value={ring.value} title={ring.title} />}
       </span>
-      <span className="boxy-stat-tile-bottom">
+      <span className="boxy-tile-bottom">
         {value !== undefined && (
-          <span className="boxy-stat-tile-value">
+          <span className="boxy-tile-value">
             {value}
-            {outOf !== undefined && <span className="boxy-stat-tile-out-of">/{outOf}</span>}
+            {outOf !== undefined && <span className="boxy-tile-out-of">/{outOf}</span>}
           </span>
         )}
         {label && (
-          <span className="boxy-stat-tile-label">
+          <span className="boxy-tile-label">
             {label}
             {onClick && " →"}
           </span>
@@ -98,7 +98,7 @@ export function StatTile({
     <li className={tileClass}>
       <button
         type="button"
-        className="boxy-stat-tile-button"
+        className="boxy-tile-button"
         aria-pressed={pressed}
         disabled={disabled}
         onClick={onClick}
@@ -110,10 +110,10 @@ export function StatTile({
 }
 
 /** A choice of SelectableTiles: its tile's label, and the count and ring the tile shows. */
-export type TileOption<T> = { value: T; label: string; count?: number; ring?: StatRing; disabled?: boolean };
+export type TileOption<T> = { value: T; label: string; count?: number; ring?: TileRing; disabled?: boolean };
 
 /**
- * StatTiles to pick one of, like radio buttons: the chosen one accent, the others dark.
+ * Tiles to pick one of, like radio buttons: the chosen one accent, the others dark.
  * `children` adds tiles after the options, e.g. one that shows more of them.
  */
 export function SelectableTiles<T>({
@@ -136,15 +136,15 @@ export function SelectableTiles<T>({
 }): ReactElement {
   return (
     <div className={className} role="group" aria-label={label}>
-      <StatTiles>
+      <Tiles>
         {options.map((option, i) => {
           const chosen = option.value === value;
-          let look: StatTileLook = "dark";
+          let look: TileLook = "dark";
 
           if (chosen) look = "accent";
 
           return (
-            <StatTile
+            <Tile
               key={String(option.value)}
               look={look}
               label={option.label}
@@ -161,7 +161,7 @@ export function SelectableTiles<T>({
           );
         })}
         {children}
-      </StatTiles>
+      </Tiles>
     </div>
   );
 }

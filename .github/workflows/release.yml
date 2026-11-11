@@ -1,45 +1,63 @@
 name: Release
 
+# After CI passes on main: publish the version in VERSION, unless npm already has it.
+# So bumping VERSION is the release; any other push to main publishes nothing.
+#
 # Off until the repo variable NPM_PUBLISH is "true" (Settings → Secrets and variables → Actions → Variables).
-# Before turning it on: set up npm trusted publishing for this repo and workflow on npmjs.com
-# (package settings → Trusted publisher → GitHub Actions, workflow file "release.yml"). No NPM_TOKEN needed.
+# npm trusted publishing (npmjs.com → boxykit → Settings → Trusted publisher) names this file, "release.yml":
+# no NPM_TOKEN needed.
 
 on:
-  push:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
     branches: [main]
 
-concurrency: release-${{ github.ref }}
+concurrency: release
 
 jobs:
   release:
-    if: vars.NPM_PUBLISH == 'true'
+    # Only a green CI run of a push to main (not a pull request from a branch called main).
+    if: >-
+      vars.NPM_PUBLISH == 'true' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push'
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
       # npm trusted publishing (OIDC) and provenance.
       id-token: write
     steps:
+      # The commit CI checked, not whatever main is now.
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - id: version
+        run: |
+          version="$(tr -d '[:space:]' < VERSION)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [ -n "$(npm view "boxykit@$version" version 2>/dev/null)" ]; then
+            echo "boxykit $version is already on npm: nothing to release." >> "$GITHUB_STEP_SUMMARY"
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.version.outputs.publish == 'true'
+        uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
       # Trusted publishing needs npm 11.5.1 or later; Node 24 may ship an older one.
-      - run: npm install -g npm@latest
-      - run: npm ci
-
-      # With pending changesets: open or update the "Version packages" PR.
-      - id: changesets
-        uses: changesets/action@v1
-        with:
-          version: npm run version-packages
-          title: Version packages
-          commit: Version packages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # Without them (the version PR was merged): publish whatever version isn't on npm yet.
-      # A plain npm publish, so npm's OIDC trusted publishing does the auth.
-      - if: steps.changesets.outputs.hasChangesets == 'false'
-        run: npm run release
+      - if: steps.version.outputs.publish == 'true'
+        run: npm install -g npm@latest
+      - if: steps.version.outputs.publish == 'true'
+        run: npm ci
+      - if: steps.version.outputs.publish == 'true'
+        run: npm run build -w boxykit
+      - if: steps.version.outputs.publish == 'true'
+        working-directory: packages/boxykit
+        run: |
+          npm publish
+          echo "Published boxykit ${{ steps.version.outputs.version }}." >> "$GITHUB_STEP_SUMMARY"

@@ -12,6 +12,4 @@ npm run build      # package, then docs (static export to apps/docs/out)
 npm run lint       # ESLint + Stylelint (after a build: the docs read generated files)
 npm run typecheck
 npm test           # Vitest: components, CSS/React parity, axe on every example
-npm run check:package   # publint + are-the-types-wrong on the packed package
-npm run changeset  # describe a change for the next release
 ```

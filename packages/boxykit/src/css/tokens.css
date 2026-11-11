@@ -126,10 +126,10 @@
     /* A Board fills the screen; an app with a header sets calc(100dvh - <header height>). */
     --boxy-board-height: 100dvh;
     --boxy-nav-height: 3.5rem;
-    /* The smallest StatTile; the grid fits as many as it can. */
+    /* The smallest Tile; the grid fits as many as it can. */
     --boxy-tile-size: 6rem;
-    /* A LabelSquare's side; a wide one is two of them and the gap. */
-    --boxy-square-size: 8.5rem;
+    /* A LabelTile's side; a wide one is two of them and the gap. */
+    --boxy-label-tile-size: 8.5rem;
 
     /* ---- Shapes ---- */
     --boxy-radius: 0.75rem;
