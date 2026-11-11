@@ -1,0 +1,48 @@
+/* ProgressRing: a ring filled to a value. Spinner: the same ring, running. Both take the text color. */
+@layer boxy.components {
+  .boxy-progress-ring,
+  .boxy-spinner {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  .boxy-progress-ring-large,
+  .boxy-spinner-large {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .boxy-progress-ring circle,
+  .boxy-spinner circle {
+    fill: none;
+    stroke-width: 2.5;
+  }
+
+  .boxy-progress-ring-track,
+  .boxy-spinner-track {
+    stroke: color-mix(in srgb, currentcolor 15%, transparent);
+  }
+
+  .boxy-progress-ring-value,
+  .boxy-spinner-value {
+    stroke: currentcolor;
+    stroke-linecap: round;
+  }
+
+  .boxy-spinner {
+    animation: boxy-spinner-turn 0.8s linear infinite;
+  }
+
+  @keyframes boxy-spinner-turn {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .boxy-spinner {
+      animation-duration: 3s;
+    }
+  }
+}

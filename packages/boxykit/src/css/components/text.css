@@ -1,0 +1,49 @@
+/* Text styles: the headline, the hero number, the caption and mono. */
+@layer boxy.components {
+  .boxy-headline,
+  .boxy-hero {
+    line-height: var(--boxy-line-height-hero);
+    letter-spacing: var(--boxy-letter-spacing-tighter);
+    overflow-wrap: anywhere;
+  }
+
+  /* Big capitals, set tight. */
+  .boxy-headline {
+    font-size: var(--boxy-font-size-headline);
+    font-weight: var(--boxy-font-weight-medium);
+    text-transform: uppercase;
+  }
+
+  /* The words set back behind the others. */
+  .boxy-headline-ghost {
+    color: var(--boxy-ghost);
+  }
+
+  /* The biggest size in the regular weight, its unit at the heading size. */
+  .boxy-hero {
+    font-size: var(--boxy-font-size-hero);
+    font-weight: var(--boxy-font-weight);
+  }
+
+  .boxy-hero-unit {
+    margin-left: var(--boxy-space);
+    font-size: var(--boxy-font-size-heading);
+    vertical-align: top;
+  }
+
+  /* Small grey capitals, spaced wide. */
+  .boxy-caption {
+    color: var(--boxy-muted);
+    font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-tight);
+    letter-spacing: var(--boxy-letter-spacing-wider);
+    text-transform: uppercase;
+  }
+
+  /* IDs, dates, counts. */
+  .boxy-mono {
+    color: var(--boxy-muted);
+    font-family: var(--boxy-font-mono);
+    font-size: var(--boxy-font-size-small);
+  }
+}

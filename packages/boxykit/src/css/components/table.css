@@ -1,0 +1,69 @@
+/* Table: rows divided by lines, the row under the pointer in the soft accent; rows can open a detail row. */
+@layer boxy.components {
+  .boxy-table {
+    width: 100%;
+    font-size: var(--boxy-font-size-small);
+  }
+
+  .boxy-table-head .boxy-table-cell {
+    padding: var(--boxy-space-2) var(--boxy-space-3);
+    border-bottom: var(--boxy-border);
+    color: var(--boxy-muted);
+    font-weight: var(--boxy-font-weight-medium);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .boxy-table-body .boxy-table-cell {
+    padding: var(--boxy-space-3);
+    border-bottom: var(--boxy-border);
+    vertical-align: middle;
+  }
+
+  .boxy-table-body .boxy-table-row {
+    transition: background var(--boxy-duration);
+  }
+
+  .boxy-table-body .boxy-table-row:hover {
+    background: var(--boxy-accent-soft);
+  }
+
+  .boxy-table-row-clickable {
+    cursor: pointer;
+  }
+
+  .boxy-table-row-clickable:focus-visible {
+    outline: none;
+    box-shadow: inset 2px 0 0 var(--boxy-accent);
+  }
+
+  .boxy-table-body .boxy-table-row[data-state="open"] {
+    background: var(--boxy-bg);
+  }
+
+  .boxy-table-row[data-state="open"] .boxy-table-cell {
+    border-bottom-color: transparent;
+  }
+
+  .boxy-table-row[data-state="open"] .boxy-table-cell:first-child {
+    box-shadow: inset 2px 0 0 var(--boxy-accent);
+  }
+
+  .boxy-table-body .boxy-table-row-detail,
+  .boxy-table-body .boxy-table-row-detail:hover {
+    background: var(--boxy-bg);
+  }
+
+  .boxy-table-row-detail > .boxy-table-cell {
+    padding: var(--boxy-space) var(--boxy-space-3) var(--boxy-space-4);
+    box-shadow: inset 2px 0 0 var(--boxy-accent);
+    animation: boxy-table-detail-in var(--boxy-duration) var(--boxy-ease);
+  }
+
+  @keyframes boxy-table-detail-in {
+    from {
+      opacity: 0;
+      transform: translateY(calc(var(--boxy-space) * -1));
+    }
+  }
+}

@@ -1,0 +1,15 @@
+/* Section: a part of a page under a heading in big capitals. */
+@layer boxy.components {
+  .boxy-section-heading {
+    font-size: var(--boxy-font-size-display);
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-hero);
+    letter-spacing: var(--boxy-letter-spacing-tighter);
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  .boxy-section > .boxy-section-heading {
+    margin-bottom: var(--boxy-space-8);
+  }
+}

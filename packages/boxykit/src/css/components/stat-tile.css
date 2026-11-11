@@ -1,0 +1,117 @@
+/*
+ * StatTiles: a grid of square tiles, each with its place (01/04) and an optional ring at the top,
+ * the value big and its label at the bottom. TileIndex: the place on its own, in small mono numbers.
+ */
+@layer boxy.components {
+  .boxy-stat-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--boxy-tile-size), 1fr));
+    gap: var(--boxy-space-2);
+  }
+
+  .boxy-stat-tile,
+  .boxy-stat-tile-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    padding: var(--boxy-space-3);
+  }
+
+  .boxy-stat-tile {
+    aspect-ratio: 1;
+    border-radius: var(--boxy-radius);
+    box-shadow: var(--boxy-outline);
+  }
+
+  .boxy-stat-tile-accent {
+    background: var(--boxy-accent);
+    color: var(--boxy-on-accent);
+    box-shadow: none;
+  }
+
+  .boxy-stat-tile-dark {
+    background: var(--boxy-band-bg);
+    color: var(--boxy-band-fg);
+    box-shadow: inset 0 0 0 1px var(--boxy-band-line);
+  }
+
+  /* Two squares wide, as tall as one: the tile that leads a row. */
+  .boxy-stat-tile-wide {
+    grid-column: span 2;
+    aspect-ratio: 2;
+  }
+
+  /* A clickable tile: the button fills it and lays out the content instead. */
+  .boxy-stat-tile:has(> .boxy-stat-tile-button) {
+    padding: 0;
+    transition: transform var(--boxy-duration);
+  }
+
+  .boxy-stat-tile:where(:has(> .boxy-stat-tile-button:active:not(:disabled))) {
+    transform: scale(0.97);
+  }
+
+  .boxy-stat-tile:has(> .boxy-stat-tile-button:disabled) {
+    opacity: var(--boxy-opacity-disabled);
+  }
+
+  .boxy-stat-tile-button {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .boxy-stat-tile-button:focus-visible {
+    outline: none;
+    box-shadow: var(--boxy-ring);
+  }
+
+  .boxy-stat-tile-button:disabled {
+    cursor: default;
+  }
+
+  .boxy-stat-tile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--boxy-space-2);
+  }
+
+  .boxy-stat-tile-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--boxy-space);
+    min-width: 0;
+  }
+
+  .boxy-stat-tile-value {
+    font-size: var(--boxy-font-size-heading);
+    line-height: var(--boxy-line-height-hero);
+    letter-spacing: var(--boxy-letter-spacing-tighter);
+  }
+
+  .boxy-stat-tile-out-of {
+    font-size: var(--boxy-font-size-small);
+    letter-spacing: normal;
+    opacity: 0.5;
+  }
+
+  /* Long labels wrap: "Without a project" in a small tile. */
+  .boxy-stat-tile-label {
+    font-size: var(--boxy-font-size-small);
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-tight);
+  }
+
+  .boxy-tile-index {
+    font-family: var(--boxy-font-mono);
+    font-size: var(--boxy-font-size-tiny);
+  }
+
+  .boxy-tile-index-of {
+    opacity: 0.5;
+  }
+}

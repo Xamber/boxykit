@@ -1,0 +1,83 @@
+/* Button: a rectangle in capitals, for buttons and links alike. Looks: accent, dark, outline. */
+@layer boxy.components {
+  .boxy-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--boxy-space-2);
+    padding: var(--boxy-space-3) var(--boxy-space-4);
+    border-radius: var(--boxy-radius-button);
+    font-size: var(--boxy-font-size-small);
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-tight);
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background var(--boxy-duration),
+      color var(--boxy-duration),
+      transform var(--boxy-duration);
+  }
+
+  .boxy-button:focus-visible {
+    outline: none;
+    box-shadow: var(--boxy-ring);
+  }
+
+  .boxy-button-small {
+    padding: var(--boxy-space) var(--boxy-space-3);
+  }
+
+  /* Hover and press in :where, so an app's own state class still wins. */
+  .boxy-button:where(:active:not(:disabled)) {
+    transform: scale(0.97);
+  }
+
+  .boxy-button:disabled {
+    cursor: default;
+    opacity: var(--boxy-opacity-disabled);
+  }
+
+  /* Pending: disabled but not faded, so the spinner reads. */
+  .boxy-button[aria-busy="true"]:disabled {
+    cursor: progress;
+    opacity: 1;
+  }
+
+  .boxy-button .boxy-spinner {
+    width: 1em;
+    height: 1em;
+  }
+
+  /* The main action. */
+  .boxy-button-accent {
+    background: var(--boxy-accent);
+    color: var(--boxy-on-accent);
+  }
+
+  .boxy-button-accent:where(:hover:not(:disabled)) {
+    background: var(--boxy-accent-strong);
+  }
+
+  /* The main action on the accent, and links out of a page. */
+  .boxy-button-dark {
+    background: var(--boxy-band-bg);
+    color: var(--boxy-band-fg);
+  }
+
+  .boxy-button-dark:where(:hover:not(:disabled)) {
+    background: var(--boxy-band-hover);
+  }
+
+  /* The quieter actions: a line in the text color, so it works on any background. */
+  .boxy-button-outline {
+    background: transparent;
+    color: inherit;
+    box-shadow: inset 0 0 0 1px currentcolor;
+  }
+
+  .boxy-button-outline:where(:hover:not(:disabled)) {
+    background: color-mix(in srgb, currentcolor 6%, transparent);
+  }
+}

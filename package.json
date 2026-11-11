@@ -1,0 +1,51 @@
+{
+  "name": "boxykit-repo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "npm run build -w boxykit && npm run build -w docs",
+    "dev": "npm run build -w boxykit && npm run dev -w docs",
+    "lint": "eslint . && stylelint \"packages/boxykit/src/css/**/*.css\" \"apps/docs/app/**/*.css\"",
+    "typecheck": "tsc -p . && tsc -p packages/boxykit && tsc -p apps/docs",
+    "test": "vitest run",
+    "check:package": "cd packages/boxykit && publint --strict && attw --pack --profile esm-only",
+    "changeset": "changeset",
+    "version-packages": "changeset version && node packages/boxykit/scripts/sync-version.js",
+    "release": "npm run build -w boxykit && changeset publish"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@changesets/cli": "^2.31.1",
+    "@eslint/js": "^9.39.5",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.9",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "axe-core": "^4.14.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "jsdom": "^29.1.1",
+    "lightningcss": "^1.33.0",
+    "publint": "^0.3.25",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-declaration-strict-value": "^1.13.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "vitest": "^4.1.12"
+  }
+}

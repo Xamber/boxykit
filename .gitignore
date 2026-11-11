@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.next/
+out/
+apps/docs/generated/
+next-env.d.ts
+*.tgz
+.DS_Store
+*.tsbuildinfo

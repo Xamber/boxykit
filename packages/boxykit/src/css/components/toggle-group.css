@@ -1,0 +1,63 @@
+/* ToggleGroup: one outlined strip of equal cells, exactly one on (accent). */
+@layer boxy.components {
+  .boxy-toggle-group {
+    display: grid;
+    width: 100%;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    border-radius: var(--boxy-radius-button);
+    box-shadow: var(--boxy-outline-strong);
+  }
+
+  .boxy-toggle-group-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    min-height: var(--boxy-touch-target);
+    padding: var(--boxy-space-2) var(--boxy-space-3);
+    font-size: var(--boxy-font-size-small);
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-tight);
+    text-align: left;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      color var(--boxy-duration),
+      background var(--boxy-duration);
+  }
+
+  /* The short dividers between the cells. */
+  .boxy-toggle-group-option + .boxy-toggle-group-option::before {
+    content: "";
+    position: absolute;
+    top: var(--boxy-space-3);
+    bottom: var(--boxy-space-3);
+    left: 0;
+    width: 1px;
+    background: var(--boxy-line);
+  }
+
+  .boxy-toggle-group-option:hover {
+    background: var(--boxy-accent-soft);
+  }
+
+  /* Inset by the strip's line, so the accent sits inside the outline. */
+  .boxy-toggle-group-option[aria-checked="true"] {
+    background: var(--boxy-accent);
+    color: var(--boxy-on-accent);
+    box-shadow: var(--boxy-outline-strong);
+    cursor: default;
+  }
+
+  .boxy-toggle-group-option[aria-checked="true"]::before,
+  .boxy-toggle-group-option[aria-checked="true"] + .boxy-toggle-group-option::before {
+    display: none;
+  }
+
+  .boxy-toggle-group-option:focus-visible {
+    z-index: var(--boxy-z-raised);
+    outline: none;
+    box-shadow: var(--boxy-ring);
+  }
+}

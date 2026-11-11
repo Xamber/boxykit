@@ -1,0 +1,33 @@
+/* Tag: a small rectangle like a StatTile's, outlined, in the accent or dark; TagList wraps a row of them. */
+@layer boxy.components {
+  .boxy-tag-list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--boxy-space);
+  }
+
+  .boxy-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--boxy-space) var(--boxy-space-3);
+    border-radius: var(--boxy-radius-small);
+    color: var(--boxy-fg);
+    font-size: var(--boxy-font-size-small);
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height);
+    white-space: nowrap;
+    box-shadow: var(--boxy-outline);
+  }
+
+  .boxy-tag-accent {
+    background: var(--boxy-accent);
+    color: var(--boxy-on-accent);
+    box-shadow: none;
+  }
+
+  .boxy-tag-dark {
+    background: var(--boxy-band-bg);
+    color: var(--boxy-band-fg);
+    box-shadow: inset 0 0 0 1px var(--boxy-band-line);
+  }
+}

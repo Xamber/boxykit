@@ -1,0 +1,80 @@
+/* Nav: an inverted strip of links as wide as each other, numbered 01, 02… by a counter. The current page is the accent. */
+@layer boxy.components {
+  .boxy-nav {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    min-height: var(--boxy-nav-height);
+    background: var(--boxy-band-bg);
+    color: var(--boxy-band-fg);
+    counter-reset: boxy-nav;
+  }
+
+  /* A block, not a flex box: so a long label ends in … without a wrapper of its own. */
+  .boxy-nav-link {
+    position: relative;
+    display: block;
+    align-content: center;
+    padding: var(--boxy-space-2) var(--boxy-space-4);
+    overflow: hidden;
+    font-size: var(--boxy-font-size-small);
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-tight);
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+    counter-increment: boxy-nav;
+    transition:
+      color var(--boxy-duration),
+      background var(--boxy-duration);
+  }
+
+  .boxy-nav-link::before {
+    content: counter(boxy-nav, decimal-leading-zero);
+    display: block;
+    color: var(--boxy-band-muted);
+    font-family: var(--boxy-font-mono);
+    font-size: var(--boxy-font-size-tiny);
+    font-weight: var(--boxy-font-weight);
+  }
+
+  /* The short dividers between the links. */
+  .boxy-nav-link + .boxy-nav-link::after {
+    content: "";
+    position: absolute;
+    top: var(--boxy-space-3);
+    bottom: var(--boxy-space-3);
+    left: 0;
+    width: 1px;
+    background: var(--boxy-band-line);
+  }
+
+  .boxy-nav-link:where(:hover) {
+    background: var(--boxy-band-hover);
+  }
+
+  .boxy-nav-link:focus-visible {
+    outline: none;
+    box-shadow: inset var(--boxy-ring);
+  }
+
+  .boxy-nav-link[aria-current="page"] {
+    background: var(--boxy-accent);
+    color: var(--boxy-on-accent);
+  }
+
+  .boxy-nav-link[aria-current="page"]::before {
+    color: inherit;
+  }
+
+  .boxy-nav-link[aria-current="page"]::after,
+  .boxy-nav-link[aria-current="page"] + .boxy-nav-link::after {
+    display: none;
+  }
+
+  @media (width >= 48rem) {
+    .boxy-nav-link {
+      padding: var(--boxy-space-2) var(--boxy-space-8);
+    }
+  }
+}

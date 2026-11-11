@@ -1,0 +1,21 @@
+/* The whole kit. The layer order makes any style outside a layer (the app's) win without !important. */
+@layer boxy.reset, boxy.tokens, boxy.components;
+
+@import "./reset.css";
+@import "./tokens.css";
+@import "./components/alert.css";
+@import "./components/board.css";
+@import "./components/button.css";
+@import "./components/input.css";
+@import "./components/label-square.css";
+@import "./components/list.css";
+@import "./components/modal.css";
+@import "./components/nav.css";
+@import "./components/progress.css";
+@import "./components/section.css";
+@import "./components/stat-tile.css";
+@import "./components/table.css";
+@import "./components/tag.css";
+@import "./components/text.css";
+@import "./components/toast.css";
+@import "./components/toggle-group.css";

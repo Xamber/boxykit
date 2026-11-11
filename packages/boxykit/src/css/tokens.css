@@ -1,0 +1,164 @@
+/*
+ * The theme. Override any of these on :root (or any element) to restyle the kit.
+ * Colors: black, white and yellow; the rest are mixes of them.
+ * Breakpoints (media queries can't read variables): sm 40rem, md 48rem, lg 64rem.
+ */
+@layer boxy.tokens {
+  /* ---- Colors, light ---- */
+  :root,
+  [data-boxy-theme="light"] {
+    color-scheme: light;
+    --boxy-bg: #fff;
+    --boxy-fg: #000;
+    --boxy-muted: #737373;
+    /* Big headline words set back behind the black ones. */
+    --boxy-ghost: #c8c8c8;
+    --boxy-line: #e0e0e0;
+    --boxy-accent: #ffe500;
+    /* Text on the accent. */
+    --boxy-on-accent: #000;
+    --boxy-info: #1d4ed8;
+    --boxy-success: #15803d;
+    --boxy-warning: #b45309;
+    --boxy-danger: #d4333f;
+    /* The inverted bands: dark buttons, toasts. */
+    --boxy-band-bg: #000;
+    --boxy-band-fg: #fff;
+    --boxy-band-muted: #8c8c8c;
+    --boxy-band-line: #333;
+    --boxy-band-hover: #262626;
+  }
+
+  /* ---- Colors, dark: on request, or from the system unless light is asked for ---- */
+  [data-boxy-theme="dark"] {
+    color-scheme: dark;
+    --boxy-bg: #0a0a0a;
+    --boxy-fg: #fff;
+    --boxy-muted: #8c8c8c;
+    --boxy-ghost: #3d3d3d;
+    --boxy-line: #2a2a2a;
+    --boxy-accent: #ffe500;
+    --boxy-on-accent: #000;
+    --boxy-info: #60a5fa;
+    --boxy-success: #4ade80;
+    --boxy-warning: #fbbf24;
+    --boxy-danger: #f87171;
+    --boxy-band-bg: #fff;
+    --boxy-band-fg: #000;
+    --boxy-band-muted: #737373;
+    --boxy-band-line: #e0e0e0;
+    --boxy-band-hover: #e5e5e5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-boxy-theme="light"]) {
+      color-scheme: dark;
+      --boxy-bg: #0a0a0a;
+      --boxy-fg: #fff;
+      --boxy-muted: #8c8c8c;
+      --boxy-ghost: #3d3d3d;
+      --boxy-line: #2a2a2a;
+      --boxy-accent: #ffe500;
+      --boxy-on-accent: #000;
+      --boxy-info: #60a5fa;
+      --boxy-success: #4ade80;
+      --boxy-warning: #fbbf24;
+      --boxy-danger: #f87171;
+      --boxy-band-bg: #fff;
+      --boxy-band-fg: #000;
+      --boxy-band-muted: #737373;
+      --boxy-band-line: #e0e0e0;
+      --boxy-band-hover: #e5e5e5;
+    }
+  }
+
+  /* ---- Mixes: declared again on every themed element, so a nested theme mixes its own colors ---- */
+  :root,
+  [data-boxy-theme] {
+    --boxy-accent-strong: color-mix(in srgb, var(--boxy-accent) 92%, #000);
+    /* The dimmed yellow: what is under the pointer. */
+    --boxy-accent-soft: color-mix(in srgb, var(--boxy-accent) 35%, transparent);
+    --boxy-info-soft: color-mix(in srgb, var(--boxy-info) 12%, var(--boxy-bg));
+    --boxy-success-soft: color-mix(in srgb, var(--boxy-success) 12%, var(--boxy-bg));
+    --boxy-warning-soft: color-mix(in srgb, var(--boxy-warning) 12%, var(--boxy-bg));
+    --boxy-danger-soft: color-mix(in srgb, var(--boxy-danger) 12%, var(--boxy-bg));
+    --boxy-backdrop: color-mix(in srgb, #000 40%, transparent);
+    --boxy-border: 1px solid var(--boxy-line);
+    --boxy-outline: inset 0 0 0 1px var(--boxy-line);
+    --boxy-outline-strong: inset 0 0 0 1px var(--boxy-fg);
+    --boxy-ring: 0 0 0 3px var(--boxy-accent);
+  }
+
+  :root {
+    /* ---- Type: four sizes, each --boxy-font-scale apart ---- */
+    --boxy-font-sans: ui-sans-serif, system-ui, sans-serif;
+    --boxy-font-mono: ui-monospace, monospace;
+    --boxy-font-scale: 1.5;
+    --boxy-font-size: 1.125rem;
+    --boxy-font-size-small: calc(var(--boxy-font-size) / var(--boxy-font-scale));
+    --boxy-font-size-tiny: 0.625rem;
+    --boxy-font-size-heading: calc(var(--boxy-font-size) * var(--boxy-font-scale));
+    --boxy-font-size-display: calc(var(--boxy-font-size-heading) * var(--boxy-font-scale));
+    --boxy-font-size-headline: calc(var(--boxy-font-size-display) * var(--boxy-font-scale));
+    --boxy-font-size-hero: calc(var(--boxy-font-size-headline) * var(--boxy-font-scale));
+    --boxy-font-weight: 400;
+    --boxy-font-weight-medium: 500;
+    --boxy-line-height: 1.5;
+    --boxy-line-height-tight: 1.2;
+    --boxy-line-height-hero: 0.9;
+    --boxy-letter-spacing-tight: -0.03em;
+    --boxy-letter-spacing-tighter: -0.06em;
+    --boxy-letter-spacing-wider: 0.16em;
+
+    /* ---- Spacing: multiples of --boxy-space ---- */
+    --boxy-space: 0.25rem;
+    --boxy-space-2: calc(var(--boxy-space) * 2);
+    --boxy-space-3: calc(var(--boxy-space) * 3);
+    --boxy-space-4: calc(var(--boxy-space) * 4);
+    --boxy-space-6: calc(var(--boxy-space) * 6);
+    --boxy-space-8: calc(var(--boxy-space) * 8);
+    --boxy-space-12: calc(var(--boxy-space) * 12);
+    --boxy-space-24: calc(var(--boxy-space) * 24);
+    /* Apple's smallest comfortable tap target. */
+    --boxy-touch-target: 2.75rem;
+
+    /* ---- Layout: override these to fit your page ---- */
+    /* A Board fills the screen; an app with a header sets calc(100dvh - <header height>). */
+    --boxy-board-height: 100dvh;
+    --boxy-nav-height: 3.5rem;
+    /* The smallest StatTile; the grid fits as many as it can. */
+    --boxy-tile-size: 6rem;
+    /* A LabelSquare's side; a wide one is two of them and the gap. */
+    --boxy-square-size: 8.5rem;
+
+    /* ---- Shapes ---- */
+    --boxy-radius: 0.75rem;
+    --boxy-radius-small: calc(var(--boxy-radius) / 2);
+    --boxy-radius-large: calc(var(--boxy-radius) * 2);
+    --boxy-radius-full: 999px;
+    /* Buttons and fields are plain rectangles. */
+    --boxy-radius-button: 0;
+    --boxy-shadow-small: 0 2px 8px rgb(0 0 0 / 6%);
+    --boxy-shadow: 0 8px 24px rgb(0 0 0 / 8%);
+    --boxy-shadow-large: 0 16px 48px rgb(0 0 0 / 16%);
+    --boxy-opacity-disabled: 0.45;
+
+    /* ---- Layers ---- */
+    --boxy-z-raised: 1;
+    --boxy-z-dropdown: 10;
+    --boxy-z-toast: 20;
+    --boxy-z-modal: 30;
+
+    /* ---- Motion ---- */
+    --boxy-duration-fast: 0.1s;
+    --boxy-duration: 0.15s;
+    --boxy-duration-slow: 0.3s;
+    --boxy-ease: cubic-bezier(0.2, 0, 0, 1);
+
+    /* ---- Screen: the notch and home bar (with viewport-fit=cover) ---- */
+    --boxy-safe-top: env(safe-area-inset-top);
+    --boxy-safe-right: env(safe-area-inset-right);
+    --boxy-safe-bottom: env(safe-area-inset-bottom);
+    --boxy-safe-left: env(safe-area-inset-left);
+  }
+}

@@ -1,0 +1,56 @@
+/* LabelSquares: a wrapping row of outlined squares, a label small at the top and its value at the bottom. */
+@layer boxy.components {
+  .boxy-label-squares {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--boxy-space-2);
+  }
+
+  .boxy-label-square {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: var(--boxy-square-size);
+    aspect-ratio: 1;
+    padding: var(--boxy-space-3);
+    border-radius: var(--boxy-radius);
+    background: var(--boxy-bg);
+    box-shadow: var(--boxy-outline);
+  }
+
+  .boxy-label-square-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--boxy-space-2);
+    color: var(--boxy-muted);
+    font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-tight);
+  }
+
+  /* The square keeps its size: lines break between words, evenly. */
+  .boxy-label-square-value {
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-tight);
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  /* For long values: two squares and the gap wide, at least as tall as one. */
+  .boxy-label-square-wide {
+    width: calc(2 * var(--boxy-square-size) + var(--boxy-space-2));
+    min-height: var(--boxy-square-size);
+    aspect-ratio: auto;
+  }
+
+  /* An empty field or list: a dashed outline and a faded value. */
+  .boxy-label-square-missing {
+    border: 1px dashed var(--boxy-line);
+    box-shadow: none;
+  }
+
+  .boxy-label-square-missing .boxy-label-square-value {
+    color: var(--boxy-ghost);
+    font-weight: var(--boxy-font-weight);
+  }
+}

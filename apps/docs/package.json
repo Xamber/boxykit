@@ -1,0 +1,14 @@
+{
+  "name": "docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "examples": "tsx scripts/render-examples.tsx",
+    "dev": "npm run examples && next dev",
+    "build": "npm run examples && next build"
+  },
+  "dependencies": {
+    "boxykit": "*",
+    "next": "^16.4.6"
+  }
+}

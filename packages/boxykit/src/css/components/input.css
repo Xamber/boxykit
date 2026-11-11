@@ -1,0 +1,39 @@
+/* Input: a one-line text field. Muted: no line, a light fill, for filters and search in toolbars. */
+@layer boxy.components {
+  .boxy-input {
+    width: 100%;
+    padding: var(--boxy-space-3) var(--boxy-space-4);
+    border: var(--boxy-border);
+    border-radius: var(--boxy-radius-button);
+    background: var(--boxy-bg);
+    font-size: var(--boxy-font-size);
+    appearance: none;
+    transition:
+      border-color var(--boxy-duration),
+      box-shadow var(--boxy-duration);
+  }
+
+  .boxy-input::placeholder {
+    color: var(--boxy-muted);
+  }
+
+  .boxy-input:focus {
+    outline: none;
+    border-color: var(--boxy-accent);
+    box-shadow: var(--boxy-ring);
+  }
+
+  .boxy-input:disabled {
+    cursor: default;
+    opacity: var(--boxy-opacity-disabled);
+  }
+
+  .boxy-input[aria-invalid="true"] {
+    border-color: var(--boxy-danger);
+  }
+
+  .boxy-input-muted {
+    border-color: transparent;
+    background: color-mix(in srgb, var(--boxy-fg) 5%, var(--boxy-bg));
+  }
+}

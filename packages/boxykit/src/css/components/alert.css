@@ -1,0 +1,68 @@
+/*
+ * Alert: a message in an outlined rectangle like a StatTile's, a dot in its tone (info, success, warning,
+ * danger) top right and an optional title in the tone on top; the message goes in one span, so a link
+ * in it stays inline. Empty: a dashed box instead of an empty list.
+ */
+@layer boxy.components {
+  .boxy-alert {
+    --boxy-alert-tone: var(--boxy-line);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--boxy-space-2);
+    position: relative;
+
+    /* Room on the right for the dot. */
+    padding: var(--boxy-space-4) var(--boxy-space-8) var(--boxy-space-4) var(--boxy-space-4);
+    border-radius: var(--boxy-radius);
+    background: var(--boxy-bg);
+    color: var(--boxy-fg);
+    font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-tight);
+    box-shadow: var(--boxy-outline);
+  }
+
+  /* A dot in the tone, top right. */
+  .boxy-alert::after {
+    content: "";
+    position: absolute;
+    top: var(--boxy-space-4);
+    right: var(--boxy-space-4);
+    width: var(--boxy-space-2);
+    aspect-ratio: 1;
+    border-radius: var(--boxy-radius-full);
+    background: var(--boxy-alert-tone);
+  }
+
+  .boxy-alert-info {
+    --boxy-alert-tone: var(--boxy-info);
+  }
+
+  .boxy-alert-success {
+    --boxy-alert-tone: var(--boxy-success);
+  }
+
+  .boxy-alert-warning {
+    --boxy-alert-tone: var(--boxy-warning);
+  }
+
+  .boxy-alert-danger {
+    --boxy-alert-tone: var(--boxy-danger);
+  }
+
+  .boxy-alert-title {
+    color: var(--boxy-alert-tone);
+    font-weight: var(--boxy-font-weight-medium);
+    font-family: var(--boxy-font-mono);
+    font-size: var(--boxy-font-size-tiny);
+    text-transform: uppercase;
+  }
+
+  .boxy-empty {
+    padding: var(--boxy-space-12) var(--boxy-space-4);
+    border: 1px dashed var(--boxy-line);
+    border-radius: var(--boxy-radius);
+    color: var(--boxy-muted);
+    text-align: center;
+  }
+}

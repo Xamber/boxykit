@@ -1,0 +1,92 @@
+/*
+ * List: items with a small square in front. Numbered: 01, 02… from a counter instead. The marker sits in the
+ * middle of its item's height. Interactive: a list of links (a table of contents): the current one in the
+ * accent, an arrow on hover.
+ */
+@layer boxy.components {
+  .boxy-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--boxy-space-2);
+    counter-reset: boxy-list;
+  }
+
+  .boxy-list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--boxy-space-3);
+    line-height: var(--boxy-line-height-tight);
+    counter-increment: boxy-list;
+  }
+
+  .boxy-list-item::before,
+  .boxy-list-link::before {
+    content: "";
+    flex: none;
+    width: calc(var(--boxy-space) * 1.5);
+    aspect-ratio: 1;
+    background: currentcolor;
+  }
+
+  .boxy-list-numbered :is(.boxy-list-item, .boxy-list-link)::before {
+    content: counter(boxy-list, decimal-leading-zero);
+    width: auto;
+    aspect-ratio: auto;
+    background: none;
+    color: var(--boxy-muted);
+    font-family: var(--boxy-font-mono);
+    font-size: var(--boxy-font-size-tiny);
+    font-weight: var(--boxy-font-weight);
+  }
+
+  /* Interactive: the link draws the marker, so its background covers it too. */
+  .boxy-list-interactive {
+    gap: 0;
+  }
+
+  .boxy-list-interactive .boxy-list-item::before {
+    display: none;
+  }
+
+  .boxy-list-link {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: var(--boxy-space-3);
+    min-width: 0;
+    padding: var(--boxy-space) var(--boxy-space-2);
+    font-size: var(--boxy-font-size-small);
+    font-weight: var(--boxy-font-weight-medium);
+    text-transform: uppercase;
+    transition: background var(--boxy-duration);
+  }
+
+  .boxy-list-link::after {
+    content: "→";
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity var(--boxy-duration);
+  }
+
+  .boxy-list-link:where(:hover, :focus-visible)::after {
+    opacity: 1;
+  }
+
+  .boxy-list-link:where(:hover) {
+    background: var(--boxy-accent-soft);
+  }
+
+  .boxy-list-link:focus-visible {
+    outline: none;
+    box-shadow: inset var(--boxy-ring);
+  }
+
+  .boxy-list-link[aria-current="true"] {
+    background: var(--boxy-accent);
+    color: var(--boxy-on-accent);
+  }
+
+  .boxy-list-link[aria-current="true"]::before {
+    color: inherit;
+  }
+}

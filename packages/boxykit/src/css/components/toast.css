@@ -1,0 +1,60 @@
+/* Toasts: inverted rectangles in the bottom-right corner; a title small at the top with an optional count. */
+@layer boxy.components {
+  .boxy-toasts {
+    position: fixed;
+    right: calc(var(--boxy-space-6) + var(--boxy-safe-right));
+    bottom: calc(var(--boxy-space-6) + var(--boxy-safe-bottom));
+    z-index: var(--boxy-z-toast);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--boxy-space-2);
+    max-width: calc(100vw - var(--boxy-space-12));
+  }
+
+  .boxy-toast {
+    display: flex;
+    flex-direction: column;
+    gap: var(--boxy-space-3);
+    width: 17rem;
+    max-width: 100%;
+    padding: var(--boxy-space-4);
+    border-radius: var(--boxy-radius);
+    background: var(--boxy-band-bg);
+    color: var(--boxy-band-fg);
+    box-shadow:
+      inset 0 0 0 1px var(--boxy-band-line),
+      var(--boxy-shadow);
+    font-size: var(--boxy-font-size-small);
+    animation: boxy-toast-in var(--boxy-duration-slow) var(--boxy-ease);
+  }
+
+  .boxy-toast-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--boxy-space-2);
+    color: var(--boxy-band-muted);
+    font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-tight);
+  }
+
+  .boxy-toast-count {
+    color: var(--boxy-band-fg);
+    font-family: var(--boxy-font-mono);
+  }
+
+  .boxy-toast-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--boxy-space-2);
+  }
+
+  @keyframes boxy-toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(var(--boxy-space-2));
+    }
+  }
+}

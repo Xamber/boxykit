@@ -1,0 +1,45 @@
+name: Release
+
+# Off until the repo variable NPM_PUBLISH is "true" (Settings → Secrets and variables → Actions → Variables).
+# Before turning it on: set up npm trusted publishing for this repo and workflow on npmjs.com
+# (package settings → Trusted publisher → GitHub Actions, workflow file "release.yml"). No NPM_TOKEN needed.
+
+on:
+  push:
+    branches: [main]
+
+concurrency: release-${{ github.ref }}
+
+jobs:
+  release:
+    if: vars.NPM_PUBLISH == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      # npm trusted publishing (OIDC) and provenance.
+      id-token: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      # Trusted publishing needs npm 11.5.1 or later; Node 24 may ship an older one.
+      - run: npm install -g npm@latest
+      - run: npm ci
+
+      # With pending changesets: open or update the "Version packages" PR.
+      - id: changesets
+        uses: changesets/action@v1
+        with:
+          version: npm run version-packages
+          title: Version packages
+          commit: Version packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Without them (the version PR was merged): publish whatever version isn't on npm yet.
+      # A plain npm publish, so npm's OIDC trusted publishing does the auth.
+      - if: steps.changesets.outputs.hasChangesets == 'false'
+        run: npm run release

@@ -1,0 +1,88 @@
+/* Modal: a square over the dimmed page; title small at the top with ✕, the content, then the actions. */
+@layer boxy.components {
+  .boxy-modal {
+    width: 50vw;
+    min-height: 50vh;
+    max-width: calc(100vw - var(--boxy-space-8));
+    max-height: calc(100dvh - var(--boxy-space-8));
+    margin: auto;
+    border-radius: var(--boxy-radius);
+    background: var(--boxy-bg);
+    color: var(--boxy-fg);
+    box-shadow: var(--boxy-outline), var(--boxy-shadow-large);
+    overflow: hidden;
+  }
+
+  .boxy-modal[open] {
+    display: flex;
+    animation: boxy-modal-in var(--boxy-duration) var(--boxy-ease);
+  }
+
+  .boxy-modal::backdrop {
+    background: var(--boxy-backdrop);
+  }
+
+  .boxy-modal-frame {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--boxy-space-6);
+    min-width: 0;
+    padding: var(--boxy-space-6);
+    overflow-y: auto;
+  }
+
+  .boxy-modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--boxy-space-4);
+  }
+
+  .boxy-modal-title {
+    color: var(--boxy-muted);
+    font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-tight);
+  }
+
+  .boxy-modal-close {
+    display: grid;
+    place-items: center;
+    width: var(--boxy-touch-target);
+    height: var(--boxy-touch-target);
+    margin: calc(-1 * var(--boxy-space-3));
+    color: var(--boxy-muted);
+    cursor: pointer;
+    transition: color var(--boxy-duration);
+  }
+
+  .boxy-modal-close:hover {
+    color: var(--boxy-fg);
+  }
+
+  .boxy-modal-body {
+    flex: 1;
+  }
+
+  /* The main action last, at the bottom right. */
+  .boxy-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--boxy-space-3);
+  }
+
+  /* md and down: nearly the whole width. */
+  @media (width < 48rem) {
+    .boxy-modal {
+      width: 100%;
+    }
+  }
+
+  @keyframes boxy-modal-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+  }
+}

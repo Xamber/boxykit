@@ -1,0 +1,335 @@
+/*
+ * The docs site's own layout, full width: a bar on top, a row per example split by lines from edge to edge
+ * (the code on the left, the element on the right), the anchors down the right side. Values come from the tokens.
+ */
+
+/* ---- The page, and the side column on the right: the anchors, a line, the controls ---- */
+.docs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.docs-side {
+  padding: var(--boxy-space-4) var(--boxy-space-8);
+  border-bottom: var(--boxy-border);
+}
+
+/* Narrow: only the controls, over the page. */
+.docs-toc {
+  display: none;
+}
+
+/* The name and version on top of the side column, linking to the repo. */
+.docs-brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--boxy-space-2);
+  margin-bottom: var(--boxy-space-4);
+  font-weight: var(--boxy-font-weight-medium);
+  text-transform: uppercase;
+}
+
+.docs-version {
+  color: var(--boxy-muted);
+  font-family: var(--boxy-font-mono);
+  font-size: var(--boxy-font-size-tiny);
+  font-weight: var(--boxy-font-weight);
+  text-transform: none;
+}
+
+.docs-brand:hover .docs-version {
+  color: var(--boxy-fg);
+}
+
+.docs-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--boxy-space-4);
+}
+
+.docs-choice {
+  display: flex;
+  gap: var(--boxy-space-2);
+}
+
+@media (width >= 64rem) {
+  .docs {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+  }
+
+  .docs-side {
+    position: sticky;
+    top: 0;
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    padding: var(--boxy-space-8) var(--boxy-space-6);
+    border-bottom: 0;
+    border-left: var(--boxy-border);
+    overflow-y: auto;
+  }
+
+  .docs-main {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .docs-toc {
+    display: block;
+  }
+
+  .docs-brand {
+    margin-bottom: var(--boxy-space-6);
+    padding: 0 var(--boxy-space-2);
+  }
+
+  .docs-controls {
+    flex-direction: column;
+    margin-top: var(--boxy-space-6);
+    padding-top: var(--boxy-space-6);
+    border-top: var(--boxy-border);
+  }
+}
+
+/* ---- Getting started, then a row per example ---- */
+/* Getting started is a row too: the name against the line, install and import in the panel. */
+.docs-intro {
+  border-top: 0;
+}
+
+.docs-intro .docs-preview {
+  gap: var(--boxy-space-6);
+  padding-block: var(--boxy-space-24);
+}
+
+.docs-lead {
+  max-width: 40rem;
+  color: var(--boxy-muted);
+  font-size: var(--boxy-font-size-heading);
+  line-height: var(--boxy-line-height-tight);
+}
+
+.docs-preview > .docs-lead {
+  text-align: right;
+}
+
+/* A row: narrow, the panel over the element; wide, the element on the left and the panel on the right of a line. */
+.docs-example {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border-top: var(--boxy-border);
+}
+
+.docs-example-head {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: var(--boxy-space-2);
+  min-width: 0;
+  padding: var(--boxy-space-8) var(--boxy-space-8) 0;
+}
+
+.docs-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--boxy-space-2);
+  margin-top: var(--boxy-space-2);
+}
+
+.docs-example-head .docs-code {
+  justify-self: stretch;
+  margin-top: var(--boxy-space-2);
+}
+
+/* The element leans right, against the line to its panel. */
+.docs-preview {
+  display: grid;
+  align-content: start;
+  justify-items: end;
+  min-width: 0;
+  padding: var(--boxy-space-8);
+
+  /* A Board fills the screen in an app; here it is a small picture of one. */
+  --boxy-board-height: 18rem;
+}
+
+.docs-preview .boxy-board-cell {
+  gap: var(--boxy-space-3);
+  padding: var(--boxy-space-4);
+}
+
+.docs-preview .boxy-board .boxy-headline {
+  font-size: var(--boxy-font-size-heading);
+}
+
+.docs-preview .boxy-board .boxy-hero {
+  font-size: var(--boxy-font-size-display);
+}
+
+.docs-preview .boxy-board .boxy-label-squares {
+  --boxy-square-size: 6rem;
+}
+
+/* The toasts sit in the corner of a page; in a row they stay in place. Show toast puts them in the corner. */
+.docs-preview .boxy-toasts {
+  position: static;
+  align-items: flex-end;
+}
+
+/* What fills a page's width fills the row. */
+.docs-preview > :is(.boxy-board, .boxy-nav, .boxy-table, .boxy-input, .boxy-empty) {
+  justify-self: stretch;
+}
+
+.docs-preview > :is(.boxy-headline, .boxy-hero, .boxy-section) {
+  text-align: right;
+}
+
+.docs-preview .docs-row,
+.docs-preview .boxy-label-squares,
+.docs-preview .docs-swatches {
+  justify-content: flex-end;
+}
+
+/* An InteractiveList as wide as the side column's, so the arrow has room. */
+.docs-preview > nav:has(.boxy-list-interactive) {
+  width: 13rem;
+}
+
+.docs-preview .docs-stack {
+  align-items: flex-end;
+}
+
+/* Tiles of a fixed size in one row, so they can sit at the right end. */
+.docs-preview > .boxy-stat-tiles,
+.docs-preview > [role="group"] .boxy-stat-tiles {
+  grid-template-columns: none;
+  grid-auto-columns: 9rem;
+  grid-auto-flow: column;
+}
+
+.docs-preview .docs-type-scale,
+.docs-preview .docs-type-size {
+  justify-items: end;
+  text-align: right;
+}
+
+@media (width >= 64rem) {
+  /* The panel is 28% wide: the element gets the room. */
+  .docs-example {
+    grid-template-columns: minmax(0, 18fr) minmax(0, 7fr);
+  }
+
+  .docs-example-head {
+    grid-column: 2;
+    grid-row: 1;
+    padding: var(--boxy-space-12) var(--boxy-space-8);
+    border-left: var(--boxy-border);
+  }
+
+  .docs-preview {
+    grid-column: 1;
+    grid-row: 1;
+    padding: var(--boxy-space-12);
+  }
+}
+
+.docs-example-title {
+  font-weight: var(--boxy-font-weight-medium);
+}
+
+.docs-example-group {
+  color: var(--boxy-muted);
+}
+
+.docs-about {
+  color: var(--boxy-muted);
+  font-size: var(--boxy-font-size-small);
+  line-height: var(--boxy-line-height-tight);
+}
+
+.docs-code {
+  max-height: 32rem;
+  padding: var(--boxy-space-4);
+  background: color-mix(in srgb, var(--boxy-fg) 5%, var(--boxy-bg));
+  font-size: var(--boxy-font-size-small);
+  line-height: var(--boxy-line-height-tight);
+  overflow: auto;
+}
+
+/* ---- Helpers the examples use ---- */
+.docs-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--boxy-space-3);
+}
+
+.docs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boxy-space-3);
+}
+
+/* ---- Tokens ---- */
+.docs-token {
+  font-size: var(--boxy-font-size-small);
+}
+
+.docs-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--boxy-space-2);
+}
+
+.docs-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boxy-space);
+  width: 8.5rem;
+}
+
+.docs-swatch-color {
+  margin-bottom: var(--boxy-space);
+  aspect-ratio: 1;
+  border-radius: var(--boxy-radius);
+  box-shadow: var(--boxy-outline);
+}
+
+.docs-type-scale {
+  display: grid;
+  gap: var(--boxy-space-6);
+}
+
+.docs-type-size {
+  display: grid;
+  gap: var(--boxy-space);
+  min-width: 0;
+}
+
+.docs-type-sample {
+  line-height: var(--boxy-line-height-tight);
+  overflow-wrap: anywhere;
+}
+
+.docs-space {
+  display: flex;
+  align-items: center;
+  gap: var(--boxy-space-3);
+}
+
+.docs-space-bar {
+  height: var(--boxy-space-4);
+  background: var(--boxy-accent);
+}
+
+/* Alerts two by two, as wide as each other. */
+.docs-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 16rem));
+  gap: var(--boxy-space-2);
+  justify-content: end;
+  width: 100%;
+}
