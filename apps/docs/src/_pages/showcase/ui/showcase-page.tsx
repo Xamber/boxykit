@@ -27,6 +27,7 @@ export function ShowcasePage() {
       <div className="docs">
         <aside className="docs-side">
           <a className="docs-brand" href={REPO_URL}>
+            <img className="docs-logo" src="/logo.svg" alt="" width={20} height={20} />
             Boxykit <span className="docs-version">v{VERSION}</span>
           </a>
           <Toc anchors={ANCHORS} />

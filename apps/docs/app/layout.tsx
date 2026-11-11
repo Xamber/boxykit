@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 export const metadata: Metadata = {
   title: { default: "Boxykit", template: "%s · Boxykit" },
   description: "A small, flat UI kit: plain CSS with an optional React layer.",
+  icons: { icon: { url: "/logo.svg", type: "image/svg+xml" } },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

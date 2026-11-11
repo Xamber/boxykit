@@ -19,14 +19,20 @@
   display: none;
 }
 
-/* The name and version on top of the side column, linking to the repo. */
+/* The logo, name and version on top of the side column, linking to the repo. */
 .docs-brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--boxy-space-2);
   margin-bottom: var(--boxy-space-4);
   font-weight: var(--boxy-font-weight-medium);
   text-transform: uppercase;
+}
+
+.docs-logo {
+  flex-shrink: 0;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 .docs-version {
