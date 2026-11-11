@@ -1,5 +1,4 @@
 import "boxykit/css";
-import "./docs.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 

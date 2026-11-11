@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { classNames } from "./class-names.js";
 
 const HEADINGS = { 1: "h1", 2: "h2", 3: "h3" } as const;
@@ -9,16 +9,15 @@ export function Headline({
   level = 1,
   ghost,
   children,
-}: {
-  className?: string;
+  ...props
+}: ComponentProps<"h1"> & {
   level?: 1 | 2 | 3;
   ghost?: ReactNode;
-  children: ReactNode;
 }): ReactElement {
   const Heading = HEADINGS[level];
 
   return (
-    <Heading className={classNames("boxy-headline", className)}>
+    <Heading className={classNames("boxy-headline", className)} {...props}>
       {children}
       {ghost !== undefined && (
         <>
@@ -35,13 +34,13 @@ export function HeroNumber({
   className,
   value,
   unit,
-}: {
-  className?: string;
+  ...props
+}: Omit<ComponentProps<"p">, "children"> & {
   value: ReactNode;
   unit?: ReactNode;
 }): ReactElement {
   return (
-    <p className={classNames("boxy-hero", className)}>
+    <p className={classNames("boxy-hero", className)} {...props}>
       {value}
       {unit !== undefined && <span className="boxy-hero-unit">{unit}</span>}
     </p>
@@ -49,11 +48,11 @@ export function HeroNumber({
 }
 
 /** Small grey capitals, spaced wide: what a block or a number is. */
-export function Caption({ className, children }: { className?: string; children: ReactNode }): ReactElement {
-  return <p className={classNames("boxy-caption", className)}>{children}</p>;
+export function Caption({ className, ...props }: ComponentProps<"p">): ReactElement {
+  return <p className={classNames("boxy-caption", className)} {...props} />;
 }
 
 /** Small grey mono, inline: IDs, dates, counts. */
-export function Mono({ className, children }: { className?: string; children: ReactNode }): ReactElement {
-  return <span className={classNames("boxy-mono", className)}>{children}</span>;
+export function Mono({ className, ...props }: ComponentProps<"span">): ReactElement {
+  return <span className={classNames("boxy-mono", className)} {...props} />;
 }

@@ -1,22 +1,16 @@
-import type { ComponentProps, ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactElement } from "react";
 import { classNames } from "./class-names.js";
 
 /** An inverted strip of NavLinks as wide as each other; the CSS numbers them 01, 02… */
 export function Nav({
   className,
   label,
-  children,
-}: {
-  className?: string;
+  ...props
+}: ComponentProps<"nav"> & {
   /** Names the nav for screen readers, e.g. "Main". */
   label: string;
-  children: ReactNode;
 }): ReactElement {
-  return (
-    <nav className={classNames("boxy-nav", className)} aria-label={label}>
-      {children}
-    </nav>
-  );
+  return <nav className={classNames("boxy-nav", className)} aria-label={label} {...props} />;
 }
 
 /**

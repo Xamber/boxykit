@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import axe from "axe-core";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { COMPONENTS } from "../examples/registry";
+import { COMPONENTS } from "../src/_pages/showcase/examples";
 
 const CSS_DIR = path.resolve(import.meta.dirname, "../../../packages/boxykit/src/css/components");
 const CLASS = /\.(boxy-[a-z0-9-]+)/g;

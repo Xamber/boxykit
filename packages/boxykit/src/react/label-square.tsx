@@ -1,9 +1,9 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { classNames } from "./class-names.js";
 
 /** A wrapping row of LabelSquares. */
-export function LabelSquares({ className, children }: { className?: string; children: ReactNode }): ReactElement {
-  return <ol className={classNames("boxy-label-squares", className)}>{children}</ol>;
+export function LabelSquares({ className, ...props }: ComponentProps<"ol">): ReactElement {
+  return <ol className={classNames("boxy-label-squares", className)} {...props} />;
 }
 
 /**
@@ -15,15 +15,13 @@ export function LabelSquare({
   label,
   wide = false,
   missing = false,
-  title,
   children,
-}: {
-  className?: string;
+  ...props
+}: ComponentProps<"li"> & {
   /** Usually text; can hold more, such as a ProgressRing next to it. */
   label: ReactNode;
   wide?: boolean;
   missing?: boolean;
-  title?: string;
   children: ReactNode;
 }): ReactElement {
   return (
@@ -34,7 +32,7 @@ export function LabelSquare({
         missing && "boxy-label-square-missing",
         className,
       )}
-      title={title}
+      {...props}
     >
       <span className="boxy-label-square-label">{label}</span>
       <span className="boxy-label-square-value">{children}</span>

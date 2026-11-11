@@ -26,7 +26,7 @@ export function TableExpandable() {
       rows={TASKS}
       rowKey={(t) => t.id}
       onRowClick={(t) => {
-        setOpen(open === t.id ? null : t.id);
+        setOpen((current) => (current === t.id ? null : t.id));
       }}
       expanded={(t) => (open === t.id ? t.details : null)}
     />

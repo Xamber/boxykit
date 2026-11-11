@@ -2,7 +2,7 @@ node_modules/
 dist/
 .next/
 out/
-apps/docs/generated/
+apps/docs/src/_pages/showcase/generated/
 next-env.d.ts
 *.tgz
 .DS_Store

@@ -1,19 +1,19 @@
-// The whole kit on one page: a row per example, its code on the left and the element on the right,
+// The whole kit on one page: a row per example, the element on the left and its code on the right,
 // the anchors and the controls down the right side. The code is React or the HTML it renders, as picked.
-import { readFileSync } from "node:fs";
-import path from "node:path";
+import "./showcase.css";
+import { REPO_URL, VERSION } from "../config/site";
+import { COMPONENTS } from "../examples";
 import examplesHtml from "../generated/examples.json";
-import { COMPONENTS } from "../examples/registry";
+import { cssImports, exampleSource } from "../lib/example-code";
+import { ModeProvider } from "../model/mode";
+import { Controls } from "./controls";
+import { ExampleRow, Group } from "./example-row";
 import { Intro } from "./intro";
-import { Controls, ModeProvider, ShowToast } from "./mode";
-import { ExampleRow, Group } from "./rows";
+import { ShowToast } from "./show-toast";
 import { Toc } from "./toc";
-import { TokensGroup } from "./tokens";
+import { TokensGroup } from "./tokens-group";
 
 const HTML: Record<string, string> = examplesHtml;
-
-// The repo's VERSION file, read at build time.
-const VERSION = readFileSync(path.join(process.cwd(), "../../VERSION"), "utf8").trim();
 
 const ANCHORS = [
   { slug: "start", title: "Getting started" },
@@ -21,12 +21,12 @@ const ANCHORS = [
   ...COMPONENTS.map(({ slug, title }) => ({ slug, title })),
 ];
 
-export function Showcase() {
+export function ShowcasePage() {
   return (
     <ModeProvider>
       <div className="docs">
         <aside className="docs-side">
-          <a className="docs-brand" href="https://github.com/Xamber/boxykit">
+          <a className="docs-brand" href={REPO_URL}>
             Boxykit <span className="docs-version">v{VERSION}</span>
           </a>
           <Toc anchors={ANCHORS} />
@@ -43,9 +43,9 @@ export function Showcase() {
                   group={doc.title}
                   title={title}
                   about={about}
-                  react={source(file)}
+                  react={exampleSource(file)}
                   html={HTML[file] ?? ""}
-                  imports={imports(doc.css)}
+                  imports={cssImports(doc.css)}
                   extra={
                     toast && (
                       <ShowToast wait={toast === "wait"}>
@@ -63,12 +63,4 @@ export function Showcase() {
       </div>
     </ModeProvider>
   );
-}
-
-function source(file: string): string {
-  return readFileSync(path.join(process.cwd(), "examples", file), "utf8").trimEnd();
-}
-
-function imports(css: string[]): string {
-  return ["tokens", ...css].map((name) => `import "boxykit/css/${name}";`).join("\n");
 }

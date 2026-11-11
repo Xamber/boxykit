@@ -6,7 +6,7 @@ import { classNames } from "./class-names.js";
 
 /**
  * A square over the dimmed page: title small at the top with ✕, the content, then `actions`.
- * Esc, ✕ and a click on the dim call `onClose`; the caller owns `open`.
+ * Esc, ✕ and a click on the dim close it. `onClose` is called once each time it closes; the caller owns `open`.
  */
 export function Modal({
   className,
@@ -35,9 +35,15 @@ export function Modal({
     if (!open && dialog.open) dialog.close();
   }, [open]);
 
+  // Every way out closes the dialog, and its close event alone calls onClose: calling it here too would call it
+  // twice, once now and once when the effect closes the dialog for the new `open`.
+  function close() {
+    ref.current?.close();
+  }
+
   // The frame fills the dialog, so a click on the dialog itself is a click on the dim around it.
   function onClick(e: MouseEvent<HTMLDialogElement>) {
-    if (e.target === e.currentTarget) onClose();
+    if (e.target === e.currentTarget) close();
   }
 
   return (
@@ -46,12 +52,12 @@ export function Modal({
       <div className="boxy-modal-frame">
         <header className="boxy-modal-head">
           <h2 className="boxy-modal-title">{title}</h2>
-          <button className="boxy-modal-close" type="button" aria-label="Close" onClick={onClose}>
+          <button className="boxy-modal-close" type="button" aria-label="Close" onClick={close}>
             ✕
           </button>
         </header>
         <div className="boxy-modal-body">{children}</div>
-        {actions && <footer className="boxy-modal-actions">{actions}</footer>}
+        {actions !== undefined && actions !== null && <footer className="boxy-modal-actions">{actions}</footer>}
       </div>
     </dialog>
   );

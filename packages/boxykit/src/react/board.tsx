@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactElement } from "react";
 import { classNames } from "./class-names.js";
 
 /**
@@ -8,14 +8,12 @@ import { classNames } from "./class-names.js";
 export function Board({
   className,
   even = false,
-  children,
-}: {
-  className?: string;
+  ...props
+}: ComponentProps<"div"> & {
   /** Both columns as wide as each other. */
   even?: boolean;
-  children: ReactNode;
 }): ReactElement {
-  return <div className={classNames("boxy-board", even && "boxy-board-even", className)}>{children}</div>;
+  return <div className={classNames("boxy-board", even && "boxy-board-even", className)} {...props} />;
 }
 
 /** A cell of a Board. `tall` takes the whole left column; `end` puts the content on the line below it. */
@@ -23,12 +21,10 @@ export function BoardCell({
   className,
   tall = false,
   end = false,
-  children,
-}: {
-  className?: string;
+  ...props
+}: ComponentProps<"section"> & {
   tall?: boolean;
   end?: boolean;
-  children: ReactNode;
 }): ReactElement {
   return (
     <section
@@ -38,8 +34,7 @@ export function BoardCell({
         end && "boxy-board-cell-end",
         className,
       )}
-    >
-      {children}
-    </section>
+      {...props}
+    />
   );
 }

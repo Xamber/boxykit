@@ -12,7 +12,7 @@
   "scripts": {
     "build": "npm run build -w boxykit && npm run build -w docs",
     "dev": "npm run build -w boxykit && npm run dev -w docs",
-    "lint": "eslint . && stylelint \"packages/boxykit/src/css/**/*.css\" \"apps/docs/app/**/*.css\"",
+    "lint": "eslint . && stylelint \"packages/boxykit/src/css/**/*.css\" \"apps/docs/src/**/*.css\"",
     "typecheck": "tsc -p . && tsc -p packages/boxykit && tsc -p apps/docs",
     "test": "vitest run",
     "check:package": "cd packages/boxykit && publint --strict && attw --pack --profile esm-only",

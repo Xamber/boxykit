@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { classNames } from "./class-names.js";
 import { ProgressRing } from "./progress.js";
 
@@ -18,8 +18,8 @@ export function shareRing(part: number, whole: number, of: string): StatRing {
 }
 
 /** A grid of square StatTiles, as many in a row as fit --boxy-tile-size. */
-export function StatTiles({ className, children }: { className?: string; children: ReactNode }): ReactElement {
-  return <ol className={classNames("boxy-stat-tiles", className)}>{children}</ol>;
+export function StatTiles({ className, ...props }: ComponentProps<"ol">): ReactElement {
+  return <ol className={classNames("boxy-stat-tiles", className)} {...props} />;
 }
 
 /**

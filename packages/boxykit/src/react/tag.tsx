@@ -1,4 +1,4 @@
-import type { Key, ReactElement, ReactNode } from "react";
+import type { ComponentProps, Key, ReactElement } from "react";
 import { classNames } from "./class-names.js";
 
 export type TagLook = "outline" | "accent" | "dark";
@@ -7,31 +7,27 @@ export type TagLook = "outline" | "accent" | "dark";
 export function Tag({
   className,
   look = "outline",
-  title,
-  children,
-}: {
-  className?: string;
+  ...props
+}: ComponentProps<"span"> & {
   look?: TagLook;
-  title?: string;
-  children: ReactNode;
 }): ReactElement {
   let lookClass: string | undefined;
 
   if (look !== "outline") lookClass = `boxy-tag-${look}`;
 
-  return (
-    <span className={classNames("boxy-tag", lookClass, className)} title={title}>
-      {children}
-    </span>
-  );
+  return <span className={classNames("boxy-tag", lookClass, className)} {...props} />;
 }
 
 export type TagItem = { key: Key; label: string; title?: string; look?: TagLook };
 
 /** A wrapping row of Tags. */
-export function TagList({ className, tags }: { className?: string; tags: TagItem[] }): ReactElement {
+export function TagList({
+  className,
+  tags,
+  ...props
+}: Omit<ComponentProps<"span">, "children"> & { tags: TagItem[] }): ReactElement {
   return (
-    <span className={classNames("boxy-tag-list", className)}>
+    <span className={classNames("boxy-tag-list", className)} {...props}>
       {tags.map((t) => (
         <Tag key={t.key} look={t.look} title={t.title}>
           {t.label}

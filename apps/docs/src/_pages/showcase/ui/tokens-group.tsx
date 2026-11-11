@@ -1,5 +1,5 @@
 // The theme's values, a row each like the examples: a swatch per color, a line per size and space.
-import { ExampleRow, Group } from "./rows";
+import { ExampleRow, Group } from "./example-row";
 
 /** A token and what it is for. */
 type Token = { name: string; about: string };

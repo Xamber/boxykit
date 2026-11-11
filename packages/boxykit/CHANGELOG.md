@@ -1,5 +1,11 @@
 # boxykit
 
+## 0.1.1
+
+### Patch Changes
+
+- Components that wrap one element (List, Tag, Section, Alert, Caption, Board…) pass that element's props on, `ref` too. Modal calls `onClose` once when ✕ or the backdrop closes it, not twice.
+
 ## 0.1.0
 
 The first release: plain CSS that is the kit, and an optional React layer (`boxykit/react`) that writes the

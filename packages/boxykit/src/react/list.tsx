@@ -1,19 +1,19 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { classNames } from "./class-names.js";
 
 /** Items with a small square in front of each. */
-export function List({ className, children }: { className?: string; children: ReactNode }): ReactElement {
-  return <ul className={classNames("boxy-list", className)}>{children}</ul>;
+export function List({ className, ...props }: ComponentProps<"ul">): ReactElement {
+  return <ul className={classNames("boxy-list", className)} {...props} />;
 }
 
 /** Items numbered 01, 02… by the CSS. */
-export function NumberedList({ className, children }: { className?: string; children: ReactNode }): ReactElement {
-  return <ol className={classNames("boxy-list", "boxy-list-numbered", className)}>{children}</ol>;
+export function NumberedList({ className, ...props }: ComponentProps<"ol">): ReactElement {
+  return <ol className={classNames("boxy-list", "boxy-list-numbered", className)} {...props} />;
 }
 
 /** An item of a List or NumberedList; the marker sits in the middle of its height. */
-export function ListItem({ className, children }: { className?: string; children: ReactNode }): ReactElement {
-  return <li className={classNames("boxy-list-item", className)}>{children}</li>;
+export function ListItem({ className, ...props }: ComponentProps<"li">): ReactElement {
+  return <li className={classNames("boxy-list-item", className)} {...props} />;
 }
 
 export type ListLink = { href: string; label: ReactNode };
@@ -23,13 +23,12 @@ export type ListLink = { href: string; label: ReactNode };
  * you are at (aria-current="true", in the accent); useCurrentSection follows the page for it.
  */
 export function InteractiveList({
-  className,
   label,
   links,
   current,
   numbered = true,
-}: {
-  className?: string;
+  ...props
+}: Omit<ComponentProps<"nav">, "children"> & {
   /** Names the nav for screen readers, e.g. "On this page". */
   label: string;
   links: ListLink[];
@@ -46,14 +45,14 @@ export function InteractiveList({
 
   if (!numbered) {
     return (
-      <nav className={className} aria-label={label}>
+      <nav aria-label={label} {...props}>
         <ul className="boxy-list boxy-list-interactive">{items}</ul>
       </nav>
     );
   }
 
   return (
-    <nav className={className} aria-label={label}>
+    <nav aria-label={label} {...props}>
       <ol className="boxy-list boxy-list-numbered boxy-list-interactive">{items}</ol>
     </nav>
   );

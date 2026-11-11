@@ -1,6 +1,6 @@
 {
   "name": "boxykit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A small, flat UI kit: plain CSS with an optional React layer that writes the same classes.",
   "license": "MIT",
   "type": "module",
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/Xamber/boxykit.git",
     "directory": "packages/boxykit"
   },
-  "homepage": "https://github.com/Xamber/boxykit#readme",
+  "homepage": "https://boxykit.temka.fi",
   "bugs": "https://github.com/Xamber/boxykit/issues",
   "keywords": [
     "css",

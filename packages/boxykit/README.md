@@ -2,6 +2,9 @@
 
 A small, flat UI kit. The CSS is the kit; the React components only write the same classes. Use either.
 
+- Docs, with every component in React and in plain HTML: [boxykit.temka.fi](https://boxykit.temka.fi)
+- Source and issues: [github.com/Xamber/boxykit](https://github.com/Xamber/boxykit)
+
 ```sh
 npm install boxykit
 ```

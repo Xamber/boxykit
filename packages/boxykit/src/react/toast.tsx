@@ -1,9 +1,9 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { classNames } from "./class-names.js";
 
 /** The corner the Toasts stand in, bottom right, one over the other. */
-export function Toasts({ children }: { children: ReactNode }): ReactElement {
-  return <section className="boxy-toasts">{children}</section>;
+export function Toasts({ className, ...props }: ComponentProps<"section">): ReactElement {
+  return <section className={classNames("boxy-toasts", className)} {...props} />;
 }
 
 /**
@@ -16,12 +16,11 @@ export function Toast({
   count,
   actions,
   children,
-}: {
-  className?: string;
+  ...props
+}: Omit<ComponentProps<"div">, "title"> & {
   title: string;
   count?: number;
   actions?: ReactNode;
-  children: ReactNode;
 }): ReactElement {
   const head = (
     <h2 className="boxy-toast-title">
@@ -30,9 +29,9 @@ export function Toast({
     </h2>
   );
 
-  if (!actions) {
+  if (actions === undefined || actions === null) {
     return (
-      <div className={classNames("boxy-toast", className)} role="status">
+      <div className={classNames("boxy-toast", className)} role="status" {...props}>
         {head}
         {children}
       </div>
@@ -40,7 +39,7 @@ export function Toast({
   }
 
   return (
-    <div className={classNames("boxy-toast", className)} role="alertdialog" aria-label={title}>
+    <div className={classNames("boxy-toast", className)} role="alertdialog" aria-label={title} {...props}>
       {head}
       {children}
       <footer className="boxy-toast-actions">{actions}</footer>

@@ -1,5 +1,2 @@
-import { Showcase } from "./showcase";
-
-export default function Page() {
-  return <Showcase />;
-}
+// Routing only: the page itself is the showcase slice.
+export { ShowcasePage as default } from "@/_pages/showcase";

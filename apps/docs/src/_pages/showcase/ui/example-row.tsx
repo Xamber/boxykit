@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { CodePanel } from "./mode";
+import { CodePanel } from "./code-panel";
 
 /** A component's rows, under one anchor; the rows name it themselves ("Button · Looks"). */
 export function Group({ slug, title, children }: { slug: string; title: string; children: ReactNode }) {

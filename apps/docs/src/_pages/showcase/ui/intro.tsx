@@ -1,5 +1,5 @@
 import { Headline } from "boxykit/react";
-import { ModeOnly } from "./mode";
+import { ModeOnly } from "./mode-only";
 
 /**
  * Getting started, laid out like an example: the name and what it is for on the left, against the line;
