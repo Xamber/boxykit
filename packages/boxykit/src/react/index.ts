@@ -6,6 +6,8 @@ export type { ButtonLook, ButtonSize, ButtonStyle } from "./button.js";
 export { Checkbox, ChoiceList, Radio, Switch } from "./choice.js";
 export { classNames } from "./class-names.js";
 export { useCurrentSection } from "./current-section.js";
+export { Dropdown } from "./dropdown.js";
+export type { DropdownOption } from "./dropdown.js";
 export { Input } from "./input.js";
 export { LabelTile, LabelTiles } from "./label-tile.js";
 export { InteractiveList, List, ListItem, NumberedList } from "./list.js";

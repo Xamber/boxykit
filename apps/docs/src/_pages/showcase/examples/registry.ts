@@ -16,6 +16,9 @@ import { ButtonSmall } from "./button/small";
 import { ChoiceCheckbox } from "./choice/checkbox";
 import { ChoiceRadio } from "./choice/radio";
 import { ChoiceSwitch } from "./choice/switch";
+import { DropdownNumbered } from "./dropdown/numbered";
+import { DropdownPlain } from "./dropdown/plain";
+import { DropdownSearch } from "./dropdown/search";
 import { InputBasic } from "./input/basic";
 import { InputInvalid } from "./input/invalid";
 import { InputMuted } from "./input/muted";
@@ -420,6 +423,32 @@ export const SECTIONS: SectionDoc[] = [
             title: "Basic",
             about: "The native select in the Input's look. Where the browser allows (Chrome), the open list is styled too.",
             Component: SelectBasic,
+          },
+        ],
+      },
+      {
+        title: "Dropdown",
+        css: ["dropdown", "progress"],
+        examples: [
+          {
+            file: "dropdown/search.tsx",
+            title: "Search",
+            about:
+              "A field that opens a rounded box: a search on top, the options under it split by lines. Arrows move, Enter picks, Esc closes.",
+            Component: DropdownSearch,
+          },
+          {
+            file: "dropdown/numbered.tsx",
+            title: "Numbered, with rings",
+            about:
+              "numbered puts 01, 02… before the options, and each keeps its number while searching. ring on an option adds a ProgressRing.",
+            Component: DropdownNumbered,
+          },
+          {
+            file: "dropdown/plain.tsx",
+            title: "No search",
+            about: "search={false} for a short list. name adds a hidden input, so it goes with a form.",
+            Component: DropdownPlain,
           },
         ],
       },

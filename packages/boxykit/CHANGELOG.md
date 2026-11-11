@@ -1,5 +1,9 @@
 # boxykit
 
+## Unreleased
+
+- Dropdown: a field that opens a rounded box with a search on top and the options under it, split by lines; `numbered` puts 01, 02… before them, `ring` on an option adds a ProgressRing. Select stays the native one.
+
 ## 0.2.0
 
 - Form controls: Textarea, Select (its open list styled where the browser allows), Checkbox, Radio and Switch (rows in the InteractiveList look; the switch a YES ■ | □ NO pair) and ChoiceList to hold them, optionally numbered, and NumberInput (with `min` and `max`, or `from` and `to`, a slider under it: a line with a small accent square to drag; `step` everywhere).
