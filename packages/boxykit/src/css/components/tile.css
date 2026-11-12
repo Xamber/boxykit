@@ -106,6 +106,12 @@
     line-height: var(--boxy-line-height-tight);
   }
 
+  /* An icon in a ring's place, at a ring's size. */
+  .boxy-tile-top .boxy-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
   .boxy-tile-index {
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-tiny);

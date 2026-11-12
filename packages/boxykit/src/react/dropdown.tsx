@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import type { ComponentProps, KeyboardEvent, ReactElement } from "react";
+import type { ComponentProps, KeyboardEvent, ReactElement, ReactNode } from "react";
 import { classNames } from "./class-names.js";
 import { ProgressRing } from "./progress.js";
 
 export type DropdownOption = {
   value: string;
   label: string;
+  /** Before the label, in the box and in the field (an <svg> with boxy-icon). */
+  icon?: ReactNode;
   /** A ProgressRing after the label, filled to this (0–1). */
   ring?: number;
 };
@@ -187,7 +189,9 @@ export function Dropdown({
         }}
         {...props}
       >
-        {selected?.label ?? <span className="boxy-dropdown-placeholder">{placeholder}</span>}
+        {selected === undefined && <span className="boxy-dropdown-placeholder">{placeholder}</span>}
+        {selected?.icon}
+        {selected?.label}
       </button>
       {name !== undefined && <input type="hidden" name={name} value={current ?? ""} />}
       <div className="boxy-dropdown-popup" hidden={!open}>
@@ -239,6 +243,7 @@ export function Dropdown({
               }}
             >
               {numbered && <span className="boxy-dropdown-option-number">{String(number).padStart(2, "0")}</span>}
+              {option.icon}
               <span className="boxy-dropdown-option-label">{option.label}</span>
               {option.ring !== undefined && <ProgressRing value={option.ring} title={ringTitle(option.ring)} />}
             </div>

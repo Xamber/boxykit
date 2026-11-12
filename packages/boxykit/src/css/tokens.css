@@ -109,6 +109,8 @@
     --boxy-letter-spacing-tight: -0.03em;
     --boxy-letter-spacing-tighter: -0.06em;
     --boxy-letter-spacing-wider: 0.16em;
+    /* An icon's line, in its viewBox units (Lucide's 24): a bit under its default 2, to sit with 1px borders. */
+    --boxy-icon-stroke: 1.75;
 
     /* ---- Spacing: multiples of --boxy-space ---- */
     --boxy-space: 0.25rem;

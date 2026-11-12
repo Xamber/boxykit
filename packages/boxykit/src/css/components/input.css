@@ -1,4 +1,7 @@
-/* Input: a one-line text field. Muted: no line, a light fill, for filters and search in toolbars. */
+/*
+ * Input: a one-line text field. Muted: no line, a light fill, for filters and search in toolbars.
+ * With an icon: a span around the input holds the icon inside it, on the left.
+ */
 @layer boxy.components {
   .boxy-input {
     width: 100%;
@@ -35,5 +38,28 @@
   .boxy-input-muted {
     border-color: transparent;
     background: color-mix(in srgb, var(--boxy-fg) 5%, var(--boxy-bg));
+  }
+
+  .boxy-input-with-icon {
+    position: relative;
+    display: block;
+    font-size: var(--boxy-font-size);
+  }
+
+  .boxy-input-with-icon > .boxy-icon {
+    position: absolute;
+    top: 50%;
+    left: var(--boxy-space-4);
+    color: var(--boxy-muted);
+    pointer-events: none;
+    translate: 0 -50%;
+  }
+
+  .boxy-input-with-icon:focus-within > .boxy-icon {
+    color: var(--boxy-fg);
+  }
+
+  .boxy-input-with-icon > .boxy-input {
+    padding-left: calc(var(--boxy-space-4) + 1.25em + var(--boxy-space-3));
   }
 }

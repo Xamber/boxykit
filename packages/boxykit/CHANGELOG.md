@@ -3,6 +3,8 @@
 ## Unreleased
 
 - Dropdown: a field that opens a rounded box with a search on top and the options under it, split by lines; `numbered` puts 01, 02… before them, `ring` on an option adds a ProgressRing. Select stays the native one.
+- Icon: `boxy-icon` sizes any line-icon SVG (Lucide, Tabler…) to its text, in its color, with square line ends; `boxy-icon-large` doubles it. In a button it sits after the label at the line's height. The kit ships no icons; the docs use Lucide. `--boxy-icon-stroke` sets the line.
+- `icon` on Tile (where a ring goes), on a TagList's tags, on Dropdown options (shown in the field too) and on Input (inside it on the left). Field: a label over any form control.
 
 ## 0.2.0
 

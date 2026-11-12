@@ -1,4 +1,4 @@
-import type { ComponentProps, Key, ReactElement } from "react";
+import type { ComponentProps, Key, ReactElement, ReactNode } from "react";
 import { classNames } from "./class-names.js";
 
 export type TagLook = "outline" | "accent" | "dark";
@@ -18,7 +18,8 @@ export function Tag({
   return <span className={classNames("boxy-tag", lookClass, className)} {...props} />;
 }
 
-export type TagItem = { key: Key; label: string; title?: string; look?: TagLook };
+/** `icon`: an <svg> with boxy-icon, before the label. */
+export type TagItem = { key: Key; label: string; title?: string; look?: TagLook; icon?: ReactNode };
 
 /** A wrapping row of Tags. */
 export function TagList({
@@ -30,6 +31,7 @@ export function TagList({
     <span className={classNames("boxy-tag-list", className)} {...props}>
       {tags.map((t) => (
         <Tag key={t.key} look={t.look} title={t.title}>
+          {t.icon}
           {t.label}
         </Tag>
       ))}

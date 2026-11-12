@@ -19,6 +19,9 @@ import { ChoiceSwitch } from "./choice/switch";
 import { DropdownNumbered } from "./dropdown/numbered";
 import { DropdownPlain } from "./dropdown/plain";
 import { DropdownSearch } from "./dropdown/search";
+import { IconInText } from "./icon/in-text";
+import { IconLabelled } from "./icon/labelled";
+import { IconSet } from "./icon/set";
 import { InputBasic } from "./input/basic";
 import { InputInvalid } from "./input/invalid";
 import { InputMuted } from "./input/muted";
@@ -123,13 +126,43 @@ export const SECTIONS: SectionDoc[] = [
       },
       {
         title: "Tag",
-        css: ["tag"],
+        css: ["tag", "icon"],
         examples: [
           {
             file: "tag/list.tsx",
             title: "TagList",
-            about: "Small rectangles: outlined, or look accent or dark for the ones that matter. title shows on hover.",
+            about: "Small rectangles: outlined, or look accent or dark for the ones that matter. title shows on hover; icon goes before the label.",
             Component: TagListExample,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "icons",
+    title: "Icons",
+    components: [
+      {
+        title: "Icon",
+        css: ["icon"],
+        examples: [
+          {
+            file: "icon/set.tsx",
+            title: "A set",
+            about: "The kit ships no icons: give any line icon (here Lucide) boxy-icon. large doubles it, for empty states and tiles.",
+            Component: IconSet,
+          },
+          {
+            file: "icon/in-text.tsx",
+            title: "In text",
+            about: "As big as the text around it and in its color; square line ends, to go with the rectangles.",
+            Component: IconInText,
+          },
+          {
+            file: "icon/labelled.tsx",
+            title: "With a name",
+            about: "Hidden from screen readers by default; one that says something the words don't gets role=\"img\" and aria-label.",
+            Component: IconLabelled,
           },
         ],
       },
@@ -233,7 +266,7 @@ export const SECTIONS: SectionDoc[] = [
     components: [
       {
         title: "Tile",
-        css: ["tile", "progress"],
+        css: ["tile", "icon", "progress"],
         examples: [
           {
             file: "tile/value.tsx",
@@ -268,7 +301,7 @@ export const SECTIONS: SectionDoc[] = [
           {
             file: "tile/corner.tsx",
             title: "Corner text",
-            about: "corner puts a text such as a date where the place goes.",
+            about: "corner puts a text such as a date where the place goes; icon puts an icon where a ring goes.",
             Component: TileCorner,
           },
           {
@@ -341,7 +374,7 @@ export const SECTIONS: SectionDoc[] = [
     components: [
       {
         title: "Button",
-        css: ["button", "progress"],
+        css: ["button", "icon", "progress"],
         examples: [
           {
             file: "button/looks.tsx",
@@ -395,10 +428,10 @@ export const SECTIONS: SectionDoc[] = [
     components: [
       {
         title: "Input",
-        css: ["input"],
+        css: ["input", "field", "icon"],
         examples: [
           { file: "input/basic.tsx", title: "Basic", about: "Outlined, as wide as its container.", Component: InputBasic },
-          { file: "input/muted.tsx", title: "Muted", about: "No line, a light fill: for filters and search in toolbars.", Component: InputMuted },
+          { file: "input/muted.tsx", title: "Muted, with a label and an icon", about: "No line, a light fill: for filters and search in toolbars. Field puts a label over any control; icon goes inside on the left.", Component: InputMuted },
           { file: "input/invalid.tsx", title: "Invalid", about: "invalid sets aria-invalid, which the CSS marks.", Component: InputInvalid },
         ],
       },
@@ -428,7 +461,7 @@ export const SECTIONS: SectionDoc[] = [
       },
       {
         title: "Dropdown",
-        css: ["dropdown", "progress"],
+        css: ["dropdown", "icon", "progress"],
         examples: [
           {
             file: "dropdown/search.tsx",
@@ -447,7 +480,7 @@ export const SECTIONS: SectionDoc[] = [
           {
             file: "dropdown/plain.tsx",
             title: "No search",
-            about: "search={false} for a short list. name adds a hidden input, so it goes with a form.",
+            about: "search={false} for a short list; icon on an option shows in the box and in the field. name adds a hidden input, so it goes with a form.",
             Component: DropdownPlain,
           },
         ],

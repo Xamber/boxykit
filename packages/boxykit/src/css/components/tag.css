@@ -9,6 +9,7 @@
   .boxy-tag {
     display: inline-flex;
     align-items: center;
+    gap: var(--boxy-space);
     padding: var(--boxy-space) var(--boxy-space-3);
     border-radius: var(--boxy-radius-small);
     color: var(--boxy-fg);
@@ -17,6 +18,11 @@
     line-height: var(--boxy-line-height);
     white-space: nowrap;
     box-shadow: var(--boxy-outline);
+  }
+
+  .boxy-tag .boxy-icon {
+    width: 1em;
+    height: 1em;
   }
 
   .boxy-tag-accent {

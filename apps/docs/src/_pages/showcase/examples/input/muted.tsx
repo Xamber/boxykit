@@ -1,5 +1,10 @@
-import { Input } from "boxykit/react";
+import { Field, Input } from "boxykit/react";
+import { Search } from "lucide-react";
 
 export function InputMuted() {
-  return <Input type="search" muted aria-label="Search" placeholder="Search" />;
+  return (
+    <Field label="Search tasks">
+      <Input type="search" muted placeholder="Name or ID" icon={<Search className="boxy-icon" />} />
+    </Field>
+  );
 }

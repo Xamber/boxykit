@@ -1,16 +1,11 @@
 import { Tile, Tiles } from "boxykit/react";
+import { Cloud, Sun } from "lucide-react";
 
 export function TileCorner() {
   return (
     <Tiles>
-      <Tile label="Wed" value={140} corner="08.10" ring={{ value: 0.7, title: "140 tasks closed of 200" }} />
-      <Tile
-        look="accent"
-        label="Thu"
-        value={86}
-        corner="09.10"
-        ring={{ value: 0.43, title: "86 tasks closed of 200" }}
-      />
+      <Tile label="Wed" value="14°" corner="08.10" icon={<Cloud className="boxy-icon" />} />
+      <Tile look="accent" label="Thu" value="19°" corner="09.10" icon={<Sun className="boxy-icon" />} />
     </Tiles>
   );
 }

@@ -1,0 +1,14 @@
+/* Field: a label over a form control (Input, Select, Textarea…), the whole of it a <label>. */
+@layer boxy.components {
+  .boxy-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--boxy-space-2);
+  }
+
+  .boxy-field-label {
+    font-size: var(--boxy-font-size-small);
+    font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-tight);
+  }
+}

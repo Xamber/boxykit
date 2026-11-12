@@ -1,13 +1,18 @@
 "use client";
 
 import { Button } from "boxykit/react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 export function ButtonExpand() {
   const [open, setOpen] = useState(false);
-  let label = "Expand details ▾";
+  let label = "Expand details";
+  let Chevron = ChevronDown;
 
-  if (open) label = "Collapse details ▴";
+  if (open) {
+    label = "Collapse details";
+    Chevron = ChevronUp;
+  }
 
   return (
     <Button
@@ -17,7 +22,7 @@ export function ButtonExpand() {
         setOpen(!open);
       }}
     >
-      {label}
+      {label} <Chevron className="boxy-icon" />
     </Button>
   );
 }

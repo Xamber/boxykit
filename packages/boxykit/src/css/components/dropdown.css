@@ -47,6 +47,10 @@
     opacity: var(--boxy-opacity-disabled);
   }
 
+  .boxy-dropdown-trigger .boxy-icon {
+    margin-right: var(--boxy-space-2);
+  }
+
   .boxy-dropdown-placeholder {
     color: var(--boxy-muted);
   }

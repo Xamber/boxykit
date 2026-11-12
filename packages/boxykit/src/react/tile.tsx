@@ -23,7 +23,7 @@ export function Tiles({ className, ...props }: ComponentProps<"ol">): ReactEleme
 }
 
 /**
- * A square tile: its place (`01/04`, or a `corner` text such as a date) and an optional ring at the top,
+ * A square tile: its place (`01/04`, or a `corner` text such as a date) and an optional ring or icon at the top,
  * the value big (`500/845` with `outOf`) and its label at the bottom.
  * With `onClick` the whole tile is a button and its label ends in →; `pressed` marks the chosen one.
  */
@@ -38,6 +38,7 @@ export function Tile({
   of,
   corner,
   ring,
+  icon,
   onClick,
   pressed,
   disabled = false,
@@ -58,6 +59,8 @@ export function Tile({
   /** Shown in the corner instead of the place, e.g. a date. */
   corner?: string;
   ring?: TileRing;
+  /** An icon at the top right, where a ring goes (an <svg> with boxy-icon). */
+  icon?: ReactNode;
   onClick?: () => void;
   pressed?: boolean;
   disabled?: boolean;
@@ -74,6 +77,7 @@ export function Tile({
         {corner !== undefined && <span className="boxy-tile-index">{corner}</span>}
         {index !== undefined && <TileIndex index={index} of={of} />}
         {ring && <ProgressRing value={ring.value} title={ring.title} />}
+        {icon}
       </span>
       <span className="boxy-tile-bottom">
         {value !== undefined && (

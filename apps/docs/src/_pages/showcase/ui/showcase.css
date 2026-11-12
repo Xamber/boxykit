@@ -190,7 +190,7 @@
 }
 
 /* The small controls: wide enough to use, not the whole row. */
-.docs-preview > :is(.boxy-input, .boxy-number-input, .boxy-dropdown, .boxy-toggle-group) {
+.docs-preview > :is(.boxy-input, .boxy-field, .boxy-number-input, .boxy-dropdown, .boxy-toggle-group) {
   width: 40%;
 }
 
