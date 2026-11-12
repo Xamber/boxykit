@@ -1,6 +1,6 @@
 {
   "name": "boxykit",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A small, flat UI kit: plain CSS with an optional React layer that writes the same classes.",
   "license": "MIT",
   "type": "module",
