@@ -70,4 +70,13 @@ describe("NumberInput", () => {
 
     expect(field().value).toBe("0.3");
   });
+
+  it("with a unit wraps the field and shows the unit after it, the field still the control", () => {
+    const { container } = render(<NumberInput aria-label="VAT" unit="%" defaultValue={24} />);
+    const box = container.querySelector(".boxy-number-input-with-unit");
+
+    expect(box?.lastElementChild?.textContent).toBe("%");
+    expect(box?.firstElementChild).toBe(field());
+    expect(field().value).toBe("24");
+  });
 });

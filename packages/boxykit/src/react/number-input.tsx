@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import type { ComponentProps, FocusEvent, KeyboardEvent, ReactElement } from "react";
+import type { ComponentProps, FocusEvent, KeyboardEvent, ReactElement, ReactNode } from "react";
 import { classNames } from "./class-names.js";
+import type { InputSize } from "./input.js";
 
 function decimals(n: number): number {
   const text = String(n);
@@ -17,7 +18,8 @@ function decimals(n: number): number {
  * A number field. With a range, a slider under it: a line with a small accent square to drag.
  * `min` and `max` bound it, and show at the ends of the line; `from` and `to` only set the line's ends,
  * so the slider runs over them but a typed number can go past. Every way in (typing, arrows, the slider)
- * keeps to `step`. Controlled with `value`, or give `defaultValue`.
+ * keeps to `step`. Controlled with `value`, or give `defaultValue`. `unit` (€, %, kg) shows small at the
+ * right end of the field; the field is then wrapped in a span. `size` is the Input's.
  * Native input props (`name`, `aria-label`, `ref`…) reach the field; `className` the whole.
  */
 export function NumberInput({
@@ -30,6 +32,8 @@ export function NumberInput({
   from,
   to,
   step = 1,
+  unit,
+  size = "normal",
   disabled = false,
   onBlur,
   onKeyDown,
@@ -46,7 +50,10 @@ export function NumberInput({
   /** The slider's end when there is no `max`: not a limit, not shown. */
   to?: number;
   step?: number;
-} & Omit<ComponentProps<"input">, "type" | "value" | "defaultValue" | "onChange" | "min" | "max" | "step" | "className">): ReactElement {
+  unit?: ReactNode;
+  size?: InputSize;
+} & Omit<ComponentProps<"input">, "type" | "size" | "value" | "defaultValue" | "onChange" | "min" | "max" | "step" | "className">): ReactElement {
+  const whole = classNames("boxy-number-input", size !== "normal" && `boxy-number-input-${size}`, className);
   const start = min ?? from;
   const end = max ?? to;
   const [own, setOwn] = useState(defaultValue ?? start ?? 0);
@@ -93,7 +100,7 @@ export function NumberInput({
     onKeyDown?.(event);
   }
 
-  const field = (
+  let field = (
     <input
       className="boxy-number-input-field"
       type="number"
@@ -115,14 +122,23 @@ export function NumberInput({
     />
   );
 
+  if (unit !== undefined) {
+    field = (
+      <span className="boxy-number-input-with-unit">
+        {field}
+        <span className="boxy-number-input-unit">{unit}</span>
+      </span>
+    );
+  }
+
   if (start === undefined || end === undefined) {
-    return <div className={classNames("boxy-number-input", className)}>{field}</div>;
+    return <div className={whole}>{field}</div>;
   }
 
   const bounded = min !== undefined && max !== undefined;
 
   return (
-    <div className={classNames("boxy-number-input", className)}>
+    <div className={whole}>
       {field}
       <div className="boxy-number-input-range">
         {bounded && <span className="boxy-number-input-bound">{min}</span>}

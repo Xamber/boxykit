@@ -1,7 +1,10 @@
 /*
  * Board: the screen split into cells by lines from edge to edge. Stacked when narrow; from lg two columns,
  * the left one twice as wide (even: as wide), and every row as tall as the others.
- * Four cells make quarters, two make halves; a tall cell takes the whole left column.
+ * Four cells make quarters, two make halves; a tall cell takes two rows of its column.
+ * Fit: rows as tall as their content, for a page of forms and results. A side cell goes to the right column
+ * wherever it is in the markup; sticky content in it stays in view while the rest scrolls.
+ * Right under a Nav the board is that much shorter, so the two fill the screen together.
  */
 @layer boxy.components {
   /* The 1px gap shows the background through: the lines between the cells, whatever their layout. */
@@ -22,6 +25,18 @@
     background: var(--boxy-bg);
   }
 
+  .boxy-nav + .boxy-board {
+    min-height: calc(var(--boxy-board-height) - var(--boxy-nav-height));
+  }
+
+  /* Takes the cell's content; from lg it sticks. */
+  .boxy-board-sticky {
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+    min-width: 0;
+  }
+
   /* The content sits on the line below it, like the value of a tile. */
   .boxy-board-cell-end {
     justify-content: flex-end;
@@ -31,6 +46,12 @@
     .boxy-board {
       grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
       grid-auto-rows: minmax(0, 1fr);
+      /* Dense: the cells after a side cell fill the left column from the top. */
+      grid-auto-flow: dense;
+    }
+
+    .boxy-board-fit {
+      grid-auto-rows: auto;
     }
 
     .boxy-board-even {
@@ -43,6 +64,16 @@
 
     .boxy-board-cell-tall {
       grid-row: span 2;
+    }
+
+    .boxy-board-cell-side {
+      grid-column: 2;
+    }
+
+    /* As far from the top as the cell's padding: it stays where it started. */
+    .boxy-board-sticky {
+      position: sticky;
+      top: var(--boxy-space-12);
     }
   }
 }

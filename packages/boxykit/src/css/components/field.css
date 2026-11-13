@@ -1,14 +1,60 @@
-/* Field: a label over a form control (Input, Select, Textarea…), the whole of it a <label>. */
+/*
+ * Field: a label over a form control (Input, Select, Textarea…), the whole of it a <label>.
+ * Fields: a group of them, one under another. Columns: two across from sm, a full field across both.
+ * Row: side by side on one line, the controls on one bottom line. Aside: from sm the labels in a column
+ * of their own, as wide as the longest, the controls in a second one.
+ */
 @layer boxy.components {
   .boxy-field {
     display: flex;
     flex-direction: column;
     gap: var(--boxy-space-2);
+    min-width: 0;
   }
 
   .boxy-field-label {
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
     line-height: var(--boxy-line-height-tight);
+  }
+
+  .boxy-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--boxy-space-4);
+  }
+
+  .boxy-field-full {
+    grid-column: 1 / -1;
+  }
+
+  /* The fields share the line and wrap when it is too short; a button at the end sits on the controls' line. */
+  .boxy-fields-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .boxy-fields-row > .boxy-field {
+    flex: 1 1 10rem;
+  }
+
+  @media (width >= 40rem) {
+    .boxy-fields-columns {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .boxy-fields-aside {
+      grid-template-columns: max-content minmax(0, 1fr);
+    }
+
+    /* Each field takes the group's two columns, so every label and control lines up with the others. */
+    .boxy-fields-aside > .boxy-field {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: 1 / -1;
+      align-items: center;
+      gap: var(--boxy-space-4);
+    }
   }
 }

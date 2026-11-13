@@ -6,12 +6,15 @@ export type Column<T> = {
   /** Also the cell's data-column, so an app styles a column with `[data-column="name"]`. */
   key: string;
   header: ReactNode;
+  /** Numbers: on the right, digits as wide as each other, on one line. */
+  numeric?: boolean;
   render: (row: T) => ReactNode;
 };
 
 /**
  * Rows of cells under a head row. `onRowClick` makes rows work like buttons (click, Enter, Space);
  * `expanded` returns the content of a full-width row under a row, or null while it's closed.
+ * `foot` is the rows of totals under a dark line, drawn by the same columns.
  */
 export function Table<T>({
   className,
@@ -22,6 +25,7 @@ export function Table<T>({
   rowClassName,
   onRowClick,
   expanded,
+  foot,
 }: {
   className?: string;
   /** Names the table for screen readers. */
@@ -32,13 +36,14 @@ export function Table<T>({
   rowClassName?: (row: T, index: number) => string;
   onRowClick?: (row: T, index: number) => void;
   expanded?: (row: T, index: number) => ReactNode;
+  foot?: T[];
 }): ReactElement {
   return (
     <table className={classNames("boxy-table", className)} aria-label={label}>
       <thead className="boxy-table-head">
         <tr className="boxy-table-row">
           {columns.map((c) => (
-            <th key={c.key} className="boxy-table-cell" data-column={c.key}>
+            <th key={c.key} className={cellClass(c)} data-column={c.key}>
               {c.header}
             </th>
           ))}
@@ -59,8 +64,26 @@ export function Table<T>({
           />
         ))}
       </tbody>
+      {foot !== undefined && foot.length > 0 && (
+        <tfoot className="boxy-table-foot">
+          {foot.map((row, index) => (
+            <DataRow
+              key={rowKey(row, index)}
+              columns={columns}
+              row={row}
+              className={undefined}
+              onClick={undefined}
+              state={undefined}
+            />
+          ))}
+        </tfoot>
+      )}
     </table>
   );
+}
+
+function cellClass<T>(column: Column<T>): string {
+  return classNames("boxy-table-cell", column.numeric && "boxy-table-cell-numeric");
 }
 
 /** A row and, when it's open, its detail row. A fragment: <tbody> can hold only rows. */
@@ -116,7 +139,7 @@ function DataRow<T>({
   state: "open" | "closed" | undefined;
 }) {
   const cells = columns.map((c) => (
-    <td key={c.key} className="boxy-table-cell" data-column={c.key}>
+    <td key={c.key} className={cellClass(c)} data-column={c.key}>
       {c.render(row)}
     </td>
   ));

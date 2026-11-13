@@ -6,6 +6,8 @@ import { BoardHalves } from "./board/halves";
 import { BoardMainSide } from "./board/main-side";
 import { BoardQuarters } from "./board/quarters";
 import { BoardTall } from "./board/tall";
+import { BoardTool } from "./board/tool";
+import { BoxBasic } from "./box/basic";
 import { ButtonDisabled } from "./button/disabled";
 import { ButtonExpand } from "./button/expand";
 import { ButtonLink } from "./button/link";
@@ -19,12 +21,18 @@ import { ChoiceSwitch } from "./choice/switch";
 import { DropdownNumbered } from "./dropdown/numbered";
 import { DropdownPlain } from "./dropdown/plain";
 import { DropdownSearch } from "./dropdown/search";
+import { FieldsAside } from "./field/aside";
+import { FieldsColumns } from "./field/columns";
+import { FieldsRow } from "./field/row";
+import { FieldsStack } from "./field/stack";
 import { IconInText } from "./icon/in-text";
 import { IconLabelled } from "./icon/labelled";
 import { IconSet } from "./icon/set";
 import { InputBasic } from "./input/basic";
 import { InputInvalid } from "./input/invalid";
 import { InputMuted } from "./input/muted";
+import { InputSizes } from "./input/sizes";
+import { LabelRowBasic } from "./label-row/basic";
 import { LabelTileBasic } from "./label-tile/basic";
 import { LabelTileLong } from "./label-tile/long";
 import { LabelTileMissing } from "./label-tile/missing";
@@ -35,15 +43,21 @@ import { ListInteractive } from "./list/interactive";
 import { ListInteractivePlain } from "./list/interactive-plain";
 import { ListNumbered } from "./list/numbered";
 import { ModalBasic } from "./modal/basic";
+import { NavWithEnd } from "./nav/end";
 import { NavStrip } from "./nav/strip";
 import { NumberInputBasic } from "./number-input/basic";
 import { NumberInputFromTo } from "./number-input/from-to";
 import { NumberInputPlain } from "./number-input/plain";
+import { NumberInputSizes } from "./number-input/sizes";
+import { NumberInputUnit } from "./number-input/unit";
 import { ProgressRingLarge } from "./progress/large";
 import { ProgressRingExample } from "./progress/ring";
 import { ProgressSpinner } from "./progress/spinner";
 import { SectionBasic } from "./section/basic";
 import { SelectBasic } from "./select/basic";
+import { SelectSizes } from "./select/sizes";
+import { StackBasic } from "./stack/basic";
+import { StackGaps } from "./stack/gaps";
 import { TileClickable } from "./tile/clickable";
 import { TileCorner } from "./tile/corner";
 import { TileLabelOnly } from "./tile/label-only";
@@ -56,6 +70,7 @@ import { TileValue } from "./tile/value";
 import { TileWide } from "./tile/wide";
 import { TableBasic } from "./table/basic";
 import { TableExpandable } from "./table/expandable";
+import { TableNumbers } from "./table/numbers";
 import { TagListExample } from "./tag/list";
 import { TextCaption } from "./text/caption";
 import { TextHeadline } from "./text/headline";
@@ -200,6 +215,33 @@ export const SECTIONS: SectionDoc[] = [
             about: "tall takes the whole left column; end puts a cell's content on the line below it.",
             Component: BoardTall,
           },
+          {
+            file: "board/tool.tsx",
+            title: "A tool page, under a Nav",
+            about:
+              "fit makes rows as tall as their content. A side cell sits in the right column even when it comes first; sticky keeps its content in view. Right under a Nav the board is shorter by the Nav's height.",
+            Component: BoardTool,
+          },
+        ],
+      },
+      {
+        title: "Stack",
+        css: ["stack"],
+        examples: [
+          { file: "stack/basic.tsx", title: "Basic", about: "Children one under another, --boxy-space-4 between them.", Component: StackBasic },
+          {
+            file: "stack/gaps.tsx",
+            title: "Gaps",
+            about: "gap names another spacing step: 2, 3, 6 or 8. Stacks nest: a wide gap between groups, a narrow one inside them.",
+            Component: StackGaps,
+          },
+        ],
+      },
+      {
+        title: "Box",
+        css: ["box"],
+        examples: [
+          { file: "box/basic.tsx", title: "Outlined", about: "A rounded outline around any content: the cards of an invoice, a summary.", Component: BoxBasic },
         ],
       },
       {
@@ -220,6 +262,24 @@ export const SECTIONS: SectionDoc[] = [
             about: "onRowClick makes rows clickable (Enter and Space too); expanded draws a full-width row under an open one.",
             Component: TableExpandable,
           },
+          {
+            file: "table/numbers.tsx",
+            title: "Numbers and a total",
+            about: "numeric on a column puts it on the right, digits as wide as each other, on one line. foot is the rows of totals, under a dark line.",
+            Component: TableNumbers,
+          },
+        ],
+      },
+      {
+        title: "LabelRows",
+        css: ["label-row"],
+        examples: [
+          {
+            file: "label-row/basic.tsx",
+            title: "Label and value",
+            about: "The row form of a LabelTile, a <dl>: the label small and mono on the left, the value on the right. accent fills the row that sums up.",
+            Component: LabelRowBasic,
+          },
         ],
       },
     ],
@@ -237,6 +297,12 @@ export const SECTIONS: SectionDoc[] = [
             title: "Strip",
             about: "current sets aria-current=\"page\"; the numbers come by themselves. A label too long for its cell ends in ….",
             Component: NavStrip,
+          },
+          {
+            file: "nav/end.tsx",
+            title: "With an end",
+            about: "NavEnd goes after the links, as wide as it needs: a log out button, a name. It isn't numbered.",
+            Component: NavWithEnd,
           },
         ],
       },
@@ -433,6 +499,37 @@ export const SECTIONS: SectionDoc[] = [
           { file: "input/basic.tsx", title: "Basic", about: "Outlined, as wide as its container.", Component: InputBasic },
           { file: "input/muted.tsx", title: "Muted, with a label and an icon", about: "No line, a light fill: for filters and search in toolbars. Field puts a label over any control; icon goes inside on the left.", Component: InputMuted },
           { file: "input/invalid.tsx", title: "Invalid", about: "invalid sets aria-invalid, which the CSS marks.", Component: InputInvalid },
+          {
+            file: "input/sizes.tsx",
+            title: "Sizes",
+            about: "size=\"small\" and \"tiny\": the small text in less padding, for toolbars and table rows. An icon follows the size.",
+            Component: InputSizes,
+          },
+        ],
+      },
+      {
+        title: "Fields",
+        css: ["field", "input"],
+        examples: [
+          { file: "field/stack.tsx", title: "Stacked", about: "A group of Fields, one under another.", Component: FieldsStack },
+          {
+            file: "field/columns.tsx",
+            title: "Columns",
+            about: "layout=\"columns\": two across from sm, one under another below it. full on a Field takes both.",
+            Component: FieldsColumns,
+          },
+          {
+            file: "field/row.tsx",
+            title: "Row",
+            about: "layout=\"row\": side by side on one line, the controls and a button on one bottom line; they wrap when the line is short.",
+            Component: FieldsRow,
+          },
+          {
+            file: "field/aside.tsx",
+            title: "Labels aside",
+            about: "layout=\"aside\": from sm the labels in a column as wide as the longest, the controls lined up in a second one.",
+            Component: FieldsAside,
+          },
         ],
       },
       {
@@ -449,7 +546,7 @@ export const SECTIONS: SectionDoc[] = [
       },
       {
         title: "Select",
-        css: ["select"],
+        css: ["select", "field"],
         examples: [
           {
             file: "select/basic.tsx",
@@ -457,6 +554,7 @@ export const SECTIONS: SectionDoc[] = [
             about: "The native select in the Input's look. Where the browser allows (Chrome), the open list is styled too.",
             Component: SelectBasic,
           },
+          { file: "select/sizes.tsx", title: "Sizes", about: "size=\"small\" and \"tiny\", as on Input.", Component: SelectSizes },
         ],
       },
       {
@@ -511,7 +609,7 @@ export const SECTIONS: SectionDoc[] = [
       },
       {
         title: "NumberInput",
-        css: ["number-input"],
+        css: ["number-input", "field"],
         examples: [
           {
             file: "number-input/basic.tsx",
@@ -530,6 +628,18 @@ export const SECTIONS: SectionDoc[] = [
             title: "Just the field",
             about: "No range, no slider. step holds everywhere: typing snaps to it when you leave the field, and the arrow keys move by it.",
             Component: NumberInputPlain,
+          },
+          {
+            file: "number-input/unit.tsx",
+            title: "With a unit",
+            about: "unit shows small at the right end of the field: €, %, kg. It stays out of the label.",
+            Component: NumberInputUnit,
+          },
+          {
+            file: "number-input/sizes.tsx",
+            title: "Sizes",
+            about: "size=\"small\" and \"tiny\", as on Input; the unit shrinks with them.",
+            Component: NumberInputSizes,
           },
         ],
       },

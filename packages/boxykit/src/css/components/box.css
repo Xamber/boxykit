@@ -1,0 +1,10 @@
+/* Box: an outlined, rounded panel around any content: the outline of a Tile without its square. */
+@layer boxy.components {
+  .boxy-box {
+    min-width: 0;
+    padding: var(--boxy-space-4);
+    border-radius: var(--boxy-radius);
+    background: var(--boxy-bg);
+    box-shadow: var(--boxy-outline);
+  }
+}

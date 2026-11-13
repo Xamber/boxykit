@@ -1,4 +1,7 @@
-/* Table: rows divided by lines, the row under the pointer in the soft accent; rows can open a detail row. */
+/*
+ * Table: rows divided by lines, the row under the pointer in the soft accent; rows can open a detail row.
+ * Numeric cells: on the right, digits as wide as each other, on one line. Foot: the totals, under a dark line.
+ */
 @layer boxy.components {
   .boxy-table {
     width: 100%;
@@ -18,6 +21,22 @@
     padding: var(--boxy-space-3);
     border-bottom: var(--boxy-border);
     vertical-align: middle;
+  }
+
+  .boxy-table .boxy-table-cell-numeric {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .boxy-table-foot .boxy-table-cell {
+    padding: var(--boxy-space-3);
+    font-weight: var(--boxy-font-weight-medium);
+  }
+
+  /* The line over the foot is the last body row's, darker. */
+  .boxy-table-body:has(+ .boxy-table-foot) > :last-child > .boxy-table-cell {
+    border-bottom-color: var(--boxy-fg);
   }
 
   .boxy-table-body .boxy-table-row {

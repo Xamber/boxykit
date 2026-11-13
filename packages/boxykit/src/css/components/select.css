@@ -1,6 +1,7 @@
 /*
  * Select: the native select in the Input's look, a solid triangle on the right.
  * Where the browser lets the list be styled (appearance: base-select), the list is a flat box too.
+ * Small and tiny: the Input's sizes.
  */
 @layer boxy.components {
   .boxy-select {
@@ -24,6 +25,22 @@
     transition:
       border-color var(--boxy-duration),
       box-shadow var(--boxy-duration);
+  }
+
+  .boxy-select-small {
+    padding: var(--boxy-space-2) var(--boxy-space-8) var(--boxy-space-2) var(--boxy-space-3);
+    background-position:
+      right calc(var(--boxy-space-3) + var(--boxy-space)) top 50%,
+      right var(--boxy-space-3) top 50%;
+    font-size: var(--boxy-font-size-small);
+  }
+
+  .boxy-select-tiny {
+    padding: var(--boxy-space) var(--boxy-space-6) var(--boxy-space) var(--boxy-space-2);
+    background-position:
+      right calc(var(--boxy-space-2) + var(--boxy-space)) top 50%,
+      right var(--boxy-space-2) top 50%;
+    font-size: var(--boxy-font-size-small);
   }
 
   .boxy-select:focus-visible,

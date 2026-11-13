@@ -1,6 +1,7 @@
 /*
  * Input: a one-line text field. Muted: no line, a light fill, for filters and search in toolbars.
  * With an icon: a span around the input holds the icon inside it, on the left.
+ * Small and tiny: the small text in less padding, for toolbars and table rows.
  */
 @layer boxy.components {
   .boxy-input {
@@ -40,6 +41,16 @@
     background: color-mix(in srgb, var(--boxy-fg) 5%, var(--boxy-bg));
   }
 
+  .boxy-input-small {
+    padding: var(--boxy-space-2) var(--boxy-space-3);
+    font-size: var(--boxy-font-size-small);
+  }
+
+  .boxy-input-tiny {
+    padding: var(--boxy-space) var(--boxy-space-2);
+    font-size: var(--boxy-font-size-small);
+  }
+
   .boxy-input-with-icon {
     position: relative;
     display: block;
@@ -61,5 +72,26 @@
 
   .boxy-input-with-icon > .boxy-input {
     padding-left: calc(var(--boxy-space-4) + 1.25em + var(--boxy-space-3));
+  }
+
+  /* The icon follows the input's size: its text, and its padding from the left. */
+  .boxy-input-with-icon:has(> :is(.boxy-input-small, .boxy-input-tiny)) {
+    font-size: var(--boxy-font-size-small);
+  }
+
+  .boxy-input-with-icon:has(> .boxy-input-small) > .boxy-icon {
+    left: var(--boxy-space-3);
+  }
+
+  .boxy-input-with-icon > .boxy-input-small {
+    padding-left: calc(var(--boxy-space-3) + 1.25em + var(--boxy-space-2));
+  }
+
+  .boxy-input-with-icon:has(> .boxy-input-tiny) > .boxy-icon {
+    left: var(--boxy-space-2);
+  }
+
+  .boxy-input-with-icon > .boxy-input-tiny {
+    padding-left: calc(var(--boxy-space-2) + 1.25em + var(--boxy-space-2));
   }
 }

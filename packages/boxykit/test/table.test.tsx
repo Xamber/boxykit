@@ -51,4 +51,14 @@ describe("Table", () => {
     expect(screen.getByText("one").closest("tr")?.getAttribute("data-state")).toBe("open");
     expect(screen.getByText("two").closest("tr")?.getAttribute("data-state")).toBe("closed");
   });
+
+  it("marks the cells of a numeric column, and draws the foot by the same columns", () => {
+    const columns: Column<Row>[] = [{ key: "id", header: "ID", numeric: true, render: (r) => r.id }];
+    const { container } = render(<Table columns={columns} rows={ROWS} rowKey={(r) => r.id} foot={[{ id: "sum" }]} />);
+
+    expect(screen.getByText("ID").className).toBe("boxy-table-cell boxy-table-cell-numeric");
+    expect(screen.getByText("one").className).toBe("boxy-table-cell boxy-table-cell-numeric");
+    expect(container.querySelector(".boxy-table-foot")?.textContent).toBe("sum");
+    expect(container.querySelector(".boxy-table-body")?.textContent).toBe("onetwo");
+  });
 });

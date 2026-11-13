@@ -1,0 +1,25 @@
+/* Stack: children one under another with the same gap between them. The gap is a spacing step: 2, 3, 4 (default), 6, 8. */
+@layer boxy.components {
+  .boxy-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--boxy-space-4);
+    min-width: 0;
+  }
+
+  .boxy-stack-2 {
+    gap: var(--boxy-space-2);
+  }
+
+  .boxy-stack-3 {
+    gap: var(--boxy-space-3);
+  }
+
+  .boxy-stack-6 {
+    gap: var(--boxy-space-6);
+  }
+
+  .boxy-stack-8 {
+    gap: var(--boxy-space-8);
+  }
+}

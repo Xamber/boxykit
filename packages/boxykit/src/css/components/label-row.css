@@ -1,0 +1,45 @@
+/*
+ * LabelRows: a list of label–value rows divided by lines, the label small and mono on the left, the value on
+ * the right. The row form of a LabelTile. Accent: the row that sums the others up.
+ */
+@layer boxy.components {
+  .boxy-label-rows {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .boxy-label-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--boxy-space-4);
+    padding: var(--boxy-space-3);
+    border-bottom: var(--boxy-border);
+  }
+
+  .boxy-label-row-label {
+    color: var(--boxy-muted);
+    font-family: var(--boxy-font-mono);
+    font-size: var(--boxy-font-size-small);
+  }
+
+  .boxy-label-row-value {
+    min-width: 0;
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--boxy-font-weight-medium);
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .boxy-label-row-accent {
+    border-bottom-color: transparent;
+    background: var(--boxy-accent);
+    color: var(--boxy-on-accent);
+    print-color-adjust: exact;
+  }
+
+  .boxy-label-row-accent .boxy-label-row-label {
+    color: inherit;
+  }
+}

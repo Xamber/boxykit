@@ -1,6 +1,17 @@
 # boxykit
 
-## Unreleased
+## 0.3.1
+
+- Stack: children one under another with a gap from the spacing scale (`gap`: 2, 3, 4, 6, 8). Box: an outlined, rounded panel.
+- LabelRows: a `<dl>` of label–value rows, the row form of a LabelTile; `accent` fills the row that sums up.
+- Fields: a group of Fields. `layout="columns"` puts two across from sm (`full` on a Field takes both), `"row"` puts them on one line with the controls on one bottom line, `"aside"` puts the labels in a column beside the controls.
+- Nav: NavEnd (`boxy-nav-end`) goes after the links, as wide as it needs. The Nav is a flex row now, the links still as wide as each other.
+- Board: `fit` makes rows as tall as their content; `side` on a cell puts it in the right column wherever it is in the markup; `sticky` keeps its content in view. Right under a Nav a Board is shorter by `--boxy-nav-height`, so there is no need to set `--boxy-board-height` by hand. `tall` takes two rows of whichever column the cell is in.
+- Table: `numeric` on a column (`boxy-table-cell-numeric`) puts it on the right in tabular digits; `foot` is the rows of totals in a `<tfoot>`.
+- NumberInput: `unit` shows €, %, kg… at the right end of the field.
+- Input, Select and NumberInput: `size="small"` and `"tiny"` (`boxy-input-small`, `boxy-input-tiny`, and the same on `boxy-select` and `boxy-number-input`): the small text in less padding. The React components no longer pass the native `size` attribute on.
+
+## 0.3.0
 
 - Dropdown: a field that opens a rounded box with a search on top and the options under it, split by lines; `numbered` puts 01, 02… before them, `ring` on an option adds a ProgressRing. Select stays the native one.
 - Icon: `boxy-icon` sizes any line-icon SVG (Lucide, Tabler…) to its text, in its color, with square line ends; `boxy-icon-large` doubles it. In a button it sits after the label at the line's height. The kit ships no icons; the docs use Lucide. `--boxy-icon-stroke` sets the line.

@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactElement } from "react";
 import { classNames } from "./class-names.js";
 
-/** An inverted strip of NavLinks as wide as each other; the CSS numbers them 01, 02… */
+/** An inverted strip of NavLinks as wide as each other; the CSS numbers them 01, 02… A NavEnd goes after them. */
 export function Nav({
   className,
   label,
@@ -32,4 +32,9 @@ export function NavLink({
       {children}
     </a>
   );
+}
+
+/** What goes after the links of a Nav, as wide as it needs: a log out button (look="outline"), a name. */
+export function NavEnd({ className, ...props }: ComponentProps<"div">): ReactElement {
+  return <div className={classNames("boxy-nav-end", className)} {...props} />;
 }

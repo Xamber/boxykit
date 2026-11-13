@@ -1,6 +1,8 @@
 /*
  * NumberInput: a number field in the Input's look. With a range, a slider under it: a thin line, a small accent
  * square to drag along it, and min and max at its ends small, like a NumberedList's numbers.
+ * With a unit: a span around the field draws the box, the unit small at its right end.
+ * Small and tiny: the Input's sizes.
  */
 @layer boxy.components {
   .boxy-number-input {
@@ -43,6 +45,67 @@
   .boxy-number-input-field::-webkit-inner-spin-button,
   .boxy-number-input-field::-webkit-outer-spin-button {
     appearance: none;
+  }
+
+  .boxy-number-input-with-unit {
+    display: flex;
+    align-items: center;
+    border: var(--boxy-border);
+    border-radius: var(--boxy-radius-button);
+    background: var(--boxy-bg);
+    transition:
+      border-color var(--boxy-duration),
+      box-shadow var(--boxy-duration);
+  }
+
+  .boxy-number-input-with-unit:focus-within {
+    border-color: var(--boxy-accent);
+    box-shadow: var(--boxy-ring);
+  }
+
+  .boxy-number-input-with-unit:has([aria-invalid="true"]) {
+    border-color: var(--boxy-danger);
+  }
+
+  .boxy-number-input-with-unit:has(:disabled) {
+    opacity: var(--boxy-opacity-disabled);
+  }
+
+  /* The span is the box now: the field inside it is bare. */
+  .boxy-number-input-with-unit > .boxy-number-input-field {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  .boxy-number-input-unit {
+    padding-right: var(--boxy-space-4);
+    color: var(--boxy-muted);
+    font-size: var(--boxy-font-size-small);
+    white-space: nowrap;
+  }
+
+  .boxy-number-input-small .boxy-number-input-field {
+    padding: var(--boxy-space-2) var(--boxy-space-3);
+    font-size: var(--boxy-font-size-small);
+  }
+
+  .boxy-number-input-small .boxy-number-input-unit {
+    padding-right: var(--boxy-space-3);
+    font-size: var(--boxy-font-size-tiny);
+  }
+
+  .boxy-number-input-tiny .boxy-number-input-field {
+    padding: var(--boxy-space) var(--boxy-space-2);
+    font-size: var(--boxy-font-size-small);
+  }
+
+  .boxy-number-input-tiny .boxy-number-input-unit {
+    padding-right: var(--boxy-space-2);
+    font-size: var(--boxy-font-size-tiny);
   }
 
   .boxy-number-input-range {
