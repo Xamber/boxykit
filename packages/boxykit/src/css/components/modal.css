@@ -42,7 +42,7 @@
   .boxy-modal-title {
     color: var(--boxy-muted);
     font-size: var(--boxy-font-size-small);
-    line-height: var(--boxy-line-height-tight);
+    line-height: var(--boxy-line-height-small-tight);
   }
 
   .boxy-modal-close {

@@ -96,22 +96,18 @@
     --boxy-font-scale: 1.5;
     --boxy-font-size: 1.125rem;
     --boxy-font-size-small: calc(var(--boxy-font-size) / var(--boxy-font-scale));
-    --boxy-font-size-tiny: 0.625rem;
+    --boxy-font-size-tiny: calc(var(--boxy-font-size) * 5 / 9);
     --boxy-font-size-heading: calc(var(--boxy-font-size) * var(--boxy-font-scale));
     --boxy-font-size-display: calc(var(--boxy-font-size-heading) * var(--boxy-font-scale));
     --boxy-font-size-headline: calc(var(--boxy-font-size-display) * var(--boxy-font-scale));
     --boxy-font-size-hero: calc(var(--boxy-font-size-headline) * var(--boxy-font-scale));
     --boxy-font-weight: 400;
     --boxy-font-weight-medium: 500;
-    --boxy-line-height: 1.5;
-    /* Four thirds: the small text in a line of four spaces, the body text in six. */
-    --boxy-line-height-tight: calc(4 / 3);
-    /* The tiny text in a line of four spaces too. */
-    --boxy-line-height-tiny: 1.6;
-    --boxy-line-height-hero: 0.9;
     --boxy-letter-spacing-tight: -0.03em;
     --boxy-letter-spacing-tighter: -0.06em;
     --boxy-letter-spacing-wider: 0.16em;
+    /* An icon is as tall as the tight line of the text it sits in: 16px in small text, 24px in body text. */
+    --boxy-icon-size: calc(1em * 4 / 3);
     /* An icon's line, in its viewBox units (Lucide's 24): a bit under its default 2, to sit with 1px borders. */
     --boxy-icon-stroke: 1.75;
 
@@ -124,8 +120,22 @@
     --boxy-space-8: calc(var(--boxy-space) * 8);
     --boxy-space-12: calc(var(--boxy-space) * 12);
     --boxy-space-24: calc(var(--boxy-space) * 24);
+
+    /*
+     * ---- Lines: every text size sits in a whole number of spaces, so no height ends in a fraction.
+     * These are lengths, not ratios: text at a size of your own needs a line-height of its own. ----
+     */
+    --boxy-line-height: calc(var(--boxy-space) * 7);
+    --boxy-line-height-tight: calc(var(--boxy-space) * 6);
+    --boxy-line-height-small: calc(var(--boxy-space) * 5);
+    --boxy-line-height-small-tight: var(--boxy-space-4);
+    --boxy-line-height-tiny: var(--boxy-space-4);
+    --boxy-line-height-heading: var(--boxy-space-8);
+    --boxy-line-height-display: calc(var(--boxy-space) * 9);
+    --boxy-line-height-headline: calc(var(--boxy-space) * 14);
+    --boxy-line-height-hero: calc(var(--boxy-space) * 21);
     /* Apple's smallest comfortable tap target. */
-    --boxy-touch-target: 2.75rem;
+    --boxy-touch-target: calc(var(--boxy-space) * 11);
 
     /* ---- Controls: three heights, --boxy-space-2 apart; buttons, fields, rows to click all take one ---- */
     --boxy-control: var(--boxy-touch-target);
@@ -135,14 +145,14 @@
     /* ---- Layout: override these to fit your page ---- */
     /* A Board fills the screen; an app with a header sets calc(100dvh - <header height>). */
     --boxy-board-height: 100dvh;
-    --boxy-nav-height: 3.5rem;
+    --boxy-nav-height: calc(var(--boxy-control) + var(--boxy-space-3));
     /* The smallest Tile; the grid fits as many as it can. */
-    --boxy-tile-size: 6rem;
+    --boxy-tile-size: var(--boxy-space-24);
     /* A LabelTile's side; a wide one is two of them and the gap. */
-    --boxy-label-tile-size: 8.5rem;
+    --boxy-label-tile-size: calc(var(--boxy-space) * 36);
 
     /* ---- Shapes ---- */
-    --boxy-radius: 0.75rem;
+    --boxy-radius: var(--boxy-space-3);
     --boxy-radius-small: calc(var(--boxy-radius) / 2);
     --boxy-radius-large: calc(var(--boxy-radius) * 2);
     --boxy-radius-full: 999px;

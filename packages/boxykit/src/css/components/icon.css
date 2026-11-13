@@ -6,8 +6,8 @@
   .boxy-icon {
     display: inline-block;
     flex-shrink: 0;
-    width: calc(1em * var(--boxy-line-height-tight));
-    height: calc(1em * var(--boxy-line-height-tight));
+    width: var(--boxy-icon-size);
+    height: var(--boxy-icon-size);
     vertical-align: -0.25em;
     stroke: currentcolor;
     stroke-width: var(--boxy-icon-stroke);
@@ -17,7 +17,7 @@
 
   /* For an empty state or a tile: twice the size. */
   .boxy-icon-large {
-    width: calc(2em * var(--boxy-line-height-tight));
-    height: calc(2em * var(--boxy-line-height-tight));
+    width: calc(var(--boxy-icon-size) * 2);
+    height: calc(var(--boxy-icon-size) * 2);
   }
 }

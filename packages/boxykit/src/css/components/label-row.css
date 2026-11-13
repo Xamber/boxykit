@@ -14,14 +14,17 @@
     align-items: baseline;
     justify-content: space-between;
     gap: var(--boxy-space-4);
-    padding: var(--boxy-space-3);
-    border-bottom: var(--boxy-border);
+    min-height: var(--boxy-control);
+    padding: var(--boxy-space-2) var(--boxy-space-3);
+    /* A shadow, not a border: the line stays inside the row's height. */
+    box-shadow: inset 0 -1px 0 var(--boxy-line);
   }
 
   .boxy-label-row-label {
     color: var(--boxy-muted);
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
   }
 
   .boxy-label-row-value {
@@ -33,7 +36,7 @@
   }
 
   .boxy-label-row-accent {
-    border-bottom-color: transparent;
+    box-shadow: none;
     background: var(--boxy-accent);
     color: var(--boxy-on-accent);
     print-color-adjust: exact;

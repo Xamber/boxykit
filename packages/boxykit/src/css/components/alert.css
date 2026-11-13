@@ -20,7 +20,7 @@
     background: var(--boxy-band-bg);
     color: var(--boxy-band-fg);
     font-size: var(--boxy-font-size-small);
-    line-height: var(--boxy-line-height-tight);
+    line-height: var(--boxy-line-height-small-tight);
     box-shadow: inset 0 0 0 1px var(--boxy-band-line);
   }
 
@@ -72,7 +72,9 @@
 
   .boxy-empty {
     padding: var(--boxy-space-12) var(--boxy-space-4);
-    border: 1px dashed var(--boxy-line);
+    /* An outline drawn inside the edge: a dashed line that adds nothing to the height. */
+    outline: 1px dashed var(--boxy-line);
+    outline-offset: -1px;
     border-radius: var(--boxy-radius);
     color: var(--boxy-muted);
     text-align: center;

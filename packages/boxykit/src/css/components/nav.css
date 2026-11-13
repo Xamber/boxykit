@@ -22,7 +22,7 @@
     overflow: hidden;
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
-    line-height: var(--boxy-line-height-tight);
+    line-height: var(--boxy-line-height-small-tight);
     text-overflow: ellipsis;
     text-transform: uppercase;
     white-space: nowrap;
@@ -39,6 +39,7 @@
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-tiny);
     font-weight: var(--boxy-font-weight);
+    line-height: var(--boxy-line-height-tiny);
   }
 
   /* The short dividers between the links. */
@@ -82,6 +83,7 @@
     gap: var(--boxy-space-3);
     padding: var(--boxy-space-2) var(--boxy-space-4);
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
   }
 
   @media (width >= 48rem) {

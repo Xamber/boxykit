@@ -23,7 +23,7 @@
   .boxy-list-link::before {
     content: "";
     flex: none;
-    width: calc(var(--boxy-space) * 1.5);
+    width: var(--boxy-space-2);
     aspect-ratio: 1;
     background: currentcolor;
   }
@@ -37,6 +37,7 @@
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-tiny);
     font-weight: var(--boxy-font-weight);
+    line-height: var(--boxy-line-height-tiny);
   }
 
   /* Interactive: the link draws the marker, so its background covers it too. */
@@ -58,6 +59,7 @@
     padding: var(--boxy-space) var(--boxy-space-2);
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-small);
     text-transform: uppercase;
     transition: background var(--boxy-duration);
   }

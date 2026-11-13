@@ -31,8 +31,8 @@
 
 .docs-logo {
   flex-shrink: 0;
-  width: calc(1em * var(--boxy-line-height-tight));
-  height: calc(1em * var(--boxy-line-height-tight));
+  width: var(--boxy-icon-size);
+  height: var(--boxy-icon-size);
 }
 
 .docs-version {
@@ -40,6 +40,7 @@
   font-family: var(--boxy-font-mono);
   font-size: var(--boxy-font-size-tiny);
   font-weight: var(--boxy-font-weight);
+  line-height: var(--boxy-line-height-tiny);
   text-transform: none;
 }
 
@@ -114,7 +115,7 @@
   max-width: 40rem;
   color: var(--boxy-muted);
   font-size: var(--boxy-font-size-heading);
-  line-height: var(--boxy-line-height-tight);
+  line-height: var(--boxy-line-height-heading);
 }
 
 .docs-preview > .docs-lead {
@@ -168,14 +169,16 @@
 
 .docs-preview .boxy-board .boxy-headline {
   font-size: var(--boxy-font-size-heading);
+  line-height: var(--boxy-line-height-heading);
 }
 
 .docs-preview .boxy-board .boxy-hero {
   font-size: var(--boxy-font-size-display);
+  line-height: var(--boxy-line-height-display);
 }
 
 .docs-preview .boxy-board .boxy-label-tiles {
-  --boxy-label-tile-size: 6rem;
+  --boxy-label-tile-size: var(--boxy-space-24);
 }
 
 /* The toasts sit in the corner of a page; in a row they stay in place. Show toast puts them in the corner. */
@@ -258,7 +261,7 @@
 .docs-about {
   color: var(--boxy-muted);
   font-size: var(--boxy-font-size-small);
-  line-height: var(--boxy-line-height-tight);
+  line-height: var(--boxy-line-height-small-tight);
 }
 
 .docs-code {
@@ -266,7 +269,7 @@
   padding: var(--boxy-space-4);
   background: color-mix(in srgb, var(--boxy-fg) 5%, var(--boxy-bg));
   font-size: var(--boxy-font-size-small);
-  line-height: var(--boxy-line-height-tight);
+  line-height: var(--boxy-line-height-small-tight);
   overflow: auto;
 }
 
@@ -287,6 +290,7 @@
 /* ---- Tokens ---- */
 .docs-token {
   font-size: var(--boxy-font-size-small);
+  line-height: var(--boxy-line-height-small);
 }
 
 .docs-swatches {
@@ -321,7 +325,6 @@
 }
 
 .docs-type-sample {
-  line-height: var(--boxy-line-height-tight);
   overflow-wrap: anywhere;
 }
 

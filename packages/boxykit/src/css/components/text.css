@@ -11,6 +11,7 @@
   .boxy-headline {
     font-size: var(--boxy-font-size-headline);
     font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-headline);
     text-transform: uppercase;
   }
 
@@ -28,6 +29,7 @@
   .boxy-hero-unit {
     margin-left: var(--boxy-space);
     font-size: var(--boxy-font-size-heading);
+    line-height: var(--boxy-line-height-heading);
     vertical-align: top;
   }
 
@@ -35,7 +37,7 @@
   .boxy-caption {
     color: var(--boxy-muted);
     font-size: var(--boxy-font-size-small);
-    line-height: var(--boxy-line-height-tight);
+    line-height: var(--boxy-line-height-small-tight);
     letter-spacing: var(--boxy-letter-spacing-wider);
     text-transform: uppercase;
   }
@@ -45,5 +47,6 @@
     color: var(--boxy-muted);
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
   }
 }

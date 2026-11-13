@@ -15,7 +15,7 @@
   .boxy-field-label {
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
-    line-height: var(--boxy-line-height-tight);
+    line-height: var(--boxy-line-height-small-tight);
   }
 
   .boxy-fields {
@@ -36,7 +36,7 @@
   }
 
   .boxy-fields-row > .boxy-field {
-    flex: 1 1 10rem;
+    flex: 1 1 calc(var(--boxy-space) * 40);
   }
 
   @media (width >= 40rem) {

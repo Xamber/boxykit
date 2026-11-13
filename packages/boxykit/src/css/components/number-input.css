@@ -22,6 +22,7 @@
     border-radius: var(--boxy-radius-button);
     background: var(--boxy-bg);
     font-size: var(--boxy-font-size);
+    line-height: var(--boxy-line-height);
     font-variant-numeric: tabular-nums;
     text-align: center;
     appearance: textfield;
@@ -90,6 +91,7 @@
     padding-right: var(--boxy-space-4);
     color: var(--boxy-muted);
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
     white-space: nowrap;
   }
 
@@ -100,11 +102,13 @@
   .boxy-number-input-small .boxy-number-input-field {
     padding: 0 var(--boxy-space-3);
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
   }
 
   .boxy-number-input-small .boxy-number-input-unit {
     padding-right: var(--boxy-space-3);
     font-size: var(--boxy-font-size-tiny);
+    line-height: var(--boxy-line-height-tiny);
   }
 
   .boxy-number-input-tiny {
@@ -114,11 +118,13 @@
   .boxy-number-input-tiny .boxy-number-input-field {
     padding: 0 var(--boxy-space-2);
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
   }
 
   .boxy-number-input-tiny .boxy-number-input-unit {
     padding-right: var(--boxy-space-2);
     font-size: var(--boxy-font-size-tiny);
+    line-height: var(--boxy-line-height-tiny);
   }
 
   .boxy-number-input-range {

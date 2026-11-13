@@ -4,7 +4,8 @@
     display: block;
     width: 100%;
     min-height: calc(var(--boxy-control) * 2);
-    padding: var(--boxy-space-3) var(--boxy-space-4);
+    /* Less the border, so the lines of text stay on the spacing grid. */
+    padding: calc(var(--boxy-space-3) - 1px) var(--boxy-space-4);
     border: var(--boxy-border);
     border-radius: var(--boxy-radius-button);
     background: var(--boxy-bg);

@@ -21,6 +21,7 @@
     background-size: var(--boxy-space) var(--boxy-space);
     background-repeat: no-repeat;
     font-size: var(--boxy-font-size);
+    line-height: var(--boxy-line-height);
     cursor: pointer;
     appearance: none;
     transition:
@@ -35,6 +36,7 @@
       right calc(var(--boxy-space-3) + var(--boxy-space)) top 50%,
       right var(--boxy-space-3) top 50%;
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
   }
 
   .boxy-select-tiny {
@@ -44,6 +46,7 @@
       right calc(var(--boxy-space-2) + var(--boxy-space)) top 50%,
       right var(--boxy-space-2) top 50%;
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
   }
 
   .boxy-select:focus-visible,

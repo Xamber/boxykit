@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--boxy-space-3);
-    width: 17rem;
+    width: calc(var(--boxy-space) * 72);
     max-width: 100%;
     padding: var(--boxy-space-4);
     border-radius: var(--boxy-radius);
@@ -26,6 +26,7 @@
       inset 0 0 0 1px var(--boxy-band-line),
       var(--boxy-shadow);
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
     animation: boxy-toast-in var(--boxy-duration-slow) var(--boxy-ease);
   }
 
@@ -36,7 +37,7 @@
     gap: var(--boxy-space-2);
     color: var(--boxy-band-muted);
     font-size: var(--boxy-font-size-small);
-    line-height: var(--boxy-line-height-tight);
+    line-height: var(--boxy-line-height-small-tight);
   }
 
   .boxy-toast-count {

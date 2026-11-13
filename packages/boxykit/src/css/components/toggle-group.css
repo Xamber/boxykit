@@ -18,7 +18,7 @@
     padding: var(--boxy-space-2) var(--boxy-space-3);
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
-    line-height: var(--boxy-line-height-tight);
+    line-height: var(--boxy-line-height-small-tight);
     text-align: left;
     text-transform: uppercase;
     cursor: pointer;

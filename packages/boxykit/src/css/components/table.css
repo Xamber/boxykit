@@ -5,12 +5,16 @@
 @layer boxy.components {
   .boxy-table {
     width: 100%;
+    /* Not collapsed: a collapsed line adds half a pixel to its row. */
+    border-collapse: separate;
+    border-spacing: 0;
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small);
   }
 
   .boxy-table-head .boxy-table-cell {
     height: var(--boxy-control-small);
-    padding: var(--boxy-space-2) var(--boxy-space-3);
+    padding: var(--boxy-space) var(--boxy-space-3);
     border-bottom: var(--boxy-border);
     color: var(--boxy-muted);
     font-weight: var(--boxy-font-weight-medium);

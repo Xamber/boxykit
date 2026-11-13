@@ -58,14 +58,15 @@ background: var(--boxy-danger-soft);`,
   },
 ];
 
-const SIZES: Token[] = [
-  { name: "font-size-tiny", about: "Tile numbers 01/04" },
-  { name: "font-size-small", about: "Labels, buttons, tables, captions" },
-  { name: "font-size", about: "Body text" },
-  { name: "font-size-heading", about: "Tile values" },
-  { name: "font-size-display", about: "Section headings" },
-  { name: "font-size-headline", about: "Headlines" },
-  { name: "font-size-hero", about: "The hero number" },
+// Each size with the line it sits in.
+const SIZES: (Token & { line: string })[] = [
+  { name: "font-size-tiny", line: "line-height-tiny", about: "Tile numbers 01/04" },
+  { name: "font-size-small", line: "line-height-small", about: "Labels, buttons, tables, captions" },
+  { name: "font-size", line: "line-height", about: "Body text" },
+  { name: "font-size-heading", line: "line-height-heading", about: "Tile values" },
+  { name: "font-size-display", line: "line-height-display", about: "Section headings" },
+  { name: "font-size-headline", line: "line-height-headline", about: "Headlines" },
+  { name: "font-size-hero", line: "line-height-hero", about: "The hero number" },
 ];
 
 const SPACES = ["space", "space-2", "space-3", "space-4", "space-6", "space-8", "space-12", "space-24"];
@@ -89,13 +90,13 @@ export function TokensGroup() {
       <ExampleRow
         group="Tokens"
         title="Type"
-        about="Each size is --boxy-font-scale (1.5) times the one below it; tiny is the odd one, for the small numbers."
+        about="Each size is --boxy-font-scale (1.5) times the one below it; tiny is the odd one, for the small numbers. Each has its --boxy-line-height-…, a whole number of spaces."
         react="font-size: var(--boxy-font-size-heading);"
       >
         <ol className="docs-type-scale">
-          {SIZES.map(({ name, about }) => (
+          {SIZES.map(({ name, line, about }) => (
             <li key={name} className="docs-type-size">
-              <span className="docs-type-sample" style={{ fontSize: `var(--boxy-${name})` }}>
+              <span className="docs-type-sample" style={{ fontSize: `var(--boxy-${name})`, lineHeight: `var(--boxy-${line})` }}>
                 Boxykit
               </span>
               <code className="docs-token">--boxy-{name}</code>

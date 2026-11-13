@@ -89,12 +89,13 @@
 
   .boxy-tile-value {
     font-size: var(--boxy-font-size-heading);
-    line-height: var(--boxy-line-height-hero);
+    line-height: var(--boxy-line-height-heading);
     letter-spacing: var(--boxy-letter-spacing-tighter);
   }
 
   .boxy-tile-out-of {
     font-size: var(--boxy-font-size-small);
+    line-height: var(--boxy-line-height-small-tight);
     letter-spacing: normal;
     opacity: 0.5;
   }
@@ -103,18 +104,19 @@
   .boxy-tile-label {
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
-    line-height: var(--boxy-line-height-tight);
+    line-height: var(--boxy-line-height-small-tight);
   }
 
   /* An icon in a ring's place, at a ring's size. */
   .boxy-tile-top .boxy-icon {
-    width: 1rem;
-    height: 1rem;
+    width: var(--boxy-space-4);
+    height: var(--boxy-space-4);
   }
 
   .boxy-tile-index {
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-tiny);
+    line-height: var(--boxy-line-height-tiny);
   }
 
   .boxy-tile-index-of {

@@ -16,7 +16,7 @@
     color: var(--boxy-fg);
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
-    line-height: var(--boxy-line-height);
+    line-height: var(--boxy-line-height-small);
     white-space: nowrap;
     box-shadow: var(--boxy-outline);
   }
