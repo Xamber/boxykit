@@ -11,10 +11,10 @@ import { BoxBasic } from "./box/basic";
 import { ButtonDisabled } from "./button/disabled";
 import { ButtonExpand } from "./button/expand";
 import { ButtonLink } from "./button/link";
-import { ButtonLinksSmall } from "./button/links-small";
+import { ButtonLinksTiny } from "./button/links-tiny";
 import { ButtonLooks } from "./button/looks";
 import { ButtonPending } from "./button/pending";
-import { ButtonSmall } from "./button/small";
+import { ButtonSizes } from "./button/sizes";
 import { ChoiceCheckbox } from "./choice/checkbox";
 import { ChoiceRadio } from "./choice/radio";
 import { ChoiceSwitch } from "./choice/switch";
@@ -449,10 +449,10 @@ export const SECTIONS: SectionDoc[] = [
             Component: ButtonLooks,
           },
           {
-            file: "button/small.tsx",
-            title: "Small",
-            about: "In table rows and next to lists; any look.",
-            Component: ButtonSmall,
+            file: "button/sizes.tsx",
+            title: "Sizes",
+            about: "As tall as the field of the same size: normal beside a normal field, small unless told otherwise, tiny in table rows and next to lists.",
+            Component: ButtonSizes,
           },
           {
             file: "button/expand.tsx",
@@ -479,10 +479,10 @@ export const SECTIONS: SectionDoc[] = [
             Component: ButtonLink,
           },
           {
-            file: "button/links-small.tsx",
-            title: "Small links in a row",
+            file: "button/links-tiny.tsx",
+            title: "Tiny links in a row",
             about: "An accent link with an outlined one next to it, under a list.",
-            Component: ButtonLinksSmall,
+            Component: ButtonLinksTiny,
           },
         ],
       },

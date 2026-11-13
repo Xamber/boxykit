@@ -35,7 +35,7 @@ export function ShowToast({ wait = false, children }: { wait?: boolean; children
     <>
       <Button
         look="outline"
-        size="small"
+        size="tiny"
         onClick={() => {
           setShown(true);
         }}

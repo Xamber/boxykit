@@ -5,8 +5,11 @@ import { Spinner } from "./progress.js";
 /** Accent for the main action, dark for the main action on the accent, outline for the quieter ones. */
 export type ButtonLook = "accent" | "dark" | "outline";
 
-/** `small` for buttons in table rows and next to lists. */
-export type ButtonSize = "normal" | "small";
+/**
+ * The same sizes as the fields, each as tall as the field of that size. A button is `small` unless told otherwise;
+ * `normal` goes beside a normal field, `tiny` in table rows and next to lists.
+ */
+export type ButtonSize = "normal" | "small" | "tiny";
 
 export type ButtonStyle = { look?: ButtonLook; size?: ButtonSize; className?: string };
 
@@ -14,8 +17,8 @@ export type ButtonStyle = { look?: ButtonLook; size?: ButtonSize; className?: st
  * The button classes, for anything that should look like a button, e.g. a router link:
  * `<Link className={buttonClass({ look: "dark" })}>`.
  */
-export function buttonClass({ look = "accent", size = "normal", className }: ButtonStyle = {}): string {
-  return classNames("boxy-button", `boxy-button-${look}`, size === "small" && "boxy-button-small", className);
+export function buttonClass({ look = "accent", size = "small", className }: ButtonStyle = {}): string {
+  return classNames("boxy-button", `boxy-button-${look}`, size !== "small" && `boxy-button-${size}`, className);
 }
 
 /** A button; `type="button"` unless told otherwise. `pending` disables it and shows a Spinner after the label. */

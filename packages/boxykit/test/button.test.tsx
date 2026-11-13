@@ -23,8 +23,10 @@ describe("Button", () => {
 
 describe("buttonClass", () => {
   it("joins the look, the size and extra classes", () => {
-    expect(buttonClass({ look: "outline", size: "small", className: "x" })).toBe(
-      "boxy-button boxy-button-outline boxy-button-small x",
+    expect(buttonClass({ look: "outline", size: "tiny", className: "x" })).toBe(
+      "boxy-button boxy-button-outline boxy-button-tiny x",
     );
+    expect(buttonClass({ size: "normal" })).toBe("boxy-button boxy-button-accent boxy-button-normal");
+    expect(buttonClass({ size: "small" })).toBe("boxy-button boxy-button-accent");
   });
 });

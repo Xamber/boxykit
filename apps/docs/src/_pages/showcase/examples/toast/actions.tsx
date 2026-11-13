@@ -8,10 +8,10 @@ export function ToastActions() {
         title="Delete 3 tasks?"
         actions={
           <>
-            <Button look="outline" size="small">
+            <Button look="outline" size="tiny">
               Cancel
             </Button>
-            <Button size="small">Delete</Button>
+            <Button size="tiny">Delete</Button>
           </>
         }
       >

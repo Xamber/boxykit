@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     min-width: 0;
-    min-height: var(--boxy-touch-target);
+    min-height: var(--boxy-control);
     padding: var(--boxy-space-2) var(--boxy-space-3);
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);

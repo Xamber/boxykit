@@ -65,6 +65,7 @@
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-tiny);
     font-weight: var(--boxy-font-weight-medium);
+    line-height: var(--boxy-line-height-tiny);
     letter-spacing: var(--boxy-letter-spacing-wider);
     text-transform: uppercase;
   }

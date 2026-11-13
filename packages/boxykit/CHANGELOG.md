@@ -1,5 +1,12 @@
 # boxykit
 
+## 0.4.0
+
+- Control heights: `--boxy-control` (the touch target, 44px), `--boxy-control-small` (36px) and `--boxy-control-tiny` (28px), `--boxy-space-2` apart. Everything to click or type in takes one of them, so a row of them lines up and no height ends in a fraction: normal fields, Dropdown, ToggleGroup and table rows are 44px (fields were 53px); Button, small fields, Dropdown options and a table's head 36px; tiny fields, tiny Buttons, Tag, Choice and list links 28px. Override `--boxy-control` to rescale them all.
+- Button: `size` is `"normal"` (44px), `"small"` (36px, the default) or `"tiny"` (28px), the same words and heights as the fields. Breaking: `boxy-button-small` is gone (the plain `boxy-button` is the small one); what was `size="small"` is `size="tiny"` (`boxy-button-tiny`), now 28px.
+- `--boxy-line-height-tight` is 4/3 (was 1.2): small text sits in a 16px line and body text in 24px, so labels, alerts and toasts keep to whole pixels. An icon is as tall as that line (16px in small text, 24px in body text; was 1.25em), in a button too. `--boxy-line-height-tiny` (1.6) does the same for the tiny text of an Alert's title and a NumberInput's bounds.
+- Checkbox, Radio, Switch and the NumberInput's slider square are `--boxy-space-3` (12px, was 10px).
+
 ## 0.3.1
 
 - Stack: children one under another with a gap from the spacing scale (`gap`: 2, 3, 4, 6, 8). Box: an outlined, rounded panel.

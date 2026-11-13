@@ -1,11 +1,15 @@
-/* Button: a rectangle in capitals, for buttons and links alike. Looks: accent, dark, outline. */
+/*
+ * Button: a rectangle in capitals, for buttons and links alike. Looks: accent, dark, outline.
+ * As tall as a small field; normal and tiny: as tall as the fields of those sizes.
+ */
 @layer boxy.components {
   .boxy-button {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--boxy-space-2);
-    padding: var(--boxy-space-3) var(--boxy-space-4);
+    min-height: var(--boxy-control-small);
+    padding: var(--boxy-space) var(--boxy-space-4);
     border-radius: var(--boxy-radius-button);
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
@@ -25,7 +29,12 @@
     box-shadow: var(--boxy-ring);
   }
 
-  .boxy-button-small {
+  .boxy-button-normal {
+    min-height: var(--boxy-control);
+  }
+
+  .boxy-button-tiny {
+    min-height: var(--boxy-control-tiny);
     padding: var(--boxy-space) var(--boxy-space-3);
   }
 

@@ -10,7 +10,7 @@ export function ButtonPending() {
       <Button look="outline" pending>
         Syncing
       </Button>
-      <Button size="small" pending>
+      <Button size="tiny" pending>
         Saving
       </Button>
       <SubmitButton pending label="Add project" pendingLabel="Adding" />

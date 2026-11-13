@@ -10,7 +10,7 @@ export function NavWithEnd() {
       <NavLink href="#nav">Invoice</NavLink>
       <NavLink href="#nav">Taxes</NavLink>
       <NavEnd>
-        <Button look="outline" size="small">
+        <Button look="outline" size="tiny">
           Log out
         </Button>
       </NavEnd>

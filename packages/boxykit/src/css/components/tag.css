@@ -10,6 +10,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--boxy-space);
+    min-height: var(--boxy-control-tiny);
     padding: var(--boxy-space) var(--boxy-space-3);
     border-radius: var(--boxy-radius-small);
     color: var(--boxy-fg);

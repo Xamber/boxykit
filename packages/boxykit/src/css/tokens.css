@@ -104,7 +104,10 @@
     --boxy-font-weight: 400;
     --boxy-font-weight-medium: 500;
     --boxy-line-height: 1.5;
-    --boxy-line-height-tight: 1.2;
+    /* Four thirds: the small text in a line of four spaces, the body text in six. */
+    --boxy-line-height-tight: calc(4 / 3);
+    /* The tiny text in a line of four spaces too. */
+    --boxy-line-height-tiny: 1.6;
     --boxy-line-height-hero: 0.9;
     --boxy-letter-spacing-tight: -0.03em;
     --boxy-letter-spacing-tighter: -0.06em;
@@ -123,6 +126,11 @@
     --boxy-space-24: calc(var(--boxy-space) * 24);
     /* Apple's smallest comfortable tap target. */
     --boxy-touch-target: 2.75rem;
+
+    /* ---- Controls: three heights, --boxy-space-2 apart; buttons, fields, rows to click all take one ---- */
+    --boxy-control: var(--boxy-touch-target);
+    --boxy-control-small: calc(var(--boxy-control) - var(--boxy-space-2));
+    --boxy-control-tiny: calc(var(--boxy-control) - var(--boxy-space-4));
 
     /* ---- Layout: override these to fit your page ---- */
     /* A Board fills the screen; an app with a header sets calc(100dvh - <header height>). */

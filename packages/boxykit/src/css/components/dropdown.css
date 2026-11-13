@@ -11,7 +11,8 @@
   .boxy-dropdown-trigger {
     display: block;
     width: 100%;
-    padding: var(--boxy-space-3) var(--boxy-space-12) var(--boxy-space-3) var(--boxy-space-4);
+    height: var(--boxy-control);
+    padding: 0 var(--boxy-space-12) 0 var(--boxy-space-4);
     overflow: hidden;
     border: var(--boxy-border);
     border-radius: var(--boxy-radius-button);
@@ -73,7 +74,8 @@
 
   .boxy-dropdown-search {
     width: 100%;
-    padding: var(--boxy-space-3) var(--boxy-space-4);
+    height: var(--boxy-control);
+    padding: 0 var(--boxy-space-4);
     border: 0;
     border-bottom: var(--boxy-border);
     background: transparent;
@@ -107,6 +109,7 @@
     display: flex;
     align-items: center;
     gap: var(--boxy-space-3);
+    min-height: var(--boxy-control-small);
     padding: var(--boxy-space-2) var(--boxy-space-4);
     font-size: var(--boxy-font-size-small);
     line-height: var(--boxy-line-height-tight);

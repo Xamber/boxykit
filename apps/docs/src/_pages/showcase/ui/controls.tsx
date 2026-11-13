@@ -36,7 +36,7 @@ function Choice<T extends string>({
       {options.map((o) => (
         <Button
           key={o.value}
-          size="small"
+          size="tiny"
           look={o.value === value ? "accent" : "outline"}
           aria-pressed={o.value === value}
           onClick={() => {

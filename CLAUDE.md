@@ -21,7 +21,7 @@ A UI kit: plain CSS is the source of truth, `boxykit/react` only maps props to t
 
 ## CSS
 
-- Classes: `boxy-<block>`, then `boxy-<block>-<part>` and `boxy-<block>-<variant>` (`boxy-table-cell`, `boxy-button-small`). Every class is prefixed, parts too.
+- Classes: `boxy-<block>`, then `boxy-<block>-<part>` and `boxy-<block>-<variant>` (`boxy-table-cell`, `boxy-button-tiny`). Every class is prefixed, parts too.
 - State is a native attribute: `:disabled`, `[aria-invalid="true"]`, `[aria-checked="true"]`, `[aria-busy="true"]`, `[open]`. `[data-state="…"]` only when no ARIA attribute fits the element (an open table row). No `is-*` classes.
 - Values come from `--boxy-*` tokens; add a token or a step when none fits. Stylelint enforces names and token values.
 - Breakpoints (literal in media queries): sm 40rem, md 48rem, lg 64rem.

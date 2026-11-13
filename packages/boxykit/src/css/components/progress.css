@@ -2,15 +2,15 @@
 @layer boxy.components {
   .boxy-progress-ring,
   .boxy-spinner {
-    width: 1rem;
-    height: 1rem;
+    width: var(--boxy-space-4);
+    height: var(--boxy-space-4);
     flex-shrink: 0;
   }
 
   .boxy-progress-ring-large,
   .boxy-spinner-large {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: var(--boxy-control-tiny);
+    height: var(--boxy-control-tiny);
   }
 
   .boxy-progress-ring circle,

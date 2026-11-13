@@ -33,7 +33,7 @@ export function CodePanel({
         {!shown && (
           <Button
             look="outline"
-            size="small"
+            size="tiny"
             onClick={() => {
               setShown(true);
             }}

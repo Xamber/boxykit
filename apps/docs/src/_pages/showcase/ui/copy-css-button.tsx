@@ -54,7 +54,7 @@ export function CopyCssButton({ url }: { url: string }) {
   return (
     <Button
       look="outline"
-      size="small"
+      size="tiny"
       onClick={() => {
         copyFile(url).then(
           () => {

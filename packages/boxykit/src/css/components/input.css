@@ -1,12 +1,13 @@
 /*
  * Input: a one-line text field. Muted: no line, a light fill, for filters and search in toolbars.
  * With an icon: a span around the input holds the icon inside it, on the left.
- * Small and tiny: the small text in less padding, for toolbars and table rows.
+ * Small and tiny: the small text in a lower box, for toolbars and table rows. The heights are the control tokens.
  */
 @layer boxy.components {
   .boxy-input {
     width: 100%;
-    padding: var(--boxy-space-3) var(--boxy-space-4);
+    height: var(--boxy-control);
+    padding: 0 var(--boxy-space-4);
     border: var(--boxy-border);
     border-radius: var(--boxy-radius-button);
     background: var(--boxy-bg);
@@ -42,12 +43,14 @@
   }
 
   .boxy-input-small {
-    padding: var(--boxy-space-2) var(--boxy-space-3);
+    height: var(--boxy-control-small);
+    padding: 0 var(--boxy-space-3);
     font-size: var(--boxy-font-size-small);
   }
 
   .boxy-input-tiny {
-    padding: var(--boxy-space) var(--boxy-space-2);
+    height: var(--boxy-control-tiny);
+    padding: 0 var(--boxy-space-2);
     font-size: var(--boxy-font-size-small);
   }
 
@@ -71,7 +74,7 @@
   }
 
   .boxy-input-with-icon > .boxy-input {
-    padding-left: calc(var(--boxy-space-4) + 1.25em + var(--boxy-space-3));
+    padding-left: calc(var(--boxy-space-4) + 1em * var(--boxy-line-height-tight) + var(--boxy-space-3));
   }
 
   /* The icon follows the input's size: its text, and its padding from the left. */
@@ -84,7 +87,7 @@
   }
 
   .boxy-input-with-icon > .boxy-input-small {
-    padding-left: calc(var(--boxy-space-3) + 1.25em + var(--boxy-space-2));
+    padding-left: calc(var(--boxy-space-3) + 1em * var(--boxy-line-height-tight) + var(--boxy-space-2));
   }
 
   .boxy-input-with-icon:has(> .boxy-input-tiny) > .boxy-icon {
@@ -92,6 +95,6 @@
   }
 
   .boxy-input-with-icon > .boxy-input-tiny {
-    padding-left: calc(var(--boxy-space-2) + 1.25em + var(--boxy-space-2));
+    padding-left: calc(var(--boxy-space-2) + 1em * var(--boxy-line-height-tight) + var(--boxy-space-2));
   }
 }

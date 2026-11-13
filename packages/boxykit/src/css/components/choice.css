@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     gap: var(--boxy-space-3);
+    min-height: var(--boxy-control-tiny);
     padding: var(--boxy-space) var(--boxy-space-2);
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);
@@ -35,8 +36,8 @@
   .boxy-checkbox,
   .boxy-radio {
     flex-shrink: 0;
-    width: calc(var(--boxy-space) * 2.5);
-    height: calc(var(--boxy-space) * 2.5);
+    width: var(--boxy-space-3);
+    height: var(--boxy-space-3);
     border-radius: var(--boxy-radius-button);
     background: transparent;
     box-shadow: inset 0 0 0 1px currentcolor;
@@ -73,7 +74,7 @@
    * the side it is on is filled with the accent.
    */
   .boxy-switch {
-    --boxy-switch-square: calc(var(--boxy-space) * 2.5);
+    --boxy-switch-square: var(--boxy-space-3);
     --boxy-switch-inner: calc(var(--boxy-switch-square) - 2px);
     --boxy-switch-yes: var(--boxy-bg);
     --boxy-switch-no: var(--boxy-accent);

@@ -14,7 +14,7 @@ export function FieldsRow() {
           <option value="high">High</option>
         </Select>
       </Field>
-      <Button>Filter</Button>
+      <Button size="normal">Filter</Button>
     </Fields>
   );
 }

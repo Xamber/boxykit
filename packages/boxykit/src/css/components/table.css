@@ -9,6 +9,7 @@
   }
 
   .boxy-table-head .boxy-table-cell {
+    height: var(--boxy-control-small);
     padding: var(--boxy-space-2) var(--boxy-space-3);
     border-bottom: var(--boxy-border);
     color: var(--boxy-muted);
@@ -18,7 +19,8 @@
   }
 
   .boxy-table-body .boxy-table-cell {
-    padding: var(--boxy-space-3);
+    height: var(--boxy-control);
+    padding: var(--boxy-space-2) var(--boxy-space-3);
     border-bottom: var(--boxy-border);
     vertical-align: middle;
   }
@@ -30,7 +32,8 @@
   }
 
   .boxy-table-foot .boxy-table-cell {
-    padding: var(--boxy-space-3);
+    height: var(--boxy-control);
+    padding: var(--boxy-space-2) var(--boxy-space-3);
     font-weight: var(--boxy-font-weight-medium);
   }
 

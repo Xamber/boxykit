@@ -54,6 +54,7 @@
     align-items: center;
     gap: var(--boxy-space-3);
     min-width: 0;
+    min-height: var(--boxy-control-tiny);
     padding: var(--boxy-space) var(--boxy-space-2);
     font-size: var(--boxy-font-size-small);
     font-weight: var(--boxy-font-weight-medium);

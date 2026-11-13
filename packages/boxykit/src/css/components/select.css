@@ -6,7 +6,8 @@
 @layer boxy.components {
   .boxy-select {
     width: 100%;
-    padding: var(--boxy-space-3) var(--boxy-space-12) var(--boxy-space-3) var(--boxy-space-4);
+    height: var(--boxy-control);
+    padding: 0 var(--boxy-space-12) 0 var(--boxy-space-4);
     border: var(--boxy-border);
     border-radius: var(--boxy-radius-button);
     /* The triangle: two halves of a square, in the text color. */
@@ -28,7 +29,8 @@
   }
 
   .boxy-select-small {
-    padding: var(--boxy-space-2) var(--boxy-space-8) var(--boxy-space-2) var(--boxy-space-3);
+    height: var(--boxy-control-small);
+    padding: 0 var(--boxy-space-8) 0 var(--boxy-space-3);
     background-position:
       right calc(var(--boxy-space-3) + var(--boxy-space)) top 50%,
       right var(--boxy-space-3) top 50%;
@@ -36,7 +38,8 @@
   }
 
   .boxy-select-tiny {
-    padding: var(--boxy-space) var(--boxy-space-6) var(--boxy-space) var(--boxy-space-2);
+    height: var(--boxy-control-tiny);
+    padding: 0 var(--boxy-space-6) 0 var(--boxy-space-2);
     background-position:
       right calc(var(--boxy-space-2) + var(--boxy-space)) top 50%,
       right var(--boxy-space-2) top 50%;
@@ -63,6 +66,11 @@
     .boxy-select,
     .boxy-select::picker(select) {
       appearance: base-select;
+    }
+
+    /* A base-select is a flex row: its text goes in the middle of the fixed height. */
+    .boxy-select {
+      align-items: center;
     }
 
     /* The triangle above stands in for the browser's own. */

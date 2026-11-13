@@ -3,7 +3,7 @@
   .boxy-textarea {
     display: block;
     width: 100%;
-    min-height: calc(var(--boxy-touch-target) * 2);
+    min-height: calc(var(--boxy-control) * 2);
     padding: var(--boxy-space-3) var(--boxy-space-4);
     border: var(--boxy-border);
     border-radius: var(--boxy-radius-button);

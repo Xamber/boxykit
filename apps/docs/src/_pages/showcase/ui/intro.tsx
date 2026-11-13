@@ -31,7 +31,7 @@ import { Button } from "boxykit/react";
         <p className="docs-about">No React? Pick CSS at the side.</p>
         <p className="docs-about">No npm either? Download the whole kit as one file and link it, or copy it into your own:</p>
         <div className="docs-actions">
-          <a className={buttonClass({ look: "outline", size: "small" })} href={CSS_FILE_URL} download={CSS_FILE_NAME}>
+          <a className={buttonClass({ look: "outline", size: "tiny" })} href={CSS_FILE_URL} download={CSS_FILE_NAME}>
             Download CSS · {CSS_FILE_SIZE}
           </a>
           <CopyCssButton url={CSS_FILE_URL} />
@@ -43,10 +43,10 @@ import { Button } from "boxykit/react";
         <Headline ghost="· personal UI lib">Boxykit</Headline>
         <p className="docs-lead">Desktop-first UI kit I use for my personal projects, so I don’t have to invent it every time.</p>
         <div className="docs-actions">
-          <a className={buttonClass({ look: "dark", size: "small" })} href={REPO_URL}>
+          <a className={buttonClass({ look: "dark", size: "tiny" })} href={REPO_URL}>
             GitHub
           </a>
-          <a className={buttonClass({ look: "dark", size: "small" })} href={NPM_URL}>
+          <a className={buttonClass({ look: "dark", size: "tiny" })} href={NPM_URL}>
             npm
           </a>
         </div>

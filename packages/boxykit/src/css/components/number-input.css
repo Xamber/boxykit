@@ -6,6 +6,8 @@
  */
 @layer boxy.components {
   .boxy-number-input {
+    --boxy-number-input-height: var(--boxy-control);
+
     display: flex;
     flex-direction: column;
     gap: var(--boxy-space-2);
@@ -14,7 +16,8 @@
 
   .boxy-number-input-field {
     width: 100%;
-    padding: var(--boxy-space-3) var(--boxy-space-4);
+    height: var(--boxy-number-input-height, var(--boxy-control));
+    padding: 0 var(--boxy-space-4);
     border: var(--boxy-border);
     border-radius: var(--boxy-radius-button);
     background: var(--boxy-bg);
@@ -50,6 +53,7 @@
   .boxy-number-input-with-unit {
     display: flex;
     align-items: center;
+    height: var(--boxy-number-input-height, var(--boxy-control));
     border: var(--boxy-border);
     border-radius: var(--boxy-radius-button);
     background: var(--boxy-bg);
@@ -75,6 +79,7 @@
   .boxy-number-input-with-unit > .boxy-number-input-field {
     flex: 1;
     min-width: 0;
+    height: 100%;
     border: 0;
     background: transparent;
     box-shadow: none;
@@ -88,8 +93,12 @@
     white-space: nowrap;
   }
 
+  .boxy-number-input-small {
+    --boxy-number-input-height: var(--boxy-control-small);
+  }
+
   .boxy-number-input-small .boxy-number-input-field {
-    padding: var(--boxy-space-2) var(--boxy-space-3);
+    padding: 0 var(--boxy-space-3);
     font-size: var(--boxy-font-size-small);
   }
 
@@ -98,8 +107,12 @@
     font-size: var(--boxy-font-size-tiny);
   }
 
+  .boxy-number-input-tiny {
+    --boxy-number-input-height: var(--boxy-control-tiny);
+  }
+
   .boxy-number-input-tiny .boxy-number-input-field {
-    padding: var(--boxy-space) var(--boxy-space-2);
+    padding: 0 var(--boxy-space-2);
     font-size: var(--boxy-font-size-small);
   }
 
@@ -119,13 +132,14 @@
     font-family: var(--boxy-font-mono);
     font-size: var(--boxy-font-size-tiny);
     font-variant-numeric: tabular-nums;
+    line-height: var(--boxy-line-height-tiny);
   }
 
   /* The line is the slider's own background; the track is left bare so the square sits on it. */
   .boxy-number-input-slider {
     flex: 1;
     min-width: 0;
-    height: calc(var(--boxy-space) * 2.5);
+    height: var(--boxy-space-3);
     background-image: linear-gradient(var(--boxy-muted), var(--boxy-muted));
     background-position: center;
     background-size: 100% 1px;
@@ -150,7 +164,7 @@
   }
 
   .boxy-number-input-slider::-webkit-slider-thumb {
-    width: calc(var(--boxy-space) * 2.5);
+    width: var(--boxy-space-3);
     height: 100%;
     border-radius: var(--boxy-radius-button);
     background: var(--boxy-accent);
@@ -159,7 +173,7 @@
   }
 
   .boxy-number-input-slider::-moz-range-thumb {
-    width: calc(var(--boxy-space) * 2.5);
+    width: var(--boxy-space-3);
     height: 100%;
     border: 0;
     border-radius: var(--boxy-radius-button);
